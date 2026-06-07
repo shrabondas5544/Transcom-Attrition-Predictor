@@ -50,3 +50,9 @@ class Command(BaseCommand):
             
         Employee.objects.bulk_create(employees_to_create)
         self.stdout.write(self.style.SUCCESS(f'Successfully imported {len(employees_to_create)} employees.'))
+        
+        # Automatically run batch inference to populate risk metrics
+        self.stdout.write(self.style.NOTICE('Running initial system-wide inference for imported employees...'))
+        from dashboard.services.inference import run_system_wide_inference
+        results = run_system_wide_inference()
+        self.stdout.write(self.style.SUCCESS(f'Successfully computed risk metrics for {results["processed_count"]} employees in {results["execution_time"]:.2f}s.'))

@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcom Attrition Predictor | HR Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.3);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.3);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(148, 163, 184, 0.5);
+        }
+    </style>
+</head>
+<body class="h-full font-sans antialiased">
+    <div class="min-h-full">
+        <!-- Navigation bar -->
+        <nav class="border-b border-slate-900 bg-slate-950/80 backdrop-blur sticky top-0 z-40">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="flex h-16 items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 shadow-lg shadow-indigo-500/20 text-white font-extrabold font-outfit text-xl">T</div>
+                        <span class="font-outfit text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-400 bg-clip-text text-transparent">Transcom Attrition Predictor</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="inline-flex items-center rounded-md bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-400 ring-1 ring-inset ring-emerald-500/20">System Seeding: OK</span>
+                        <a href="/admin/" target="_blank" class="text-sm font-medium text-slate-400 hover:text-white transition">Django Admin</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="py-8">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
+                
+                <!-- Error Warning Banner -->
+                <div id="warningBanner" class="hidden rounded-xl border border-red-500/20 bg-red-500/5 p-4 relative flex items-start gap-3">
+                    <div class="flex-shrink-0 text-red-500 mt-0.5">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" /></svg>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-red-400 font-outfit text-sm">File Validation Failed</h4>
+                        <p class="text-xs text-red-300/80 mt-1" id="warningMessage">The uploaded file is missing required headers.</p>
+                    </div>
+                    <button onclick="closeWarningBanner()" class="text-red-400 hover:text-white transition">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+
+                <!-- Column Reference Banner (Dismissible) -->
+                <div id="refBanner" class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 relative flex items-start gap-3">
+                    <div class="flex-shrink-0 text-indigo-500 mt-0.5">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 111.084 1.085l-.041.02H11.25v1.5a.75.75 0 11-1.5 0v-2.25a.75.75 0 01.75-.75h.75zM12 16.75a1 1 0 100-2 1 1 0 000 2zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-slate-300 font-outfit text-sm">Batch Upload Template Requirements</h4>
+                        <p class="text-xs text-slate-400 mt-1">Uploaded files (.csv or .xlsx) must contain exactly these 18 column headers:</p>
+                        <p class="text-xs text-indigo-400 font-mono mt-2 bg-slate-950/60 p-2 rounded border border-slate-950 overflow-x-auto leading-relaxed">
+                            Age, Gender, Educational Qualification, Location, Tenure, Monthly Salary, Incentive Earnings, Attendance %, Leave Utilization, Distance from Workplace, Number of Transfers, Performance Rating, Training Hours, Promotion History, Manager Effectiveness Score, Employee Engagement Score, Overtime Hours, Previous Attrition Label
+                        </p>
+                    </div>
+                    <button onclick="closeRefBanner()" class="text-slate-400 hover:text-white transition">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+                
+                <!-- Page Title & Controls Grid -->
+                <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+                    <div>
+                        <h1 class="font-outfit text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Predictive HR Dashboard</h1>
+                        <p class="mt-2 text-sm text-slate-400">Real-time risk analytics, explainable AI attrition drivers, and retention strategies.</p>
+                    </div>
+                    
+                    <!-- Control Actions Ribbon -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <!-- File Upload Component -->
+                        <div class="relative">
+                            <input type="file" id="datasetFileInput" accept=".csv, .xlsx, .xls" class="hidden" onchange="handleFileUpload(event)">
+                            <label for="datasetFileInput" class="inline-flex items-center gap-2 rounded-lg bg-slate-900 border border-slate-800 px-4 py-2 text-sm font-semibold text-slate-200 shadow-md hover:bg-slate-800 hover:text-white transition cursor-pointer active:scale-95">
+                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" /></svg>
+                                <span id="uploadLabel">Upload Dataset</span>
+                            </label>
+                        </div>
+
+                        <!-- Manual Predict Button -->
+                        <button onclick="openPredictModal()" class="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-emerald-600/35 hover:bg-emerald-500 hover:shadow-emerald-500/40 active:scale-95 transition-all">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                            <span>Predict Single Employee</span>
+                        </button>
+
+                        <!-- Recalculate Button -->
+                        <button id="recalculateBtn" onclick="triggerReinference()" class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-600/35 hover:bg-indigo-500 hover:shadow-indigo-500/40 active:scale-95 transition-all">
+                            <svg class="h-4 w-4 animate-spin hidden" id="recalcSpinner" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                            <span>Run Predictions</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Metrics Ribbon -->
+                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- Metric 1: Total Employees -->
+                    <div class="glass-card rounded-2xl p-6 relative overflow-hidden transition-all duration-300 hover:translate-y-[-2px] hover:border-slate-700">
+                        <dt class="text-sm font-semibold text-slate-400">Total Employees</dt>
+                        <dd class="mt-2 flex items-baseline justify-between">
+                            <span class="font-outfit text-4xl font-extrabold text-white" id="statTotal">{{ total_employees }}</span>
+                            <span class="text-xs text-slate-500">Active Directory</span>
+                        </dd>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-500"></div>
+                    </div>
+
+                    <!-- Metric 2: High Risk -->
+                    <div class="glass-card rounded-2xl p-6 relative overflow-hidden transition-all duration-300 hover:translate-y-[-2px] hover:border-red-500/20">
+                        <dt class="text-sm font-semibold text-slate-400">High Risk Employees</dt>
+                        <dd class="mt-2 flex items-baseline justify-between">
+                            <span class="font-outfit text-4xl font-extrabold text-red-500" id="statHigh">{{ high_risk_count }}</span>
+                            <span class="inline-flex items-center rounded-full bg-red-400/10 px-2.5 py-0.5 text-xs font-medium text-red-400 ring-1 ring-inset ring-red-400/20">Prob &ge; 0.50</span>
+                        </dd>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-rose-600"></div>
+                    </div>
+
+                    <!-- Metric 3: Medium Risk -->
+                    <div class="glass-card rounded-2xl p-6 relative overflow-hidden transition-all duration-300 hover:translate-y-[-2px] hover:border-amber-500/20">
+                        <dt class="text-sm font-semibold text-slate-400">Medium Risk Employees</dt>
+                        <dd class="mt-2 flex items-baseline justify-between">
+                            <span class="font-outfit text-4xl font-extrabold text-amber-500" id="statMedium">{{ medium_risk_count }}</span>
+                            <span class="inline-flex items-center rounded-full bg-amber-400/10 px-2.5 py-0.5 text-xs font-medium text-amber-400 ring-1 ring-inset ring-amber-400/20">0.20 - 0.49</span>
+                        </dd>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-yellow-600"></div>
+                    </div>
+
+                    <!-- Metric 4: Attrition Rate -->
+                    <div class="glass-card rounded-2xl p-6 relative overflow-hidden transition-all duration-300 hover:translate-y-[-2px] hover:border-slate-700">
+                        <dt class="text-sm font-semibold text-slate-400">Target vs. Current Attrition</dt>
+                        <dd class="mt-2 flex items-baseline justify-between">
+                            <span class="font-outfit text-4xl font-extrabold text-white" id="statRate">{{ current_attrition_rate }}%</span>
+                            <span class="inline-flex items-center rounded-full bg-slate-400/10 px-2 py-0.5 text-xs font-medium text-slate-300 ring-1 ring-inset ring-slate-400/20">Target: {{ target_attrition_rate }}%</span>
+                        </dd>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                    <!-- Doughnut: Risk Category Distribution -->
+                    <div class="glass-card rounded-2xl p-6 lg:col-span-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-outfit text-lg font-bold text-white">Risk Classification Breakdown</h3>
+                            <p class="text-xs text-slate-400 mt-1">Classification split based on predictive probabilities</p>
+                        </div>
+                        <div class="h-60 mt-4 flex items-center justify-center relative">
+                            <canvas id="riskDoughnutChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Bar: Attrition Risk by Location -->
+                    <div class="glass-card rounded-2xl p-6 lg:col-span-2 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-outfit text-lg font-bold text-white">Flight Risk Distribution by Location</h3>
+                            <p class="text-xs text-slate-400 mt-1">Number of High & Medium risk employees in major hubs</p>
+                        </div>
+                        <div class="h-60 mt-4">
+                            <canvas id="locationBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Employee Directory Table -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="p-6 border-b border-slate-900 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div>
+                            <h3 class="font-outfit text-lg font-bold text-white">Employee Directory & Predictive Scoring</h3>
+                            <p class="text-xs text-slate-400 mt-1">Ordered from highest flight risk to lowest. Click a row to view profile & dynamic interventions.</p>
+                        </div>
+                        <div class="flex items-center gap-3 w-full sm:w-auto">
+                            <!-- Search -->
+                            <div class="relative flex-grow sm:flex-grow-0">
+                                <input type="text" id="searchInput" onkeyup="handleSearch()" placeholder="Search ID..." class="w-full sm:w-48 rounded-lg bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
+                            </div>
+                            <!-- Location Filter -->
+                            <select id="locationFilter" onchange="handleFilter()" class="rounded-lg bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
+                                <option value="">All Locations</option>
+                                <option value="Dhaka">Dhaka</option>
+                                <option value="Chittagong">Chittagong</option>
+                                <option value="Sylhet">Sylhet</option>
+                                <option value="Rajshahi">Rajshahi</option>
+                                <option value="Khulna">Khulna</option>
+                                <option value="Barisal">Barisal</option>
+                            </select>
+                            <!-- SHAP Driver Filter -->
+                            <select id="driverFilter" onchange="handleFilter()" class="rounded-lg bg-slate-900 border border-slate-800 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
+                                <option value="">Filter by Primary Driver</option>
+                                <!-- Dynamically populated via JS -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Table container -->
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-slate-900">
+                            <thead class="bg-slate-950/40">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3.5 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Emp ID</th>
+                                    <th scope="col" class="px-6 py-3.5 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Demographics</th>
+                                    <th scope="col" class="px-6 py-3.5 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Location</th>
+                                    <th scope="col" class="px-6 py-3.5 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Risk Category</th>
+                                    <th scope="col" class="px-6 py-3.5 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Attrition Probability</th>
+                                    <th scope="col" class="px-6 py-3.5 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Primary Driver (SHAP)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeeTableBody" class="divide-y divide-slate-900 cursor-pointer">
+                                <!-- Loaded dynamically via JS -->
+                                <tr>
+                                    <td colspan="6" class="px-6 py-10 text-center text-sm text-slate-500">Loading directory...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="px-6 py-4 border-t border-slate-900 flex items-center justify-between">
+                        <div class="text-xs text-slate-400">
+                            Showing <span id="paginationStart">0</span> to <span id="paginationEnd">0</span> of <span id="paginationTotal">0</span> entries
+                        </div>
+                        <div class="inline-flex gap-2">
+                            <button id="prevBtn" onclick="changePage(-1)" class="rounded bg-slate-900 border border-slate-800 px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-slate-800 active:scale-95 disabled:opacity-40 disabled:pointer-events-none transition">Previous</button>
+                            <button id="nextBtn" onclick="changePage(1)" class="rounded bg-slate-900 border border-slate-800 px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-slate-800 active:scale-95 disabled:opacity-40 disabled:pointer-events-none transition">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Employee Detail Modal -->
+    <div id="detailModal" class="fixed inset-0 z-50 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+            <span class="hidden sm:inline-block sm:h-screen sm:align-middle" aria-hidden="true">&#8203;</span>
+            <div class="inline-block transform overflow-hidden rounded-2xl bg-slate-900 text-left align-bottom shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-2xl sm:align-middle border border-slate-800">
+                <div class="bg-slate-950 px-6 py-4 border-b border-slate-900 flex items-center justify-between">
+                    <h3 class="text-lg font-bold font-outfit text-white" id="modalHeaderTitle">Employee Profile</h3>
+                    <button type="button" onclick="closeModal()" class="rounded-md text-slate-400 hover:text-white focus:outline-none transition">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+                
+                <div class="p-6 space-y-6">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-950/40 p-4 rounded-xl border border-slate-950">
+                        <div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl font-extrabold font-outfit text-white" id="mEmpId">#0</span>
+                                <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset" id="mRiskBadge">Low Risk</span>
+                            </div>
+                            <div class="text-sm text-slate-400 mt-1" id="mDemographics">28yo, Male | Bachelors</div>
+                            <div class="text-xs text-slate-500" id="mLocation">Location: Dhaka</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-slate-400 uppercase tracking-wider">Flight Risk Score</div>
+                            <div class="text-3xl font-extrabold font-outfit mt-1" id="mProbability">0.0%</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm">
+                        <div class="bg-slate-950/20 p-3 rounded-lg border border-slate-950">
+                            <span class="text-slate-500 block text-xs">Tenure</span>
+                            <span class="text-white font-medium block mt-0.5" id="mTenure">0 years</span>
+                        </div>
+                        <div class="bg-slate-950/20 p-3 rounded-lg border border-slate-950">
+                            <span class="text-slate-500 block text-xs">Monthly Salary</span>
+                            <span class="text-white font-medium block mt-0.5" id="mSalary">0 BDT</span>
+                        </div>
+                        <div class="bg-slate-950/20 p-3 rounded-lg border border-slate-950">
+                            <span class="text-slate-500 block text-xs">Attendance</span>
+                            <span class="text-white font-medium block mt-0.5" id="mAttendance">0%</span>
+                        </div>
+                        <div class="bg-slate-950/20 p-3 rounded-lg border border-slate-950">
+                            <span class="text-slate-500 block text-xs">Overtime Hours</span>
+                            <span class="text-white font-medium block mt-0.5" id="mOvertime">0 hrs / month</span>
+                        </div>
+                        <div class="bg-slate-950/20 p-3 rounded-lg border border-slate-950">
+                            <span class="text-slate-500 block text-xs">Distance to Work</span>
+                            <span class="text-white font-medium block mt-0.5" id="mDistance">0 km</span>
+                        </div>
+                        <div class="bg-slate-950/20 p-3 rounded-lg border border-slate-950">
+                            <span class="text-slate-500 block text-xs">Performance Rating</span>
+                            <span class="text-white font-medium block mt-0.5" id="mPerfRating">0/5</span>
+                        </div>
+                        <div class="bg-slate-950/20 p-3 rounded-lg border border-slate-950">
+                            <span class="text-slate-500 block text-xs">Engagement Score</span>
+                            <span class="text-white font-medium block mt-0.5" id="mEngagement">0/10</span>
+                        </div>
+                        <div class="bg-slate-950/20 p-3 rounded-lg border border-slate-950">
+                            <span class="text-slate-500 block text-xs">Manager Effectiveness</span>
+                            <span class="text-white font-medium block mt-0.5" id="mManagerScore">0/10</span>
+                        </div>
+                        <div class="bg-slate-950/20 p-3 rounded-lg border border-slate-950">
+                            <span class="text-slate-500 block text-xs">Leave Utilization</span>
+                            <span class="text-white font-medium block mt-0.5" id="mLeave">0 days</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-slate-950/30 p-4 rounded-xl border border-slate-950">
+                            <h4 class="font-outfit text-sm font-bold text-slate-300">SHAP Attrib Driver Explanation</h4>
+                            <div class="mt-2 flex items-center gap-2">
+                                <span class="inline-flex h-2 w-2 rounded-full bg-red-500"></span>
+                                <span class="text-sm font-medium text-slate-200" id="mDriverText">None (Stable)</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1">This feature contributed most to increasing the employee's calculated flight risk.</p>
+                        </div>
+
+                        <div class="p-4 rounded-xl border border-indigo-500/20 bg-indigo-500/5" id="mInterventionsCard">
+                            <h4 class="font-outfit text-sm font-bold text-indigo-400">Recommended Retention Interventions</h4>
+                            <div class="mt-2 text-sm text-slate-300" id="mInterventionsText">
+                                Loading recommendation...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 px-6 py-4 border-t border-slate-900 text-right">
+                    <button type="button" onclick="closeModal()" class="rounded-lg bg-slate-900 border border-slate-800 px-4 py-2 text-sm font-semibold text-slate-300 hover:bg-slate-800 transition">Close Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Predict Single Employee Modal -->
+    <div id="predictModal" class="fixed inset-0 z-50 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity" onclick="closePredictModal()"></div>
+            <span class="hidden sm:inline-block sm:h-screen sm:align-middle" aria-hidden="true">&#8203;</span>
+            <div class="inline-block transform overflow-hidden rounded-2xl bg-slate-900 text-left align-bottom shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-3xl sm:align-middle border border-slate-800">
+                <div class="bg-slate-950 px-6 py-4 border-b border-slate-900 flex items-center justify-between">
+                    <h3 class="text-lg font-bold font-outfit text-white">Predict Single Employee Risk</h3>
+                    <button type="button" onclick="closePredictModal()" class="rounded-md text-slate-400 hover:text-white focus:outline-none transition">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+                
+                <div class="p-6">
+                    <form id="predictForm" onsubmit="submitSinglePredict(event)" class="space-y-6">
+                        <!-- Form Inputs Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 text-sm">
+                            
+                            <!-- Demographics -->
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Age</label>
+                                <input type="number" name="age" required min="18" max="75" value="30" class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Gender</label>
+                                <select name="gender" required class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Educational Qualification</label>
+                                <select name="educational_qualification" required class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                                    <option value="Bachelors">Bachelors</option>
+                                    <option value="Masters">Masters</option>
+                                    <option value="PhD">PhD</option>
+                                    <option value="High School">High School</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Location</label>
+                                <select name="location" required class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="Chittagong">Chittagong</option>
+                                    <option value="Sylhet">Sylhet</option>
+                                    <option value="Rajshahi">Rajshahi</option>
+                                    <option value="Khulna">Khulna</option>
+                                    <option value="Barisal">Barisal</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Employment details -->
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Tenure (Years)</label>
+                                <input type="number" name="tenure" required min="0" max="40" value="3" class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Monthly Salary (BDT)</label>
+                                <input type="number" name="monthly_salary" required min="5000" max="500000" value="45000" class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Incentive Earnings (BDT)</label>
+                                <input type="number" name="incentive_earnings" required min="0" max="100000" value="5000" class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                            </div>
+                            
+                            <!-- Sliders -->
+                            <div class="col-span-1 sm:col-span-2 md:col-span-1">
+                                <div class="flex justify-between text-xs font-semibold text-slate-400 mb-1.5">
+                                    <span>Attendance %</span>
+                                    <span id="vAttendance">95%</span>
+                                </div>
+                                <input type="range" name="attendance_pct" min="50" max="100" value="95" oninput="document.getElementById('vAttendance').innerText=this.value+'%'" class="w-full accent-indigo-500">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Leave Utilization (Days)</label>
+                                <input type="number" name="leave_utilization" required min="0" max="40" value="12" class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Distance from Workplace (km)</label>
+                                <input type="number" name="distance_from_workplace" required min="1" max="100" value="8" class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Number of Transfers</label>
+                                <input type="number" name="num_transfers" required min="0" max="10" value="0" class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                            </div>
+                            
+                            <!-- Performance sliders -->
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold text-slate-400 mb-1.5">
+                                    <span>Performance Rating</span>
+                                    <span id="vPerf">3/5</span>
+                                </div>
+                                <input type="range" name="performance_rating" min="1" max="5" value="3" oninput="document.getElementById('vPerf').innerText=this.value+'/5'" class="w-full accent-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Training Hours</label>
+                                <input type="number" name="training_hours" required min="0" max="300" value="30" class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Promotion History</label>
+                                <input type="number" name="promotion_history" required min="0" max="10" value="1" class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold text-slate-400 mb-1.5">
+                                    <span>Manager Effectiveness</span>
+                                    <span id="vMgr">7/10</span>
+                                </div>
+                                <input type="range" name="manager_effectiveness_score" min="1" max="10" value="7" oninput="document.getElementById('vMgr').innerText=this.value+'/10'" class="w-full accent-indigo-500">
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold text-slate-400 mb-1.5">
+                                    <span>Employee Engagement</span>
+                                    <span id="vEng">8/10</span>
+                                </div>
+                                <input type="range" name="employee_engagement_score" min="1" max="10" value="8" oninput="document.getElementById('vEng').innerText=this.value+'/10'" class="w-full accent-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Overtime Hours (Monthly)</label>
+                                <input type="number" name="overtime_hours" required min="0" max="150" value="10" class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5">Previous Attrition Label</label>
+                                <select name="previous_attrition_label" class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Success result display card inside the form modal -->
+                        <div id="singleResultCard" class="hidden p-5 rounded-xl border border-indigo-500/20 bg-indigo-500/5 space-y-4">
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                                <div>
+                                    <h4 class="font-outfit font-bold text-white text-base">Prediction Calculation Output</h4>
+                                    <p class="text-xs text-indigo-300 mt-1">Calculated in-memory against trained pipeline model</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold ring-1 ring-inset" id="sRiskBadge">Low Risk</span>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 border-t border-indigo-500/10 pt-3 text-sm">
+                                <div>
+                                    <span class="text-xs text-slate-500">Attrition Probability</span>
+                                    <span class="block text-xl font-extrabold text-white mt-0.5" id="sProbability">0.0%</span>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-slate-500">Primary Driver (SHAP)</span>
+                                    <span class="block text-white font-medium mt-0.5" id="sDriver">None</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end gap-3 border-t border-slate-800 pt-4">
+                            <button type="button" onclick="closePredictModal()" class="rounded-lg bg-slate-950 border border-slate-800 px-4 py-2 text-sm font-semibold text-slate-300 hover:bg-slate-800 transition">Cancel</button>
+                            <button type="submit" id="predictSubmitBtn" class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 transition active:scale-95">
+                                <svg class="h-4 w-4 animate-spin hidden" id="predictSpinner" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                                <span>Calculate Risk</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Logic -->
+    <script>
+        // Data injected from backend views.py context
+        let riskDistribution = {{ risk_distribution|safe }};
+        let locationLabels = {{ location_labels|safe }};
+        let locationCounts = {{ location_counts|safe }};
+        
+        let allEmployees = [];
+        let filteredEmployees = [];
+        let currentPage = 1;
+        const rowsPerPage = 10;
+        
+        let doughnutChartInst = null;
+        let barChartInst = null;
+        
+        // Initialize Charts
+        window.addEventListener('DOMContentLoaded', () => {
+            initDoughnutChart();
+            initBarChart();
+            fetchEmployees();
+            
+            // Set up row click listener
+            document.getElementById('employeeTableBody').addEventListener('click', (e) => {
+                const tr = e.target.closest('tr');
+                if (tr && tr.dataset.empId) {
+                    openModal(tr.dataset.empId);
+                }
+            });
+        });
+        
+        function initDoughnutChart() {
+            const ctx = document.getElementById('riskDoughnutChart').getContext('2d');
+            doughnutChartInst = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Low Risk', 'Medium Risk', 'High Risk'],
+                    datasets: [{
+                        data: [riskDistribution.Low, riskDistribution.Medium, riskDistribution.High],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.75)', // Emerald
+                            'rgba(245, 158, 11, 0.75)', // Amber
+                            'rgba(239, 68, 68, 0.75)'  // Red
+                        ],
+                        borderColor: [
+                            'rgb(16, 185, 129)',
+                            'rgb(245, 158, 11)',
+                            'rgb(239, 68, 68)'
+                        ],
+                        borderWidth: 1.5,
+                        hoverOffset: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#94a3b8',
+                                font: {
+                                    family: 'Plus Jakarta Sans',
+                                    size: 11
+                                }
+                            }
+                        }
+                    },
+                    cutout: '68%'
+                }
+            });
+        }
+        
+        function initBarChart() {
+            const ctx = document.getElementById('locationBarChart').getContext('2d');
+            barChartInst = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: locationLabels,
+                    datasets: [{
+                        label: 'Flights Risks',
+                        data: locationCounts,
+                        backgroundColor: 'rgba(99, 102, 241, 0.7)', // Indigo
+                        borderColor: 'rgb(99, 102, 241)',
+                        borderWidth: 1.5,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: {
+                                    family: 'Plus Jakarta Sans'
+                                }
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: {
+                                    family: 'Plus Jakarta Sans'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        async function fetchEmployees() {
+            try {
+                const response = await fetch('/api/employees/');
+                const data = await response.json();
+                if (data.success) {
+                    allEmployees = data.employees;
+                    filteredEmployees = [...allEmployees];
+                    populateDriverFilter();
+                    renderTable();
+                } else {
+                    console.error("Failed to load employees:", data.error);
+                }
+            } catch (err) {
+                console.error("Error fetching employees:", err);
+            }
+        }
+        
+        function populateDriverFilter() {
+            const drivers = [...new Set(allEmployees.map(emp => emp.primary_driver))].filter(Boolean);
+            const driverFilter = document.getElementById('driverFilter');
+            driverFilter.innerHTML = '<option value="">Filter by Primary Driver</option>';
+            drivers.forEach(d => {
+                if (d !== "None (Stable)") {
+                    driverFilter.innerHTML += `<option value="${d}">${d}</option>`;
+                }
+            });
+        }
+        
+        function renderTable() {
+            const tbody = document.getElementById('employeeTableBody');
+            tbody.innerHTML = '';
+            
+            const total = filteredEmployees.length;
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = Math.min(start + rowsPerPage, total);
+            
+            // Update pagination text
+            document.getElementById('paginationStart').innerText = total === 0 ? 0 : start + 1;
+            document.getElementById('paginationEnd').innerText = end;
+            document.getElementById('paginationTotal').innerText = total;
+            
+            // Disable buttons if bounds reached
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = end >= total;
+            
+            if (total === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="px-6 py-10 text-center text-sm text-slate-500">No matching employees found</td></tr>`;
+                return;
+            }
+            
+            const pageData = filteredEmployees.slice(start, end);
+            
+            pageData.forEach(emp => {
+                let badgeClass = '';
+                if (emp.risk_category === 'High') {
+                    badgeClass = 'bg-red-500/10 text-red-400 ring-red-500/20';
+                } else if (emp.risk_category === 'Medium') {
+                    badgeClass = 'bg-amber-500/10 text-amber-400 ring-amber-500/20';
+                } else {
+                    badgeClass = 'bg-emerald-500/10 text-emerald-400 ring-emerald-500/20';
+                }
+                
+                const tr = document.createElement('tr');
+                tr.dataset.empId = emp.id;
+                tr.className = 'hover:bg-slate-900/30 transition duration-150 border-b border-slate-900';
+                tr.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-300">#${emp.id}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-white">${emp.age}yo, ${emp.gender}</div>
+                        <div class="text-xs text-slate-400">${emp.educational_qualification}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-400">${emp.location}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset ${badgeClass}">
+                            ${emp.risk_category} Risk
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <span class="${emp.risk_category === 'High' ? 'text-red-400' : emp.risk_category === 'Medium' ? 'text-amber-400' : 'text-emerald-400'}">
+                            ${(emp.attrition_probability * 100).toFixed(1)}%
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300 font-medium font-outfit">
+                        ${emp.primary_driver}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        
+        function changePage(direction) {
+            currentPage += direction;
+            renderTable();
+        }
+        
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            applyFilters(query, document.getElementById('locationFilter').value, document.getElementById('driverFilter').value);
+        }
+        
+        function handleFilter() {
+            const loc = document.getElementById('locationFilter').value;
+            const driver = document.getElementById('driverFilter').value;
+            applyFilters(document.getElementById('searchInput').value.toLowerCase().trim(), loc, driver);
+        }
+        
+        function applyFilters(searchQuery, locationQuery, driverQuery) {
+            filteredEmployees = allEmployees.filter(emp => {
+                const matchesSearch = 
+                    String(emp.id).includes(searchQuery);
+                    
+                const matchesLocation = locationQuery === '' || emp.location === locationQuery;
+                const matchesDriver = driverQuery === '' || emp.primary_driver === driverQuery;
+                
+                return matchesSearch && matchesLocation && matchesDriver;
+            });
+            currentPage = 1;
+            renderTable();
+        }
+        
+        async function triggerReinference() {
+            const btn = document.getElementById('recalculateBtn');
+            const spinner = document.getElementById('recalcSpinner');
+            
+            btn.disabled = true;
+            spinner.classList.remove('hidden');
+            btn.querySelector('span').innerText = 'Computing...';
+            
+            try {
+                const response = await fetch('/api/run-predictions/', { method: 'POST' });
+                const data = await response.json();
+                if (data.success) {
+                    alert(`Predictions updated successfully! Processed ${data.processed_count} employees.`);
+                    window.location.reload();
+                } else {
+                    alert('Error running inference: ' + data.error);
+                }
+            } catch (err) {
+                alert('Connection error. Could not complete predictions.');
+            } finally {
+                btn.disabled = false;
+                spinner.classList.add('hidden');
+                btn.querySelector('span').innerText = 'Run Predictions';
+            }
+        }
+        
+        // Modal functions
+        function openModal(empId) {
+            const emp = allEmployees.find(e => String(e.id) === String(empId));
+            if (!emp) return;
+            
+            document.getElementById('mEmpId').innerText = `#${emp.id}`;
+            document.getElementById('mDemographics').innerText = `${emp.age}yo, ${emp.gender} | ${emp.educational_qualification}`;
+            document.getElementById('mLocation').innerText = `Location: ${emp.location}`;
+            document.getElementById('mProbability').innerText = `${(emp.attrition_probability * 100).toFixed(1)}%`;
+            
+            const probSpan = document.getElementById('mProbability');
+            probSpan.className = 'text-3xl font-extrabold font-outfit mt-1';
+            if (emp.risk_category === 'High') {
+                probSpan.classList.add('text-red-500');
+            } else if (emp.risk_category === 'Medium') {
+                probSpan.classList.add('text-amber-500');
+            } else {
+                probSpan.classList.add('text-emerald-500');
+            }
+            
+            const badge = document.getElementById('mRiskBadge');
+            badge.innerText = `${emp.risk_category} Risk`;
+            badge.className = 'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset';
+            if (emp.risk_category === 'High') {
+                badge.classList.add('bg-red-500/10 text-red-400 ring-red-500/20');
+            } else if (emp.risk_category === 'Medium') {
+                badge.classList.add('bg-amber-500/10 text-amber-400 ring-amber-500/20');
+            } else {
+                badge.classList.add('bg-emerald-500/10 text-emerald-400 ring-emerald-500/20');
+            }
+            
+            document.getElementById('mTenure').innerText = `${emp.tenure} years`;
+            document.getElementById('mSalary').innerText = `${emp.monthly_salary.toLocaleString()} BDT`;
+            document.getElementById('mAttendance').innerText = `${emp.attendance_pct}%`;
+            document.getElementById('mOvertime').innerText = `${emp.overtime_hours} hrs / month`;
+            document.getElementById('mDistance').innerText = `${emp.distance_from_workplace} km`;
+            document.getElementById('mPerfRating').innerText = `${emp.performance_rating}/5`;
+            document.getElementById('mEngagement').innerText = `${emp.employee_engagement_score}/10`;
+            document.getElementById('mManagerScore').innerText = `${emp.manager_effectiveness_score}/10`;
+            document.getElementById('mLeave').innerText = `${emp.leave_utilization} days`;
+            
+            document.getElementById('mDriverText').innerText = emp.primary_driver;
+            
+            const card = document.getElementById('mInterventionsCard');
+            const text = document.getElementById('mInterventionsText');
+            card.className = 'p-4 rounded-xl border';
+            
+            if (emp.risk_category === 'Low') {
+                card.classList.add('border-emerald-500/20', 'bg-emerald-500/5');
+                text.innerHTML = '<span class="text-emerald-400 font-semibold">Action: Standard retention tracking.</span> No urgent interventions required. Continue tracking standard KPIs and ensure engagement remains positive.';
+            } else {
+                card.classList.add('border-indigo-500/20', 'bg-indigo-500/5');
+                const driver = emp.primary_driver;
+                
+                if (driver.includes('Overtime Hours')) {
+                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Reduce Overtime & Workload</span> Review the team workload distribution. Introduce comp-time policies or offer flexible working hours. Monitor fatigue and explore hiring supporting staff to mitigate high overtime.`;
+                } else if (driver.includes('Distance from Workplace')) {
+                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Offer Commute support / Remote work</span> Consider offering a travel stipend, hybrid/partial remote work, or shift flexibility to ease their long commute.`;
+                } else if (driver.includes('Manager Effectiveness')) {
+                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Leadership Alignment / Mentorship</span> Arrange a neutral 1-on-1 feedback session. Consider team alignment, assignment of a senior mentor, or provide manager coaching to improve leadership effectiveness.`;
+                } else if (driver.includes('Monthly Salary')) {
+                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Compensation Review</span> Conduct a market benchmark review for their role. Assess eligibility for bonuses or adjust base pay during the next cycle to align with expectations.`;
+                } else if (driver.includes('Performance Rating')) {
+                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Career Coaching & Support</span> Set up a targeted Performance Improvement Plan with constructive feedback. Provide structured training hours and resources to help them succeed.`;
+                } else if (driver.includes('Employee Engagement')) {
+                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Hold Stay Interview & Re-engagement</span> Schedule a stay interview to identify underlying concerns. Involve the employee in key strategic projects to improve sense of ownership.`;
+                } else {
+                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Conduct Check-in / Career Mapping</span> Schedule a comprehensive career path planning meeting. Verify job satisfaction levels and discuss long-term role development options.`;
+                }
+            }
+            
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+        
+        function closeModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        // Batch upload handler
+        async function handleFileUpload(event) {
+            const fileInput = event.target;
+            if (fileInput.files.length === 0) return;
+
+            const file = fileInput.files[0];
+            const label = document.getElementById('uploadLabel');
+            const originalText = label.innerText;
+            label.innerText = 'Uploading...';
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('/api/upload-csv/', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    alert(`Upload successful! Loaded ${data.processed_count} records.`);
+                    closeWarningBanner();
+                    window.location.reload();
+                } else {
+                    // Show error banner
+                    document.getElementById('warningMessage').innerText = data.error;
+                    document.getElementById('warningBanner').classList.remove('hidden');
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            } catch (err) {
+                alert('Connection error. Failed to upload dataset.');
+            } finally {
+                label.innerText = originalText;
+                fileInput.value = ''; // clear file selection
+            }
+        }
+
+        function closeWarningBanner() {
+            document.getElementById('warningBanner').classList.add('hidden');
+        }
+
+        function closeRefBanner() {
+            document.getElementById('refBanner').classList.add('hidden');
+        }
+
+        // Manual Predict Modal
+        function openPredictModal() {
+            document.getElementById('predictModal').classList.remove('hidden');
+            document.getElementById('singleResultCard').classList.add('hidden');
+            document.getElementById('predictForm').reset();
+            // Reset range labels
+            document.getElementById('vAttendance').innerText = '95%';
+            document.getElementById('vPerf').innerText = '3/5';
+            document.getElementById('vMgr').innerText = '7/10';
+            document.getElementById('vEng').innerText = '8/10';
+        }
+
+        function closePredictModal() {
+            document.getElementById('predictModal').classList.add('hidden');
+        }
+
+        async function submitSinglePredict(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const btn = document.getElementById('predictSubmitBtn');
+            const spinner = document.getElementById('predictSpinner');
+            
+            btn.disabled = true;
+            spinner.classList.remove('hidden');
+            btn.querySelector('span').innerText = 'Calculating...';
+
+            // Extract inputs
+            const payload = {
+                age: form.age.value,
+                gender: form.gender.value,
+                educational_qualification: form.educational_qualification.value,
+                location: form.location.value,
+                tenure: form.tenure.value,
+                monthly_salary: form.monthly_salary.value,
+                incentive_earnings: form.incentive_earnings.value,
+                attendance_pct: form.attendance_pct.value,
+                leave_utilization: form.leave_utilization.value,
+                distance_from_workplace: form.distance_from_workplace.value,
+                num_transfers: form.num_transfers.value,
+                performance_rating: form.performance_rating.value,
+                training_hours: form.training_hours.value,
+                promotion_history: form.promotion_history.value,
+                manager_effectiveness_score: form.manager_effectiveness_score.value,
+                employee_engagement_score: form.employee_engagement_score.value,
+                overtime_hours: form.overtime_hours.value,
+                previous_attrition_label: form.previous_attrition_label.value
+            };
+
+            try {
+                const response = await fetch('/api/predict-single/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    const card = document.getElementById('singleResultCard');
+                    const badge = document.getElementById('sRiskBadge');
+                    const prob = document.getElementById('sProbability');
+                    const driver = document.getElementById('sDriver');
+
+                    // Set values
+                    prob.innerText = `${(data.probability * 100).toFixed(1)}%`;
+                    driver.innerText = data.primary_driver;
+                    badge.innerText = `${data.risk_category} Risk`;
+
+                    // Set color classes
+                    prob.className = 'block text-xl font-extrabold mt-0.5';
+                    badge.className = 'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold ring-1 ring-inset';
+                    
+                    if (data.risk_category === 'High') {
+                        prob.classList.add('text-red-500');
+                        badge.classList.add('bg-red-500/10 text-red-400 ring-red-500/20');
+                    } else if (data.risk_category === 'Medium') {
+                        prob.classList.add('text-amber-500');
+                        badge.classList.add('bg-amber-500/10 text-amber-400 ring-amber-500/20');
+                    } else {
+                        prob.classList.add('text-emerald-500');
+                        badge.classList.add('bg-emerald-500/10 text-emerald-400 ring-emerald-500/20');
+                    }
+
+                    // Show success card
+                    card.classList.remove('hidden');
+                    // Scroll card into view
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    alert('Calculation error: ' + data.error);
+                }
+            } catch (err) {
+                alert('Connection error. Failed to run calculations.');
+            } finally {
+                btn.disabled = false;
+                spinner.classList.add('hidden');
+                btn.querySelector('span').innerText = 'Calculate Risk';
+            }
+        }
+    </script>
+</body>
+</html>
