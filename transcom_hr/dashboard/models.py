@@ -25,7 +25,7 @@ class Employee(models.Model):
 
     # Predictive/Dashboard Fields
     attrition_probability = models.FloatField(null=True, blank=True, help_text="0.0 to 1.0")
-    risk_category = models.CharField(max_length=20, null=True, blank=True, help_text="'Low', 'Medium', 'High'")
+    risk_category = models.CharField(max_length=10, null=True, blank=True, help_text="'Low', 'Medium', 'High'")
     primary_driver = models.CharField(max_length=255, null=True, blank=True, help_text="XAI output e.g., 'Excessive Overtime'")
 
     def __str__(self):

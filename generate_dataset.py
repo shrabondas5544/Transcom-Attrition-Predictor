@@ -19,7 +19,7 @@ def generate_dataset(num_employees=3000):
     education = np.random.choice(qualifications, size=num_employees, p=[0.2, 0.5, 0.25, 0.05])
     location = np.random.choice(locations, size=num_employees)
     tenure = np.random.randint(1, 15, size=num_employees) # in years
-    monthly_salary = np.random.randint(25000, 150000, size=num_employees) # BDT roughly
+    monthly_salary = np.random.randint(15000, 150000, size=num_employees) # BDT roughly
     incentive_earnings = monthly_salary * np.random.uniform(0.05, 0.2, size=num_employees)
     attendance_pct = np.random.uniform(75, 100, size=num_employees)
     leave_utilization = np.random.randint(5, 25, size=num_employees) # days
@@ -32,34 +32,35 @@ def generate_dataset(num_employees=3000):
     employee_engagement_score = np.random.randint(1, 11, size=num_employees) # 1 to 10
     overtime_hours = np.random.randint(0, 50, size=num_employees) # per month
     
-    # Calculate Attrition Label based on some logical rules to make the dataset somewhat realistic
-    # Higher probability if: low engagement, high overtime, high distance, low manager score
-    attrition_prob = np.zeros(num_employees)
+    # Calculate Attrition Label based on logit-weighting system
+    logits = np.zeros(num_employees)
     
     for i in range(num_employees):
-        prob = 0.1 # base probability
+        logit = -1.5 # baseline logit
         
-        if employee_engagement_score[i] < 4: prob += 0.2
-        if overtime_hours[i] > 30: prob += 0.15
-        if distance_from_workplace[i] > 20: prob += 0.1
-        if manager_effectiveness_score[i] < 4: prob += 0.15
-        if performance_rating[i] <= 2: prob += 0.1
-        if monthly_salary[i] < 40000: prob += 0.1
-        if tenure[i] < 2: prob += 0.1
+        if overtime_hours[i] > 40:
+            logit += 2.2
+        if distance_from_workplace[i] > 25:
+            logit += 1.8
+        if manager_effectiveness_score[i] < 2.5:
+            logit += 2.0
+        if monthly_salary[i] < 22000:
+            logit += 1.5
+        if performance_rating[i] in [1, 2]:
+            logit += 1.2
+            
+        logits[i] = logit
         
-        # Cap probability at 0.95
-        prob = min(prob, 0.95)
-        attrition_prob[i] = prob
-        
-    # Scale probabilities slightly to match the ~30% target
-    target_attrition_rate = 0.32
-    current_mean_prob = np.mean(attrition_prob)
-    scaling_factor = target_attrition_rate / current_mean_prob
+    # Sigmoid function
+    attrition_prob = 1 / (1 + np.exp(-logits))
     
-    attrition_prob = np.clip(attrition_prob * scaling_factor, 0, 1)
+    # Assign 'Yes' to the top 32% of employees with the highest probabilities
+    num_attrite = int(num_employees * 0.32)
+    top_indices = np.argsort(attrition_prob)[-num_attrite:]
     
-    previous_attrition_label = np.random.binomial(1, attrition_prob)
-    previous_attrition_label = ['Yes' if val == 1 else 'No' for val in previous_attrition_label]
+    previous_attrition_label = ['No'] * num_employees
+    for idx in top_indices:
+        previous_attrition_label[idx] = 'Yes'
     
     # Create DataFrame
     data = {
