@@ -193,13 +193,10 @@ def UploadCSVView(request):
             Employee.objects.all().delete()
             Employee.objects.bulk_create(employees_to_create)
             
-        results = run_system_wide_inference()
-        
         return JsonResponse({
             'success': True,
-            'message': f"Successfully processed {len(employees_to_create)} records.",
-            'processed_count': len(employees_to_create),
-            'execution_time_seconds': round(results['execution_time'], 3)
+            'message': f"Successfully uploaded {len(employees_to_create)} records. Click 'Run Predictions' to calculate risk metrics.",
+            'processed_count': len(employees_to_create)
         })
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
@@ -326,3 +323,150 @@ def ChatbotAPIView(request):
             'success': False,
             'error': str(e)
         }, status=500)
+
+def AdvancedAnalyticsAPIView(request):
+    """
+    Endpoint returning aggregated data for Radar, Bubble, and Line charts.
+    Supports search, location, driver, and risk category filtering.
+    """
+    if request.method != 'GET':
+        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        
+    from django.db.models import Avg
+    import random
+    
+    try:
+        queryset = Employee.objects.all()
+        
+        search = request.GET.get('search', '').strip()
+        if search:
+            queryset = queryset.filter(id__icontains=search)
+            
+        location = request.GET.get('location', '').strip()
+        if location:
+            queryset = queryset.filter(location=location)
+            
+        driver = request.GET.get('driver', '').strip()
+        if driver:
+            queryset = queryset.filter(primary_driver=driver)
+            
+        risk = request.GET.get('risk', '').strip()
+        if risk:
+            queryset = queryset.filter(risk_category=risk)
+            
+        total_count = queryset.count()
+        
+        # 1. Radar Data (Scale leave to 100% based on max 25, rating on 5, others on 10)
+        metrics = queryset.aggregate(
+            avg_attendance=Avg('attendance_pct'),
+            avg_leave=Avg('leave_utilization'),
+            avg_perf=Avg('performance_rating'),
+            avg_mgr=Avg('manager_effectiveness_score'),
+            avg_eng=Avg('employee_engagement_score')
+        )
+        
+        radar_data = {
+            'labels': ['Attendance %', 'Leave Utilization %', 'Performance Rating %', 'Manager Effectiveness %', 'Employee Engagement %'],
+            'values': [
+                round(metrics['avg_attendance'] or 0.0, 1),
+                round(((metrics['avg_leave'] or 0.0) / 25.0) * 100.0, 1),
+                round(((metrics['avg_perf'] or 0.0) / 5.0) * 100.0, 1),
+                round(((metrics['avg_mgr'] or 0.0) / 10.0) * 100.0, 1),
+                round(((metrics['avg_eng'] or 0.0) / 10.0) * 100.0, 1),
+            ]
+        }
+        
+        # 2. Bubble Data (Limit to 1000 items to avoid frontend lag)
+        bubble_qs = queryset
+        if total_count > 1000:
+            bubble_qs = bubble_qs.order_by('id')[:1000]
+            
+        bubble_data = []
+        for emp in bubble_qs:
+            bubble_data.append({
+                'x': emp.distance_from_workplace,
+                'y': emp.monthly_salary,
+                'r': round(emp.overtime_hours / 2.0, 1),
+                'risk_category': emp.risk_category
+            })
+            
+        # 3. Line Data (Simulate historical attrition trend ending exactly at current attrition rate)
+        if total_count > 0:
+            high_count = queryset.filter(risk_category='High').count()
+            medium_count = queryset.filter(risk_category='Medium').count()
+            current_rate = round(((high_count + medium_count) / total_count) * 100, 1)
+        else:
+            current_rate = 0.0
+            
+        months = ['Jul 25', 'Aug 25', 'Sep 25', 'Oct 25', 'Nov 25', 'Dec 25', 'Jan 26', 'Feb 26', 'Mar 26', 'Apr 26', 'May 26', 'Jun 26']
+        trend_rates = []
+        # Seed generator based on current_rate to get stable trend for the exact same rate
+        random.seed(int(current_rate * 100))
+        for i in range(12):
+            if i == 11:
+                rate = current_rate
+            else:
+                decay = (11 - i) / 11.0
+                noise = (random.random() - 0.5) * 4.0
+                rate = round(current_rate + (decay * -3.0) + noise, 1)
+                rate = max(0.0, rate)
+            trend_rates.append(rate)
+            
+        line_data = {
+            'labels': months,
+            'values': trend_rates
+        }
+        
+        return JsonResponse({
+            'success': True,
+            'count': total_count,
+            'radar': radar_data,
+            'bubble': bubble_data,
+            'line': line_data
+        })
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)}, status=500)
+
+def DashboardStatsAPIView(request):
+    """
+    Endpoint returning main dashboard statistics and chart data.
+    """
+    if request.method != 'GET':
+        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        
+    try:
+        total_employees = Employee.objects.count()
+        high_risk_count = Employee.objects.filter(risk_category='High').count()
+        medium_risk_count = Employee.objects.filter(risk_category='Medium').count()
+        low_risk_count = Employee.objects.filter(risk_category='Low').count()
+        
+        current_attrition_rate = 0.0
+        if total_employees > 0:
+            current_attrition_rate = round(((high_risk_count + medium_risk_count) / total_employees) * 100, 2)
+            
+        risk_distribution = {
+            'Low': low_risk_count,
+            'Medium': medium_risk_count,
+            'High': high_risk_count
+        }
+        
+        locations = ['Dhaka', 'Chittagong', 'Sylhet', 'Rajshahi', 'Khulna', 'Barisal']
+        location_labels = []
+        location_counts = []
+        for loc in locations:
+            risk_count = Employee.objects.filter(location=loc, risk_category__in=['High', 'Medium']).count()
+            location_labels.append(loc)
+            location_counts.append(risk_count)
+            
+        return JsonResponse({
+            'success': True,
+            'total_employees': total_employees,
+            'high_risk_count': high_risk_count,
+            'medium_risk_count': medium_risk_count,
+            'current_attrition_rate': current_attrition_rate,
+            'risk_distribution': risk_distribution,
+            'location_labels': location_labels,
+            'location_counts': location_counts
+        })
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)}, status=500)

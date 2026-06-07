@@ -26,7 +26,7 @@ def get_vector_store():
     
     # Initialize embeddings (using exact class name supported by installed package)
     embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001",
+        model="models/gemini-embedding-001",
         google_api_key=settings.GEMINI_API_KEY
     )
     
@@ -55,7 +55,7 @@ def generate_retention_response(user_query):
         
         # Initialize LLM
         llm = ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",
+            model="gemini-2.5-flash",
             google_api_key=settings.GEMINI_API_KEY,
             temperature=0.3
         )
