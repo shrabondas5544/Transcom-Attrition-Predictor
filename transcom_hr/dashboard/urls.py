@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import TriggerInferenceView, EmployeeListAPIView, dashboard_home, UploadCSVView, PredictSingleView
+from .views import TriggerInferenceView, EmployeeListAPIView, dashboard_home, UploadCSVView, PredictSingleView, ChatbotAPIView
 
 urlpatterns = [
     path('', dashboard_home, name='dashboard_home'),
@@ -7,4 +7,5 @@ urlpatterns = [
     path('employees/', EmployeeListAPIView, name='employee_list_api'),
     path('upload-csv/', UploadCSVView, name='upload_csv'),
     path('predict-single/', PredictSingleView, name='predict_single'),
+    path('chatbot/', ChatbotAPIView, name='chatbot_api'),
 ]

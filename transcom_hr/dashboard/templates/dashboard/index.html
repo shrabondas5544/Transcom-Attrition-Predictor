@@ -407,7 +407,7 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-slate-400 mb-1.5">Location</label>
-                                <select name="location" required class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+                                <select name="emp_location" required class="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
                                     <option value="Dhaka">Dhaka</option>
                                     <option value="Chittagong">Chittagong</option>
                                     <option value="Sylhet">Sylhet</option>
@@ -533,6 +533,9 @@
         </div>
     </div>
 
+    <!-- AI Chatbot Widget -->
+    {% include 'dashboard/chatbot_widget.html' %}
+
     <!-- JS Logic -->
     <script>
         // Data injected from backend views.py context
@@ -547,6 +550,7 @@
         
         let doughnutChartInst = null;
         let barChartInst = null;
+        let activeRiskFilter = '';
         
         // Initialize Charts
         window.addEventListener('DOMContentLoaded', () => {
@@ -588,6 +592,29 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    onClick: (event, elements) => {
+                        if (elements && elements.length > 0) {
+                            const index = elements[0].index;
+                            const label = doughnutChartInst.data.labels[index];
+                            const category = label.split(' ')[0]; // 'Low', 'Medium', 'High'
+                            
+                            if (activeRiskFilter === category) {
+                                activeRiskFilter = '';
+                            } else {
+                                activeRiskFilter = category;
+                            }
+                            
+                            // Re-apply filters
+                            applyFilters(
+                                document.getElementById('searchInput').value.toLowerCase().trim(),
+                                document.getElementById('locationFilter').value,
+                                document.getElementById('driverFilter').value
+                            );
+                        }
+                    },
+                    onHover: (event, chartElement) => {
+                        event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+                    },
                     plugins: {
                         legend: {
                             position: 'bottom',
@@ -623,6 +650,31 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    onClick: (event, elements) => {
+                        if (elements && elements.length > 0) {
+                            const index = elements[0].index;
+                            const clickedLocation = barChartInst.data.labels[index];
+                            
+                            const locationFilter = document.getElementById('locationFilter');
+                            if (locationFilter.value === clickedLocation) {
+                                // clicked second time, reset view
+                                locationFilter.value = '';
+                            } else {
+                                // set to clicked location
+                                locationFilter.value = clickedLocation;
+                            }
+                            
+                            // Re-apply filters
+                            applyFilters(
+                                document.getElementById('searchInput').value.toLowerCase().trim(),
+                                locationFilter.value,
+                                document.getElementById('driverFilter').value
+                            );
+                        }
+                    },
+                    onHover: (event, chartElement) => {
+                        event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+                    },
                     plugins: {
                         legend: {
                             display: false
@@ -769,8 +821,9 @@
                     
                 const matchesLocation = locationQuery === '' || emp.location === locationQuery;
                 const matchesDriver = driverQuery === '' || emp.primary_driver === driverQuery;
+                const matchesRisk = activeRiskFilter === '' || emp.risk_category === activeRiskFilter;
                 
-                return matchesSearch && matchesLocation && matchesDriver;
+                return matchesSearch && matchesLocation && matchesDriver && matchesRisk;
             });
             currentPage = 1;
             renderTable();
@@ -954,27 +1007,13 @@
             spinner.classList.remove('hidden');
             btn.querySelector('span').innerText = 'Calculating...';
 
-            // Extract inputs
-            const payload = {
-                age: form.age.value,
-                gender: form.gender.value,
-                educational_qualification: form.educational_qualification.value,
-                location: form.location.value,
-                tenure: form.tenure.value,
-                monthly_salary: form.monthly_salary.value,
-                incentive_earnings: form.incentive_earnings.value,
-                attendance_pct: form.attendance_pct.value,
-                leave_utilization: form.leave_utilization.value,
-                distance_from_workplace: form.distance_from_workplace.value,
-                num_transfers: form.num_transfers.value,
-                performance_rating: form.performance_rating.value,
-                training_hours: form.training_hours.value,
-                promotion_history: form.promotion_history.value,
-                manager_effectiveness_score: form.manager_effectiveness_score.value,
-                employee_engagement_score: form.employee_engagement_score.value,
-                overtime_hours: form.overtime_hours.value,
-                previous_attrition_label: form.previous_attrition_label.value
-            };
+            // Use FormData to safely extract all input values (avoids JS naming conflicts)
+            const formData = new FormData(form);
+            const payload = {};
+            for (const [key, value] of formData.entries()) {
+                // Map emp_location back to location for the backend
+                payload[key === 'emp_location' ? 'location' : key] = value;
+            }
 
             try {
                 const response = await fetch('/api/predict-single/', {
@@ -1001,13 +1040,13 @@
                     
                     if (data.risk_category === 'High') {
                         prob.classList.add('text-red-500');
-                        badge.classList.add('bg-red-500/10 text-red-400 ring-red-500/20');
+                        badge.classList.add('bg-red-500/10', 'text-red-400', 'ring-red-500/20');
                     } else if (data.risk_category === 'Medium') {
                         prob.classList.add('text-amber-500');
-                        badge.classList.add('bg-amber-500/10 text-amber-400 ring-amber-500/20');
+                        badge.classList.add('bg-amber-500/10', 'text-amber-400', 'ring-amber-500/20');
                     } else {
                         prob.classList.add('text-emerald-500');
-                        badge.classList.add('bg-emerald-500/10 text-emerald-400 ring-emerald-500/20');
+                        badge.classList.add('bg-emerald-500/10', 'text-emerald-400', 'ring-emerald-500/20');
                     }
 
                     // Show success card
@@ -1018,7 +1057,7 @@
                     alert('Calculation error: ' + data.error);
                 }
             } catch (err) {
-                alert('Connection error. Failed to run calculations.');
+                alert('Error: ' + err.message);
             } finally {
                 btn.disabled = false;
                 spinner.classList.add('hidden');

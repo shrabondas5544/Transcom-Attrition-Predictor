@@ -235,8 +235,8 @@ def PredictSingleView(request):
             'Overtime Hours': int(data.get('overtime_hours'))
         }
         
-        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        saved_models_dir = os.path.join(base_dir, 'dashboard', 'ml', 'saved_models')
+        from django.conf import settings
+        saved_models_dir = os.path.join(settings.BASE_DIR, 'dashboard', 'ml', 'saved_models')
         
         model = joblib.load(os.path.join(saved_models_dir, 'attrition_model.pkl'))
         preprocessor = joblib.load(os.path.join(saved_models_dir, 'preprocessor.pkl'))
@@ -298,3 +298,31 @@ def PredictSingleView(request):
         })
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
+
+@csrf_exempt
+def ChatbotAPIView(request):
+    """
+    API endpoint that receives chatbot queries and retrieves policy-informed responses.
+    """
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        
+    try:
+        data = json.loads(request.body)
+        user_message = data.get('message', '').strip()
+        
+        if not user_message:
+            return JsonResponse({'success': False, 'error': 'Message cannot be empty'}, status=400)
+            
+        from chatbot.services import generate_retention_response
+        response_text = generate_retention_response(user_message)
+        
+        return JsonResponse({
+            'success': True,
+            'response': response_text
+        })
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)

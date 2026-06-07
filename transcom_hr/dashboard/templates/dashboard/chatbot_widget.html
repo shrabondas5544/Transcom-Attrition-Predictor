@@ -1,0 +1,182 @@
+<!-- Floating Chat Widget Button -->
+<button id="chatbotToggleBtn" onclick="toggleChatbot()" class="fixed bottom-6 right-6 h-14 w-14 rounded-full bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-600/35 hover:shadow-indigo-500/40 text-white flex items-center justify-center z-50 cursor-pointer transition-all duration-300 active:scale-95 group">
+    <!-- Chat Icon (SVG) -->
+    <svg class="h-6 w-6 transition-transform duration-300 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.29 48.29 0 0 0 5.58-.365c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+    </svg>
+</button>
+
+<!-- Chat Window Container -->
+<div id="chatbotContainer" class="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-2rem)] h-[520px] rounded-2xl glass-card flex flex-col overflow-hidden shadow-2xl transition-all duration-300 transform scale-90 translate-y-4 opacity-0 pointer-events-none z-50">
+    <!-- Chat Header -->
+    <div class="bg-slate-950/80 border-b border-slate-900 px-4 py-3.5 flex items-center justify-between flex-shrink-0">
+        <div class="flex items-center gap-2.5">
+            <div class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+            </div>
+            <div>
+                <h4 class="font-outfit text-sm font-bold text-white tracking-wide">AI Retention Advisor</h4>
+                <p class="text-[10px] text-slate-500 font-medium">Policy and Strategies Assistant</p>
+            </div>
+        </div>
+        <button onclick="toggleChatbot()" class="text-slate-400 hover:text-white transition duration-150 p-1 rounded-md hover:bg-slate-900">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+        </button>
+    </div>
+
+    <!-- Chat Messages list -->
+    <div id="chatMessages" class="flex-grow overflow-y-auto p-4 space-y-4 scroll-smooth">
+        <!-- Bot Initial Welcome Message -->
+        <div class="flex items-start gap-2.5 max-w-[85%]">
+            <div class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-600 shadow-md text-white font-bold text-xs select-none">AI</div>
+            <div class="bg-slate-900/60 border border-slate-800/50 rounded-2xl rounded-tl-none px-3.5 py-2.5 text-xs text-slate-300 leading-relaxed shadow-sm">
+                Hello! I am your <strong>Transcom HR Retention Advisor</strong>. Ask me anything about our policies, overtime countermeasures, commute allowances, or manager coaching frameworks.
+            </div>
+        </div>
+    </div>
+
+    <!-- Typing State Indicator -->
+    <div id="chatTypingIndicator" class="hidden px-4 py-2 flex items-center gap-2.5 max-w-[85%]">
+        <div class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-600 shadow-md text-white font-bold text-xs">AI</div>
+        <div class="bg-slate-900/40 border border-slate-800/30 rounded-2xl rounded-tl-none px-3.5 py-2.5 flex items-center gap-1">
+            <span class="h-1.5 w-1.5 rounded-full bg-slate-500 animate-bounce" style="animation-delay: 0ms"></span>
+            <span class="h-1.5 w-1.5 rounded-full bg-slate-500 animate-bounce" style="animation-delay: 150ms"></span>
+            <span class="h-1.5 w-1.5 rounded-full bg-slate-500 animate-bounce" style="animation-delay: 300ms"></span>
+        </div>
+    </div>
+
+    <!-- Chat Input Form -->
+    <form id="chatForm" onsubmit="submitChatMessage(event)" class="p-3 bg-slate-950/60 border-t border-slate-900 flex gap-2 flex-shrink-0">
+        <input type="text" id="chatInput" placeholder="Ask about shift caps, travel allowances..." autocomplete="off" class="w-full bg-slate-900 border border-slate-800/80 text-slate-200 placeholder-slate-500 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition duration-150">
+        <button type="submit" class="bg-indigo-600 text-white rounded-xl p-2 hover:bg-indigo-500 transition shadow-md shadow-indigo-600/20 active:scale-95 flex items-center justify-center w-8 h-8 flex-shrink-0">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
+        </button>
+    </form>
+</div>
+
+<script>
+    let chatIsOpen = false;
+
+    function toggleChatbot() {
+        const container = document.getElementById('chatbotContainer');
+        const toggleBtn = document.getElementById('chatbotToggleBtn');
+        
+        chatIsOpen = !chatIsOpen;
+        
+        if (chatIsOpen) {
+            container.classList.remove('scale-90', 'translate-y-4', 'opacity-0', 'pointer-events-none');
+            container.classList.add('scale-100', 'translate-y-0', 'opacity-100', 'pointer-events-auto');
+            toggleBtn.classList.add('rotate-90', 'bg-slate-800');
+            toggleBtn.classList.remove('bg-indigo-600');
+            // Auto scroll messages to bottom on open
+            scrollToBottom();
+            // Focus on input
+            setTimeout(() => document.getElementById('chatInput').focus(), 150);
+        } else {
+            container.classList.add('scale-90', 'translate-y-4', 'opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-100', 'translate-y-0', 'opacity-100', 'pointer-events-auto');
+            toggleBtn.classList.remove('rotate-90', 'bg-slate-800');
+            toggleBtn.classList.add('bg-indigo-600');
+        }
+    }
+
+    function scrollToBottom() {
+        const chatMessages = document.getElementById('chatMessages');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    async function submitChatMessage(event) {
+        event.preventDefault();
+        
+        const input = document.getElementById('chatInput');
+        const query = input.value.trim();
+        if (!query) return;
+        
+        // Clear input
+        input.value = '';
+        
+        // Append user message bubble
+        appendMessage('user', query);
+        scrollToBottom();
+        
+        // Show typing indicator
+        const indicator = document.getElementById('chatTypingIndicator');
+        indicator.classList.remove('hidden');
+        scrollToBottom();
+        
+        try {
+            const response = await fetch('/api/chatbot/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: query })
+            });
+            const data = await response.json();
+            
+            // Hide typing indicator
+            indicator.classList.add('hidden');
+            
+            if (data.success) {
+                // Append bot response bubble
+                appendMessage('bot', data.response);
+            } else {
+                appendMessage('bot', `System Error: ${data.error || 'Failed to process message.'}`);
+            }
+        } catch (err) {
+            indicator.classList.add('hidden');
+            appendMessage('bot', `Connection Error: ${err.message || 'Server connection failed.'}`);
+        } finally {
+            scrollToBottom();
+        }
+    }
+
+    function appendMessage(sender, text) {
+        const chatMessages = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        
+        if (sender === 'user') {
+            messageDiv.className = 'flex justify-end';
+            messageDiv.innerHTML = `
+                <div class="bg-indigo-600 text-white rounded-2xl rounded-tr-none px-3.5 py-2.5 text-xs max-w-[85%] leading-relaxed shadow-sm">
+                    ${escapeHtml(text)}
+                </div>
+            `;
+        } else {
+            messageDiv.className = 'flex items-start gap-2.5 max-w-[85%]';
+            messageDiv.innerHTML = `
+                <div class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-600 shadow-md text-white font-bold text-xs select-none">AI</div>
+                <div class="bg-slate-900/60 border border-slate-800/50 rounded-2xl rounded-tl-none px-3.5 py-2.5 text-xs text-slate-300 leading-relaxed shadow-sm whitespace-pre-wrap">
+                    ${formatMarkdown(text)}
+                </div>
+            `;
+        }
+        
+        chatMessages.appendChild(messageDiv);
+    }
+
+    function escapeHtml(text) {
+        const map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        };
+        return text.replace(/[&<>'"]/g, function(m) { return map[m]; });
+    }
+
+    function formatMarkdown(text) {
+        // Basic Markdown parser for chatbot responses (e.g. bold, bullet points)
+        let html = escapeHtml(text);
+        
+        // Bold formatting
+        html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        
+        // Bullet points
+        html = html.replace(/^\s*-\s+(.*?)$/gm, '<li class="ml-4 list-disc mt-1">$1</li>');
+        
+        return html;
+    }
+</script>

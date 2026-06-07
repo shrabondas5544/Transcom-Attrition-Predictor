@@ -1,0 +1,6 @@
+Age,Gender,Educational Qualification,Location,Tenure,Monthly Salary,Incentive Earnings,Attendance %,Leave Utilization,Distance from Workplace,Number of Transfers,Performance Rating,Training Hours,Promotion History,Manager Effectiveness Score,Employee Engagement Score,Overtime Hours,Previous Attrition Label
+29,Female,Bachelors,Sylhet,10,28475,2983.06,96.95,17,3,2,1,41,2,9,5,45,No
+28,Male,Bachelors,Chittagong,13,40524,5146.17,87.04,24,17,0,1,16,2,6,7,17,No
+29,Other,Bachelors,Chittagong,3,57085,9355.9,97.74,6,28,1,2,16,1,9,8,23,No
+30,Female,Bachelors,Barisal,1,119377,8277.16,97.64,16,28,0,3,35,2,1,5,27,Yes
+30,Male,Bachelors,Dhaka,3,64094,8472.85,75.71,7,10,4,5,31,0,5,9,13,No

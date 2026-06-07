@@ -1,0 +1,1001 @@
+Age,Gender,Educational Qualification,Location,Tenure,Monthly Salary,Incentive Earnings,Attendance %,Leave Utilization,Distance from Workplace,Number of Transfers,Performance Rating,Training Hours,Promotion History,Manager Effectiveness Score,Employee Engagement Score,Overtime Hours,Previous Attrition Label
+51,Male,Bachelors,Sylhet,1,124826,7835.96,85.82,11,2,2,4,98,3,2,6,43,Yes
+26,Male,Masters,Rajshahi,4,133902,7185.44,86.1,11,1,4,3,49,3,8,3,23,No
+30,Male,Bachelors,Sylhet,13,104515,9848.07,82.49,21,3,0,5,63,2,4,5,29,No
+43,Female,Bachelors,Khulna,7,21516,3777.92,97.38,13,5,0,5,16,2,6,4,14,No
+30,Female,High School,Sylhet,5,120116,12120.86,93.66,12,22,4,2,34,1,2,8,17,Yes
+50,Male,High School,Khulna,5,100629,15708.28,84.46,20,21,3,2,52,3,5,5,28,No
+39,Male,High School,Sylhet,11,51234,3204.71,83.9,14,28,2,5,30,0,8,2,3,No
+24,Female,Bachelors,Sylhet,14,132420,16787.75,91.87,23,22,4,4,52,3,7,4,42,Yes
+28,Male,Bachelors,Khulna,14,139185,10745.95,81.76,13,18,3,1,14,3,2,8,31,Yes
+58,Female,Bachelors,Barisal,4,131507,15580.12,81.65,12,26,4,2,60,3,8,10,45,Yes
+31,Female,High School,Barisal,1,63034,8850.96,85.26,11,12,1,1,75,2,7,1,43,Yes
+34,Female,Bachelors,Dhaka,10,85255,6942.47,76.47,22,10,0,4,58,2,10,3,33,No
+54,Female,Bachelors,Dhaka,12,42233,6906.22,87.68,9,18,2,2,95,1,6,10,26,No
+31,Other,Bachelors,Barisal,7,91168,12370.79,91.67,17,11,3,4,55,3,6,7,3,No
+57,Male,Bachelors,Barisal,10,70507,3553.1,90.92,15,8,2,4,55,1,3,3,6,No
+42,Male,Bachelors,Khulna,5,62864,10429.05,87.86,5,23,4,1,62,2,6,7,38,No
+38,Female,Masters,Khulna,11,114160,17633.15,94.17,17,1,4,5,83,0,5,4,17,No
+40,Male,Masters,Sylhet,6,23844,3276.35,85.93,14,17,1,1,40,3,9,9,37,No
+53,Male,High School,Khulna,4,106632,17453.78,90.84,8,15,0,5,14,2,9,8,7,No
+38,Female,Bachelors,Chittagong,12,74895,7114.87,81.03,15,27,2,3,98,1,1,7,14,Yes
+55,Female,PhD,Chittagong,5,109878,12453.11,96.76,17,29,3,5,10,3,7,6,16,No
+46,Male,Masters,Dhaka,12,146232,24375.96,78.59,15,25,0,5,54,3,8,4,5,No
+47,Male,Masters,Dhaka,13,88319,6933.33,78.59,12,3,1,4,98,2,3,5,33,No
+32,Male,Masters,Chittagong,14,49118,9169.87,97.53,12,3,3,1,99,0,1,7,48,Yes
+34,Male,Masters,Rajshahi,14,74862,4633.34,97.94,17,17,0,4,24,2,5,3,38,No
+31,Female,Bachelors,Khulna,1,81806,14509.82,93.66,12,2,4,2,84,1,2,8,34,Yes
+22,Female,Bachelors,Rajshahi,8,70086,5239.23,79.05,10,10,1,4,40,0,9,9,39,No
+24,Male,Bachelors,Khulna,3,139944,7045.75,76.83,19,21,1,5,40,3,8,10,30,No
+53,Female,Bachelors,Sylhet,10,70527,3900.54,77.68,17,21,2,4,40,2,4,10,5,No
+27,Male,Bachelors,Rajshahi,2,124495,24878.58,90.74,7,24,2,3,68,0,3,4,2,No
+54,Female,Bachelors,Sylhet,10,23489,4043.77,79.02,24,7,2,4,57,3,7,6,41,Yes
+59,Male,Masters,Barisal,10,102065,16294.36,79.94,21,1,3,4,56,1,6,5,5,No
+32,Female,Bachelors,Barisal,11,83618,5440.57,95.69,22,28,2,4,41,2,7,7,46,Yes
+29,Male,Masters,Chittagong,12,130879,23729.01,99.54,21,4,3,4,83,0,6,8,8,No
+44,Other,Bachelors,Sylhet,1,80753,13658.48,83.53,24,29,4,1,68,1,1,2,36,Yes
+43,Other,Masters,Chittagong,3,69554,7690.65,99.11,21,3,0,3,32,0,10,10,13,No
+47,Male,Bachelors,Chittagong,12,114792,13924.18,93.11,5,17,0,5,67,3,5,10,49,Yes
+53,Male,High School,Dhaka,5,46722,7170.54,79.75,8,15,4,2,12,1,7,9,47,Yes
+46,Female,Bachelors,Rajshahi,12,97546,6862.18,82.84,8,11,2,3,10,3,4,3,17,No
+48,Other,High School,Dhaka,6,147922,15047.14,76.33,19,5,4,4,78,0,6,5,31,No
+52,Female,Bachelors,Barisal,14,78701,15359.68,93.89,21,6,4,1,81,1,5,3,16,No
+46,Male,Masters,Rajshahi,6,15963,1470.04,76.63,12,1,0,3,55,3,6,1,6,No
+53,Male,Masters,Khulna,11,62978,9247.23,88.34,20,8,4,1,45,2,6,3,27,No
+46,Male,PhD,Chittagong,6,32197,4771.2,96.03,16,28,2,3,57,2,1,3,14,Yes
+28,Male,Bachelors,Sylhet,8,132502,25418.83,94.28,6,14,4,1,47,1,9,2,34,No
+59,Male,Masters,Rajshahi,7,107886,12233.12,81.86,5,8,1,1,78,1,6,5,35,No
+34,Male,Masters,Sylhet,7,31877,4224.84,89.48,5,13,2,4,84,1,10,7,27,No
+31,Male,Bachelors,Khulna,12,83762,5346.68,91.92,19,26,4,5,58,1,9,3,30,No
+58,Female,Bachelors,Barisal,4,149715,8403.61,81.55,9,22,4,5,27,2,5,10,40,No
+41,Male,High School,Chittagong,10,22327,4430.26,94.98,17,11,4,5,81,2,5,8,31,No
+52,Male,High School,Sylhet,12,43424,5599.03,89.99,14,13,3,2,90,3,8,7,31,No
+57,Female,High School,Barisal,5,139904,9825.99,76.15,18,23,4,2,70,2,9,6,5,No
+46,Male,Bachelors,Rajshahi,8,139207,27324.47,97.18,13,1,4,3,95,2,2,3,24,Yes
+36,Female,Bachelors,Sylhet,3,79029,8308.31,79.56,21,16,0,3,50,0,5,5,26,No
+33,Female,Masters,Sylhet,2,32867,6300.33,84.16,18,25,2,4,58,1,10,1,0,No
+39,Female,PhD,Dhaka,8,126316,22412.64,82.52,5,23,3,5,64,3,10,1,46,Yes
+58,Female,Bachelors,Chittagong,9,43214,5331.27,92.63,5,11,0,1,30,0,8,10,31,No
+51,Female,Masters,Rajshahi,6,72269,9094.56,91.67,22,2,0,4,76,0,4,1,40,No
+41,Male,High School,Chittagong,3,103365,18716.26,88.61,13,7,1,4,83,2,4,6,19,No
+58,Male,Masters,Rajshahi,12,17277,1029.12,99.59,24,7,2,3,53,3,2,4,23,Yes
+31,Male,Masters,Barisal,14,98484,11405.13,91.41,5,12,0,1,26,0,2,6,4,Yes
+50,Female,Bachelors,Khulna,9,50064,3348.45,76.61,17,23,2,3,20,2,10,9,20,No
+36,Male,Bachelors,Rajshahi,12,104657,19342.18,82.55,9,14,0,4,34,1,5,4,1,No
+54,Male,High School,Barisal,8,40590,4528.22,98.67,11,20,1,5,45,3,8,8,47,Yes
+34,Male,High School,Rajshahi,13,138987,20996.72,80.19,7,5,4,2,15,2,9,9,25,No
+28,Male,High School,Dhaka,13,135870,23828.02,85.45,6,1,3,3,27,2,9,5,30,No
+52,Female,Bachelors,Rajshahi,12,99934,6857.56,83.29,17,16,4,1,32,0,9,8,6,No
+37,Male,Bachelors,Barisal,1,59507,5676.98,96.52,6,6,0,2,53,1,4,2,33,No
+56,Female,High School,Khulna,1,142066,25471.36,80.79,20,22,1,4,98,1,7,5,5,No
+53,Male,Bachelors,Sylhet,10,113596,13280.08,89.79,15,6,1,1,63,3,6,9,45,Yes
+41,Male,Masters,Dhaka,5,37217,2145.47,82.07,23,13,0,4,61,1,3,6,21,No
+23,Male,Masters,Dhaka,11,79459,10405.68,89.32,7,4,1,4,62,0,6,9,13,No
+56,Other,Bachelors,Dhaka,7,35723,7098.92,78.03,9,1,0,1,26,3,7,1,7,No
+50,Male,Bachelors,Barisal,8,63314,4732.86,83.88,20,10,0,1,23,2,9,7,13,No
+47,Female,Bachelors,Chittagong,13,133481,9338.46,88.37,16,13,0,3,54,0,7,10,2,No
+23,Female,Bachelors,Chittagong,7,26362,4825.88,91.97,21,12,3,1,16,3,3,10,37,No
+26,Female,Bachelors,Barisal,8,141726,12790.73,81.07,9,17,1,5,37,1,2,7,9,No
+43,Male,High School,Rajshahi,2,48039,2825.06,86.88,11,2,3,5,66,1,10,7,5,No
+37,Male,Masters,Dhaka,14,27762,2466.93,91.34,18,4,2,2,43,0,8,8,46,Yes
+30,Male,Masters,Khulna,2,123325,7857.4,78.72,22,5,2,5,13,0,5,3,1,No
+55,Male,High School,Sylhet,3,137217,22309.52,97.28,8,13,0,3,49,3,7,7,21,No
+32,Female,High School,Sylhet,4,137226,16974.29,94.75,13,22,2,5,54,1,3,5,24,No
+56,Male,High School,Chittagong,9,139856,12381.41,97.69,8,9,2,1,40,2,6,2,8,No
+43,Female,High School,Chittagong,8,69398,9346.25,86.86,15,26,4,1,38,1,3,8,36,Yes
+25,Female,High School,Sylhet,14,49440,5827.07,81.4,15,14,2,1,40,0,10,3,29,No
+48,Female,Bachelors,Khulna,11,128140,13498.13,87.05,18,26,0,1,55,1,8,9,31,Yes
+41,Other,Bachelors,Khulna,11,135175,15091.87,75.83,9,13,1,5,35,3,9,10,38,No
+39,Male,Masters,Chittagong,12,39531,3057.08,91.33,20,15,4,2,37,0,9,10,17,No
+27,Male,Masters,Barisal,2,130898,22140.71,83.92,11,19,4,5,78,0,7,8,36,No
+39,Male,Masters,Chittagong,14,51363,3655.66,89.34,9,22,2,3,38,2,3,9,48,Yes
+22,Male,Bachelors,Khulna,9,89831,10393.88,81.37,20,1,0,5,27,0,6,10,15,No
+27,Male,High School,Barisal,14,22533,3688.82,86.17,15,26,0,1,47,0,6,9,12,Yes
+54,Male,Bachelors,Barisal,5,62577,11625.22,84.78,9,28,4,3,19,2,8,6,26,No
+29,Female,High School,Sylhet,1,91542,12756.53,86.49,12,2,2,5,41,1,6,2,45,Yes
+37,Male,High School,Rajshahi,13,73684,12651.46,99.51,23,9,1,4,68,1,3,9,17,No
+52,Male,Bachelors,Rajshahi,7,79645,15906.27,96.3,21,17,1,5,20,2,8,7,16,No
+45,Female,High School,Barisal,10,110932,8999.35,87.86,16,26,2,1,30,3,5,9,3,Yes
+59,Female,Bachelors,Barisal,12,90567,8326.8,75.62,15,28,3,3,47,3,10,8,43,Yes
+41,Male,Bachelors,Sylhet,13,47395,3822.64,98.91,6,22,4,5,66,2,7,6,31,No
+52,Male,Masters,Chittagong,9,33913,3411.28,82.74,12,18,2,2,94,1,4,8,48,Yes
+27,Female,Bachelors,Khulna,10,146794,21672.95,79.96,13,12,4,5,49,2,7,5,10,No
+36,Male,Masters,Sylhet,14,114301,17438.08,81.08,15,1,1,2,92,1,2,1,3,Yes
+45,Male,Masters,Khulna,10,134748,13352.48,75.72,20,24,4,5,66,3,6,3,36,No
+43,Male,High School,Rajshahi,13,16165,1606.83,80.5,16,17,1,1,17,2,10,8,15,Yes
+58,Male,Bachelors,Sylhet,14,19938,2017.79,84.81,14,10,3,1,55,0,1,6,40,Yes
+52,Female,Bachelors,Chittagong,12,50128,8793.68,99.28,20,17,0,1,45,0,1,9,15,Yes
+55,Other,PhD,Rajshahi,9,116251,8102.2,90.76,10,12,3,4,91,1,9,5,35,No
+29,Male,High School,Barisal,2,49589,3176.0,93.66,9,24,2,3,17,3,1,1,9,No
+59,Male,PhD,Dhaka,7,68988,7606.11,88.11,21,13,2,5,11,2,4,9,23,No
+34,Male,Masters,Barisal,5,65749,3457.62,87.78,15,2,4,1,67,2,2,7,37,Yes
+56,Male,Bachelors,Sylhet,11,92992,17543.92,99.47,14,20,1,3,99,0,5,2,14,No
+39,Female,Masters,Rajshahi,9,116431,15523.98,78.56,12,3,2,5,87,0,9,4,40,No
+40,Other,Masters,Sylhet,1,127896,7134.03,95.37,19,5,1,1,46,2,7,7,7,No
+57,Female,Bachelors,Chittagong,9,40870,4495.85,99.64,12,4,2,3,45,0,5,10,30,No
+57,Male,Bachelors,Khulna,12,129100,23129.03,79.31,23,12,3,5,26,1,3,3,27,No
+40,Female,Bachelors,Rajshahi,9,88967,9880.33,83.06,12,14,3,2,64,2,7,7,41,Yes
+22,Male,Bachelors,Barisal,1,75919,3835.09,80.39,21,7,2,1,40,3,9,8,38,No
+30,Female,Masters,Khulna,5,77019,14997.62,94.86,24,23,0,3,88,2,2,2,17,No
+33,Male,Masters,Barisal,13,25730,1413.04,84.4,14,19,3,5,87,1,1,5,3,No
+38,Other,Bachelors,Rajshahi,12,31737,1902.88,96.47,16,4,0,2,58,3,5,7,26,No
+38,Male,High School,Rajshahi,9,64274,8365.4,79.45,13,27,2,2,95,0,9,5,27,Yes
+34,Female,Bachelors,Dhaka,1,55591,7700.89,80.8,14,27,3,4,94,0,3,9,25,No
+51,Male,Masters,Khulna,5,92763,10261.32,85.79,17,25,4,2,66,3,2,10,5,Yes
+49,Male,Masters,Chittagong,6,118929,21862.04,86.36,6,19,0,5,52,0,7,5,13,No
+57,Male,Bachelors,Chittagong,13,35734,5524.76,82.63,23,17,3,5,74,3,2,4,18,Yes
+53,Female,Masters,Sylhet,6,43550,6789.14,97.14,24,19,3,1,23,3,5,2,7,No
+55,Female,Bachelors,Rajshahi,13,104973,15966.31,82.17,22,12,2,3,35,3,5,2,9,No
+37,Male,High School,Dhaka,3,118249,13126.09,84.1,12,12,2,4,89,3,6,10,47,Yes
+46,Female,Bachelors,Barisal,3,15974,1633.73,75.72,23,6,2,1,65,0,8,8,46,Yes
+23,Female,Bachelors,Dhaka,13,87405,8259.66,97.44,11,25,2,1,56,1,1,1,23,Yes
+52,Female,Bachelors,Barisal,13,101050,18917.0,89.99,9,19,0,2,78,1,7,9,24,No
+54,Female,Masters,Rajshahi,5,144729,15783.65,86.65,6,6,2,1,43,0,1,4,15,Yes
+27,Female,Bachelors,Dhaka,7,71497,11724.22,88.27,23,25,4,4,83,2,2,5,9,Yes
+51,Female,Bachelors,Barisal,10,87112,15607.51,94.89,7,27,2,1,56,3,7,6,2,Yes
+29,Male,Masters,Khulna,7,43772,7750.84,86.44,14,11,2,5,23,1,10,3,41,Yes
+28,Male,Masters,Dhaka,2,89556,6860.06,89.16,11,24,2,4,58,1,10,3,5,No
+47,Male,Masters,Rajshahi,5,21487,3814.64,84.21,16,10,1,4,55,1,8,9,1,No
+24,Male,High School,Khulna,7,117807,5966.22,83.89,17,2,1,5,70,1,1,6,11,No
+44,Female,High School,Sylhet,7,107586,5872.3,81.1,21,7,3,2,73,3,1,6,7,Yes
+32,Female,Masters,Sylhet,3,47983,4270.45,91.58,8,1,3,1,25,1,5,3,32,No
+44,Male,Bachelors,Rajshahi,7,147686,25289.71,96.74,10,5,2,3,45,2,3,10,36,No
+49,Female,Bachelors,Chittagong,6,95459,15025.64,99.96,23,14,0,3,65,3,10,2,33,No
+33,Male,Masters,Dhaka,12,67650,6195.37,90.33,7,6,4,1,61,3,4,8,12,No
+59,Female,Masters,Rajshahi,7,45819,3047.92,92.14,5,17,1,5,91,3,1,2,38,No
+41,Male,Masters,Sylhet,5,48001,5993.15,84.91,10,10,2,2,30,2,5,1,24,No
+58,Male,Bachelors,Sylhet,4,145326,26797.03,96.38,22,16,0,3,34,2,3,8,25,No
+24,Female,Bachelors,Sylhet,7,17987,3036.64,93.29,9,27,2,3,61,2,10,2,35,Yes
+58,Male,Bachelors,Sylhet,4,99046,14973.64,94.28,21,6,1,1,26,0,6,9,4,No
+59,Female,Bachelors,Rajshahi,9,125383,24423.14,76.21,14,29,1,5,26,3,4,7,40,No
+54,Male,Bachelors,Barisal,9,51637,4706.58,94.42,16,6,0,3,82,0,3,10,42,Yes
+52,Male,High School,Dhaka,6,66451,11457.66,83.98,21,16,3,1,73,1,9,4,37,No
+43,Female,Masters,Chittagong,7,80240,13530.33,90.49,23,9,2,4,81,0,5,4,19,No
+34,Female,Bachelors,Khulna,13,61955,3993.37,94.95,9,28,1,5,25,1,10,8,32,No
+33,Female,Bachelors,Chittagong,6,29649,1680.38,98.22,22,22,1,5,55,1,10,4,29,No
+55,Male,Bachelors,Barisal,1,88123,11025.74,81.03,8,22,3,5,75,3,9,8,11,No
+49,Male,Masters,Barisal,2,128562,6455.28,86.67,5,5,1,4,84,0,4,8,39,No
+33,Female,PhD,Chittagong,11,34136,5652.24,93.68,9,21,2,3,53,1,8,7,1,No
+35,Female,PhD,Rajshahi,9,51221,3242.02,90.69,18,17,2,3,11,3,7,4,21,No
+40,Female,Masters,Dhaka,6,123496,17158.09,92.16,13,2,1,5,78,0,7,6,13,No
+23,Female,PhD,Rajshahi,10,138568,12414.1,84.82,23,20,4,5,33,3,2,7,22,No
+25,Male,Bachelors,Dhaka,11,97901,14797.39,90.28,20,22,4,3,54,3,10,10,9,No
+42,Female,Masters,Sylhet,14,79469,7313.64,92.09,17,13,2,3,12,3,10,6,34,No
+50,Male,Bachelors,Sylhet,1,87030,15380.73,93.86,22,21,1,1,13,1,10,6,47,Yes
+25,Female,High School,Rajshahi,3,46987,5198.69,90.14,7,25,1,5,31,1,5,7,7,No
+24,Female,Masters,Rajshahi,10,29344,4284.55,82.41,19,12,0,4,21,0,10,9,30,No
+30,Other,Masters,Chittagong,6,118920,19085.31,82.09,5,24,3,4,42,0,7,9,46,Yes
+57,Female,High School,Dhaka,13,65166,10481.21,76.86,18,15,1,1,62,3,6,5,37,No
+37,Female,High School,Dhaka,13,145965,19525.17,98.36,23,28,1,2,50,2,4,2,10,Yes
+22,Female,High School,Khulna,12,119082,11655.14,76.97,10,13,3,4,98,3,7,5,33,No
+47,Male,Masters,Dhaka,7,142243,26145.25,78.99,12,3,3,1,70,3,3,6,4,No
+37,Male,Bachelors,Rajshahi,8,86213,6333.37,96.14,16,4,4,1,13,3,7,3,25,No
+49,Female,High School,Barisal,9,128309,23107.57,96.8,8,20,1,5,62,1,3,1,20,No
+57,Male,Bachelors,Barisal,12,55762,9176.39,83.63,20,9,3,3,61,3,8,1,47,Yes
+44,Male,High School,Rajshahi,1,78807,11709.47,81.93,8,4,1,1,63,3,7,5,26,No
+59,Female,Masters,Barisal,12,139291,11352.89,91.6,11,6,3,2,69,1,7,6,1,No
+24,Male,Bachelors,Sylhet,4,21262,2009.07,94.0,18,22,2,4,31,2,7,1,26,No
+29,Female,Bachelors,Barisal,3,65806,9511.77,90.38,5,7,4,3,19,1,4,10,35,No
+56,Female,Bachelors,Sylhet,4,86141,16451.86,99.65,18,12,2,4,90,2,10,5,38,No
+51,Female,Bachelors,Sylhet,9,53569,7866.19,78.07,9,18,4,4,87,2,10,6,10,No
+35,Female,Masters,Dhaka,13,142231,21575.0,94.97,13,7,3,2,62,1,10,1,48,Yes
+22,Male,Masters,Dhaka,8,102004,8673.11,79.84,7,15,1,2,91,3,7,3,10,No
+49,Male,Masters,Barisal,11,138025,12959.08,81.91,21,4,3,4,25,2,3,2,28,No
+51,Male,Bachelors,Sylhet,10,25881,2975.07,95.1,11,17,1,1,50,3,5,10,43,Yes
+47,Male,Bachelors,Dhaka,6,39870,7448.65,91.29,18,12,3,5,81,3,4,8,24,No
+22,Male,High School,Khulna,2,43960,3135.93,81.18,6,27,2,1,28,2,7,6,31,Yes
+50,Male,Bachelors,Sylhet,13,50388,7561.02,81.86,20,29,4,2,98,3,9,6,43,Yes
+35,Male,Masters,Chittagong,3,47753,9142.01,96.78,16,26,4,3,73,2,3,10,20,No
+33,Male,Bachelors,Barisal,13,63282,5818.89,89.38,19,12,4,3,43,0,8,10,18,No
+46,Female,Bachelors,Dhaka,14,125844,21780.58,94.08,16,4,1,3,21,2,1,4,17,No
+51,Male,PhD,Barisal,6,79320,7397.77,93.57,22,15,2,2,36,1,10,8,45,Yes
+30,Male,Masters,Khulna,1,27471,3092.04,84.87,9,26,2,2,67,2,1,6,33,Yes
+55,Female,Masters,Khulna,9,60700,6608.34,89.97,10,28,1,3,48,0,7,4,49,Yes
+26,Female,Masters,Sylhet,2,23506,3738.31,89.0,10,15,3,1,64,1,7,3,17,No
+32,Female,Masters,Sylhet,10,70459,14051.87,87.73,9,28,0,5,95,2,7,4,22,No
+24,Male,Bachelors,Khulna,8,71115,12535.36,96.84,8,18,4,2,33,3,2,8,20,Yes
+59,Female,Bachelors,Barisal,4,121204,13322.39,83.26,18,23,0,4,78,3,6,4,11,No
+24,Female,High School,Sylhet,8,148424,14854.47,77.1,13,7,1,2,33,0,4,1,34,No
+22,Male,Bachelors,Sylhet,2,69986,5328.2,97.96,15,16,1,4,39,1,6,3,8,No
+39,Male,PhD,Rajshahi,13,119382,18388.39,78.69,18,26,0,3,15,0,7,6,15,No
+31,Male,Bachelors,Dhaka,14,54585,10222.8,89.62,6,24,1,4,29,0,3,1,1,No
+45,Male,High School,Rajshahi,9,91407,14905.54,78.09,15,16,1,5,26,2,10,6,16,No
+58,Male,High School,Sylhet,2,41847,6217.05,92.77,24,21,0,1,16,2,1,4,40,Yes
+52,Male,Bachelors,Dhaka,13,123108,20759.77,81.56,13,23,0,2,41,3,5,9,35,No
+32,Male,Bachelors,Rajshahi,12,17831,2459.16,81.35,8,22,1,3,48,2,1,2,44,Yes
+47,Female,Bachelors,Sylhet,6,23940,3627.3,94.21,18,7,4,4,65,1,4,10,31,No
+53,Male,Masters,Barisal,2,27474,1927.81,91.83,6,23,2,2,53,0,3,9,44,Yes
+54,Male,PhD,Chittagong,4,117802,19751.19,75.65,8,24,1,5,57,0,8,10,4,No
+30,Male,Masters,Sylhet,13,138320,9807.4,76.88,5,2,0,3,38,1,2,4,49,Yes
+50,Female,Bachelors,Chittagong,8,87457,14355.1,89.1,15,11,2,3,59,3,5,8,32,No
+27,Male,Bachelors,Rajshahi,4,53009,4233.51,97.06,13,15,4,5,58,0,4,6,0,No
+30,Male,Bachelors,Khulna,14,130654,19620.75,91.91,8,25,2,5,45,0,1,2,0,No
+56,Female,PhD,Chittagong,13,60939,10464.94,87.27,20,24,2,3,82,3,4,4,23,No
+34,Female,Bachelors,Barisal,11,73152,4844.54,90.77,19,3,1,2,88,1,3,3,28,No
+35,Male,High School,Khulna,2,85723,12717.84,97.09,23,28,1,5,40,1,5,6,36,No
+35,Male,Bachelors,Dhaka,14,115142,11696.98,93.34,7,24,4,5,23,1,8,9,7,No
+40,Male,Bachelors,Rajshahi,10,144230,10684.09,76.56,15,18,2,1,31,0,5,6,43,Yes
+25,Female,Bachelors,Sylhet,10,142576,11262.29,78.35,16,18,0,5,73,2,5,1,36,No
+47,Female,High School,Dhaka,9,142078,17765.68,80.93,13,4,1,1,96,3,5,4,9,No
+23,Male,Bachelors,Barisal,4,108511,9720.78,96.7,21,10,3,1,76,3,7,2,31,No
+22,Female,Bachelors,Rajshahi,5,36474,6982.62,80.66,10,12,2,3,31,3,3,10,9,No
+58,Male,Bachelors,Sylhet,1,48207,4571.26,80.24,11,20,2,1,77,3,6,4,27,No
+40,Female,High School,Chittagong,6,123790,18511.84,93.74,21,4,0,5,44,3,10,8,49,Yes
+39,Female,Bachelors,Dhaka,11,92606,13361.34,99.86,14,5,0,2,46,0,10,2,18,No
+39,Male,High School,Dhaka,8,147492,21473.02,80.04,16,23,0,1,20,1,1,7,19,Yes
+59,Male,Bachelors,Sylhet,3,114120,13429.01,90.83,24,24,2,1,89,3,1,2,35,Yes
+32,Female,Masters,Sylhet,12,69781,8414.4,76.01,6,9,4,4,46,1,2,9,22,No
+34,Male,Masters,Barisal,2,30003,3025.89,94.15,23,25,4,4,95,0,2,6,23,No
+41,Female,Masters,Khulna,5,98606,18379.45,97.22,5,9,1,2,81,3,3,8,20,No
+45,Male,Masters,Sylhet,2,23033,2488.58,88.94,8,26,1,1,14,2,7,9,28,Yes
+37,Male,Masters,Dhaka,12,49970,9460.61,82.51,18,8,0,4,89,0,10,2,3,No
+40,Male,Bachelors,Barisal,3,51920,5127.3,75.37,7,17,3,1,44,2,6,5,31,No
+25,Female,Bachelors,Barisal,14,88131,6065.19,84.81,14,5,1,2,21,2,6,1,7,No
+44,Female,Bachelors,Sylhet,7,98852,19571.06,80.58,11,15,1,2,28,1,3,1,5,No
+34,Female,Masters,Barisal,10,108819,5849.14,75.29,24,12,3,5,79,2,6,9,32,No
+39,Male,Bachelors,Sylhet,13,98746,9895.19,83.86,15,18,0,2,79,3,8,5,45,Yes
+34,Male,High School,Sylhet,9,59714,3059.19,96.64,22,5,3,4,58,0,1,8,10,No
+58,Male,Bachelors,Barisal,1,89149,7004.0,79.06,5,9,3,5,42,0,6,4,2,No
+28,Female,Bachelors,Khulna,4,100060,16712.78,95.01,22,22,0,1,29,2,9,1,34,No
+25,Female,High School,Khulna,13,101880,15926.75,98.02,12,26,4,1,90,3,7,2,11,Yes
+43,Male,Bachelors,Chittagong,1,36932,6590.52,80.62,21,29,4,4,48,2,3,7,36,No
+33,Male,PhD,Khulna,8,136884,7710.63,96.21,24,8,3,1,47,3,6,3,36,No
+43,Male,Masters,Khulna,10,144145,28050.75,90.45,20,29,2,5,92,1,7,4,19,No
+53,Male,Bachelors,Khulna,4,97365,5267.48,80.72,5,25,1,3,87,0,10,4,3,No
+57,Male,High School,Khulna,10,36065,5723.09,86.08,16,21,0,5,10,0,8,4,18,No
+54,Female,High School,Rajshahi,1,55451,4833.16,92.65,13,13,3,1,54,2,10,3,11,No
+24,Male,High School,Rajshahi,4,116906,7072.4,91.13,10,3,3,1,81,0,7,6,33,No
+28,Male,Bachelors,Khulna,8,74676,12883.5,77.29,17,28,4,4,23,2,9,9,32,No
+35,Male,High School,Sylhet,7,132560,11091.29,90.74,10,4,2,3,18,3,9,2,0,No
+46,Male,Masters,Rajshahi,12,102202,6576.27,75.05,14,29,1,1,25,3,2,1,9,Yes
+57,Male,Bachelors,Barisal,7,82455,10040.68,86.94,13,3,2,4,94,0,7,8,36,No
+30,Female,Bachelors,Barisal,2,101081,5189.44,99.35,11,15,3,5,28,0,9,5,35,No
+42,Female,High School,Sylhet,1,96604,9502.16,95.22,16,4,1,5,18,0,2,6,36,No
+32,Female,Masters,Barisal,3,38437,2671.77,93.52,9,21,0,5,47,3,9,2,30,No
+42,Female,Masters,Dhaka,11,138375,23219.52,75.67,21,10,1,2,11,1,5,6,12,No
+26,Female,Bachelors,Dhaka,13,112795,11669.7,75.87,11,9,4,4,43,0,6,9,42,Yes
+57,Male,Bachelors,Dhaka,3,83024,12111.21,98.89,24,25,3,2,13,0,9,4,48,Yes
+50,Male,PhD,Dhaka,12,83018,11028.25,93.89,12,18,2,4,50,0,7,3,21,No
+39,Female,Masters,Chittagong,11,141359,7772.27,80.73,21,15,1,5,75,1,1,10,10,No
+51,Male,High School,Barisal,11,146369,14953.9,88.32,11,28,0,3,78,3,5,3,48,Yes
+29,Female,Bachelors,Barisal,13,149496,29222.08,97.37,12,17,0,4,36,1,4,10,1,No
+57,Male,Bachelors,Chittagong,12,69195,12815.29,85.4,20,26,4,1,38,0,1,6,38,Yes
+52,Male,Bachelors,Chittagong,12,100359,5640.95,79.67,23,4,4,1,99,0,1,3,0,Yes
+39,Male,Bachelors,Rajshahi,11,27080,5187.7,91.59,22,25,0,1,98,1,9,6,25,No
+33,Male,High School,Sylhet,6,125386,17734.38,78.74,23,11,1,4,23,0,2,1,25,No
+26,Male,Bachelors,Chittagong,1,84150,8644.14,77.85,16,14,3,1,21,0,4,3,34,No
+24,Female,Bachelors,Khulna,1,110453,18212.45,82.19,24,25,2,2,73,3,2,4,4,Yes
+47,Female,Masters,Barisal,9,131591,13464.04,90.79,17,13,0,5,42,3,10,10,29,No
+24,Male,Bachelors,Sylhet,6,57083,10547.71,82.93,8,17,2,5,64,1,6,4,41,Yes
+40,Female,Bachelors,Barisal,11,34536,5553.97,85.73,19,7,4,2,30,3,5,10,26,No
+29,Male,Bachelors,Sylhet,4,123955,17216.23,78.99,21,7,4,5,74,0,6,9,46,Yes
+22,Female,Masters,Chittagong,4,145778,13411.19,83.15,9,11,4,4,28,1,4,5,8,No
+38,Male,Bachelors,Barisal,8,138877,9492.29,82.16,5,13,1,4,48,2,9,2,1,No
+28,Male,Masters,Khulna,2,33304,3835.7,88.69,19,26,1,2,89,0,9,4,38,Yes
+26,Male,Bachelors,Chittagong,4,68728,9282.42,80.89,5,29,0,3,99,1,7,6,40,No
+22,Male,Masters,Rajshahi,9,136576,26713.91,98.24,20,26,4,5,61,3,4,6,6,No
+39,Female,Bachelors,Barisal,5,105652,19010.07,76.31,11,21,3,5,55,1,10,9,38,No
+45,Female,Masters,Barisal,9,28562,5369.46,77.5,23,12,3,3,66,0,8,8,21,No
+31,Female,Bachelors,Dhaka,14,61897,8469.72,88.34,19,12,1,2,81,1,5,10,41,Yes
+28,Female,Bachelors,Rajshahi,4,92208,7093.17,89.14,21,9,0,1,14,2,9,3,47,Yes
+22,Male,Masters,Chittagong,9,141940,15948.66,84.92,12,13,4,2,33,0,9,3,8,No
+40,Female,Bachelors,Chittagong,4,96374,16327.07,95.04,6,28,4,4,33,2,3,9,18,No
+53,Male,Bachelors,Dhaka,9,124523,6985.79,76.39,21,7,1,3,55,3,3,10,25,No
+28,Male,Bachelors,Sylhet,11,101584,8520.52,89.53,11,26,1,4,62,3,1,7,29,Yes
+32,Female,Bachelors,Chittagong,12,100653,19023.26,87.34,13,2,1,5,60,2,4,10,48,Yes
+57,Male,Bachelors,Sylhet,3,83089,10445.19,94.0,22,3,4,4,29,3,6,1,31,No
+35,Male,Bachelors,Khulna,12,112206,5724.99,90.98,21,9,2,3,61,3,7,2,21,No
+56,Male,Bachelors,Sylhet,1,33886,3275.9,90.69,12,9,3,5,13,2,6,10,9,No
+41,Male,High School,Rajshahi,11,99599,12389.11,86.79,8,25,1,4,98,3,3,6,44,Yes
+42,Male,Bachelors,Dhaka,1,122018,7469.56,87.34,15,10,4,5,73,2,5,10,9,No
+58,Female,Bachelors,Barisal,10,63070,6192.56,94.39,24,5,0,5,74,3,5,3,7,No
+56,Male,Masters,Barisal,10,31329,2021.94,93.71,11,1,1,3,95,2,3,9,36,No
+50,Female,High School,Rajshahi,7,75675,11503.59,86.8,12,28,0,3,96,2,4,7,6,No
+45,Male,Bachelors,Chittagong,3,82134,14243.07,98.3,16,17,1,1,76,0,1,10,29,Yes
+57,Male,Masters,Barisal,14,138743,24805.64,85.62,10,1,1,5,86,3,7,2,31,No
+52,Female,PhD,Barisal,10,83141,14801.24,81.77,8,28,0,1,68,2,7,7,2,Yes
+29,Male,High School,Barisal,7,105519,18443.42,82.63,14,15,4,4,70,2,8,8,23,No
+22,Female,Masters,Barisal,3,52635,10344.24,76.76,13,19,2,5,96,0,2,7,2,No
+33,Female,Bachelors,Sylhet,13,134933,24839.52,98.95,20,21,0,4,86,0,9,2,9,No
+28,Male,Bachelors,Chittagong,13,44549,4040.25,97.54,11,17,3,1,35,2,10,2,26,No
+35,Male,High School,Khulna,12,88265,14286.38,92.87,15,17,0,2,91,3,6,10,28,No
+27,Male,Masters,Sylhet,8,25424,3959.29,83.38,5,20,1,3,42,3,8,9,40,No
+35,Female,Masters,Barisal,3,67900,8160.14,85.54,11,17,4,3,88,2,7,8,0,No
+37,Male,PhD,Barisal,6,143381,27202.14,77.15,21,23,1,4,57,3,10,3,16,No
+22,Female,Bachelors,Dhaka,14,148814,12158.11,76.1,18,21,2,1,83,1,5,7,46,Yes
+30,Female,Masters,Barisal,4,110717,12142.37,84.99,11,21,0,4,69,0,3,3,38,No
+22,Male,Masters,Dhaka,9,85667,17099.8,99.99,23,16,4,3,63,2,1,9,43,Yes
+26,Male,Masters,Chittagong,13,132738,12090.83,83.23,19,12,3,5,64,2,10,2,11,No
+48,Male,Bachelors,Khulna,2,82135,5684.91,79.42,7,25,2,3,61,2,9,3,31,No
+27,Female,High School,Barisal,11,107013,6818.04,96.29,13,10,3,5,22,1,8,9,49,Yes
+37,Female,Bachelors,Khulna,7,94203,17679.92,100.0,18,16,2,5,19,0,6,9,37,No
+40,Male,Bachelors,Chittagong,4,23352,1965.96,84.17,10,7,0,5,36,0,10,1,20,No
+39,Male,High School,Barisal,10,112815,15541.71,80.55,9,3,2,2,30,1,7,7,43,Yes
+32,Female,High School,Khulna,11,98045,16598.64,86.13,12,20,3,3,84,1,7,10,43,Yes
+58,Male,Bachelors,Barisal,6,136164,13187.17,84.53,20,12,1,2,34,1,10,3,4,No
+42,Female,Masters,Khulna,6,34071,2092.05,92.66,12,7,0,5,22,2,6,4,26,No
+31,Female,Masters,Rajshahi,11,109087,7756.85,97.03,7,8,0,2,81,0,10,9,41,Yes
+45,Male,High School,Khulna,9,61278,7519.98,84.02,14,18,3,5,21,2,2,1,38,No
+23,Female,Bachelors,Barisal,11,148808,9034.49,96.6,12,23,0,2,75,2,5,3,39,No
+48,Male,High School,Chittagong,12,134043,24227.19,94.5,5,20,3,1,28,0,6,7,21,No
+32,Male,High School,Rajshahi,5,38640,5025.76,81.35,5,5,0,4,24,0,8,9,31,No
+55,Female,Bachelors,Rajshahi,10,60396,6054.51,88.86,16,8,1,4,39,1,3,3,4,No
+59,Male,Bachelors,Dhaka,7,91905,14095.8,89.02,20,16,3,4,69,3,7,5,20,No
+42,Other,Masters,Dhaka,11,117596,7403.07,85.73,8,18,4,4,94,2,10,8,34,No
+55,Other,Bachelors,Khulna,12,84070,9493.74,99.15,7,13,3,3,24,2,6,8,6,No
+52,Male,High School,Khulna,2,99057,11500.31,88.71,5,1,1,3,96,2,5,10,5,No
+39,Female,Bachelors,Khulna,10,55669,7943.06,76.8,16,9,2,5,31,0,5,5,41,Yes
+43,Male,Masters,Chittagong,2,92549,10828.33,95.9,12,2,3,3,85,3,1,9,1,No
+52,Male,Bachelors,Sylhet,12,94391,16772.11,94.72,14,29,4,1,44,1,3,7,28,Yes
+23,Female,High School,Sylhet,10,74488,9013.28,83.19,11,9,1,1,53,1,4,9,40,No
+50,Male,Bachelors,Chittagong,10,119842,10906.84,79.23,23,15,1,4,65,3,5,3,9,No
+25,Male,Bachelors,Sylhet,3,112796,6540.01,76.38,22,25,0,5,71,0,4,8,45,Yes
+49,Female,Bachelors,Sylhet,13,143261,16963.1,95.59,14,25,0,4,26,1,6,8,42,Yes
+34,Female,Bachelors,Dhaka,2,111382,21166.97,85.44,9,12,4,3,29,2,8,3,38,No
+22,Male,High School,Khulna,9,64146,4151.27,86.68,16,1,0,2,17,0,2,1,29,Yes
+22,Male,Bachelors,Khulna,13,84680,12160.44,91.16,14,28,2,2,21,1,7,1,20,Yes
+23,Male,Bachelors,Barisal,8,111742,16459.49,79.12,20,10,2,1,85,0,9,2,6,No
+34,Female,Bachelors,Barisal,2,68494,7942.7,93.61,23,26,2,2,54,3,6,7,5,Yes
+43,Female,Bachelors,Sylhet,2,30826,5578.23,94.16,6,20,3,4,72,2,8,5,4,No
+25,Male,High School,Chittagong,3,121546,19060.02,80.86,16,26,2,1,95,0,3,6,47,Yes
+59,Female,Bachelors,Rajshahi,11,50482,2541.15,99.25,13,18,1,1,35,1,6,1,19,No
+46,Female,Bachelors,Rajshahi,2,92314,8855.01,97.48,12,5,3,4,33,3,8,1,39,No
+26,Male,Masters,Barisal,3,105493,9722.44,80.09,18,9,3,4,48,3,10,6,17,No
+33,Female,Masters,Chittagong,3,136586,9724.77,94.94,9,21,2,1,52,1,10,5,9,No
+32,Female,PhD,Chittagong,2,26223,3794.49,79.35,6,29,0,5,34,1,7,6,5,No
+49,Male,High School,Rajshahi,8,128921,21433.39,89.95,24,19,4,5,16,2,5,9,22,No
+26,Male,High School,Rajshahi,8,147746,22543.03,99.6,9,7,1,3,79,0,4,7,27,No
+26,Female,Bachelors,Dhaka,4,95884,7931.88,92.46,12,18,2,1,14,0,9,2,0,No
+29,Female,Masters,Dhaka,13,124896,24968.7,89.27,8,3,1,3,61,1,4,2,0,No
+59,Other,Bachelors,Rajshahi,7,89230,14446.44,98.6,24,20,1,3,91,0,8,3,11,No
+51,Female,Bachelors,Sylhet,2,89206,4615.3,78.7,17,23,1,5,87,2,6,10,13,No
+32,Female,Bachelors,Chittagong,12,116326,7009.73,93.95,17,3,4,4,50,2,5,3,6,No
+24,Female,Bachelors,Rajshahi,3,24041,3315.53,81.86,13,25,3,2,14,3,6,3,37,No
+57,Female,High School,Rajshahi,12,143775,18531.11,78.96,17,11,4,3,53,2,2,7,24,No
+59,Female,High School,Rajshahi,6,125062,10550.47,90.37,20,9,2,5,84,1,9,10,38,No
+47,Male,Bachelors,Chittagong,8,27081,2297.19,88.83,9,20,2,2,10,3,1,4,36,Yes
+22,Female,High School,Rajshahi,13,96741,9099.41,84.03,14,22,0,2,76,3,3,7,10,No
+49,Male,High School,Barisal,5,21864,2714.56,85.82,7,21,4,2,51,0,7,6,19,Yes
+57,Male,Bachelors,Barisal,14,146667,12133.32,87.48,11,12,3,1,69,2,1,4,6,Yes
+57,Male,Bachelors,Rajshahi,5,116316,20008.75,78.98,14,1,4,4,16,3,8,4,31,No
+42,Female,Bachelors,Khulna,4,145549,17899.62,81.54,22,20,0,1,51,3,9,2,1,No
+45,Female,High School,Sylhet,2,63664,10848.75,98.33,19,6,2,1,31,3,2,3,21,Yes
+38,Male,Bachelors,Barisal,5,106993,19834.94,82.39,7,2,4,4,48,2,3,4,17,No
+55,Male,Bachelors,Dhaka,4,20841,3376.31,90.38,19,20,2,3,14,1,5,8,18,No
+42,Male,Bachelors,Khulna,2,64397,12580.86,82.72,20,3,0,2,20,3,6,7,42,Yes
+46,Female,PhD,Chittagong,12,41658,5286.98,89.4,11,26,4,1,56,3,9,5,27,Yes
+34,Female,Bachelors,Sylhet,5,25566,3974.57,93.68,5,26,2,5,71,3,9,4,25,No
+25,Male,High School,Chittagong,10,136287,10542.12,75.92,10,25,1,5,55,2,6,4,16,No
+24,Male,Masters,Rajshahi,12,120772,21135.71,96.26,15,17,0,3,86,2,4,4,1,No
+36,Male,Bachelors,Rajshahi,12,108631,6749.97,91.38,11,9,4,4,55,3,10,1,42,Yes
+58,Male,Bachelors,Chittagong,12,16650,1056.79,93.24,7,7,1,3,42,2,2,5,5,Yes
+53,Female,Bachelors,Dhaka,3,47101,6311.11,82.78,24,19,2,2,29,3,10,10,19,No
+42,Female,High School,Dhaka,11,96903,6503.58,97.51,24,1,4,4,85,2,9,3,33,No
+47,Male,Bachelors,Sylhet,12,36486,3626.8,91.63,14,21,0,4,48,3,4,5,15,No
+33,Male,Masters,Chittagong,12,49426,4115.22,93.16,7,2,1,5,47,0,10,5,13,No
+27,Female,Bachelors,Barisal,7,98064,7442.98,76.3,6,10,3,2,95,3,1,3,33,Yes
+39,Male,Bachelors,Dhaka,4,66139,9594.92,93.76,18,4,4,5,12,2,1,1,47,Yes
+38,Male,Masters,Chittagong,10,101670,8141.71,78.01,24,6,3,3,69,2,6,1,25,No
+37,Male,High School,Sylhet,13,126406,22504.03,76.21,13,29,1,3,52,2,8,8,46,Yes
+45,Female,Bachelors,Khulna,13,84915,16321.81,90.23,8,8,4,5,99,0,6,4,9,No
+35,Male,Bachelors,Barisal,10,62611,4922.98,80.58,15,9,1,5,80,2,10,4,16,No
+47,Male,Masters,Sylhet,2,97041,15593.17,79.35,6,23,4,3,75,0,4,1,9,No
+27,Male,Bachelors,Khulna,1,122333,9093.77,98.06,20,1,3,2,80,0,6,3,45,Yes
+44,Female,Bachelors,Chittagong,1,27439,3469.82,79.0,15,23,4,3,23,3,8,8,36,No
+22,Female,Bachelors,Barisal,4,142441,26588.0,78.51,21,19,3,3,50,3,3,3,22,No
+30,Female,Masters,Rajshahi,13,127219,21305.98,93.42,18,5,0,5,91,2,3,8,16,No
+33,Female,Bachelors,Chittagong,8,120328,11723.31,91.79,13,26,4,5,76,2,2,8,27,Yes
+57,Male,Masters,Dhaka,6,60089,3283.59,94.52,9,14,1,4,55,3,3,2,14,No
+35,Male,Bachelors,Dhaka,1,22340,4158.57,78.56,6,6,1,5,80,1,1,10,35,No
+32,Male,Bachelors,Chittagong,8,69734,10793.37,91.63,9,26,3,2,56,2,3,6,9,Yes
+54,Female,Bachelors,Barisal,4,50590,6550.85,99.87,19,27,3,2,97,1,4,6,14,Yes
+43,Female,Masters,Barisal,14,40067,5922.34,97.08,15,16,2,4,47,2,3,3,23,No
+24,Male,Masters,Chittagong,2,76274,13586.34,93.49,8,26,1,1,57,3,9,9,13,Yes
+37,Female,Bachelors,Dhaka,7,45869,7608.56,75.63,17,24,4,5,89,0,4,7,44,Yes
+23,Other,Bachelors,Dhaka,5,92818,10003.51,79.36,20,13,3,4,79,2,8,7,35,No
+28,Male,High School,Barisal,9,127648,7696.83,86.6,18,13,2,5,82,1,2,10,43,Yes
+48,Male,Masters,Chittagong,6,142957,14446.81,95.57,6,7,0,1,23,0,6,4,29,No
+56,Other,High School,Dhaka,2,32760,5384.31,94.64,23,1,1,3,65,0,1,9,7,Yes
+42,Female,Bachelors,Rajshahi,5,126928,20597.02,89.15,10,1,4,2,55,2,2,4,12,Yes
+55,Male,High School,Sylhet,14,85389,11418.61,84.11,20,19,1,2,86,1,5,1,32,No
+22,Male,Bachelors,Barisal,8,109850,11498.98,81.0,22,20,1,1,77,2,8,1,24,No
+25,Male,Bachelors,Chittagong,4,87525,16831.64,89.66,16,13,0,4,61,0,5,3,25,No
+28,Female,High School,Barisal,12,90296,17342.91,98.13,21,2,3,2,34,0,7,6,2,No
+57,Male,Bachelors,Rajshahi,11,24341,4745.48,96.53,24,26,0,3,61,3,9,1,36,No
+23,Female,Bachelors,Barisal,9,31036,3733.13,88.87,17,17,1,2,72,3,2,1,18,Yes
+57,Male,Bachelors,Barisal,13,89147,14792.23,78.62,12,13,2,3,95,0,4,10,18,No
+34,Male,Bachelors,Dhaka,5,39197,2746.93,98.32,14,2,4,1,18,3,4,8,4,No
+58,Male,High School,Rajshahi,4,44099,5928.25,78.3,21,24,3,3,20,3,9,6,29,No
+37,Male,Masters,Khulna,5,75797,5143.45,97.17,13,18,0,3,97,2,9,9,32,No
+39,Male,Bachelors,Chittagong,1,57827,10998.17,94.63,14,23,1,2,57,3,3,4,39,No
+29,Female,Masters,Khulna,10,88899,7285.25,93.94,17,7,1,5,89,1,7,3,3,No
+55,Male,Bachelors,Sylhet,3,50273,3971.16,95.71,20,15,3,1,64,0,6,9,33,No
+33,Female,Bachelors,Khulna,10,121016,16345.76,84.1,18,9,0,5,16,2,2,10,25,No
+24,Male,Masters,Chittagong,10,74551,5342.77,77.35,5,25,0,3,98,0,5,1,31,No
+48,Male,Bachelors,Khulna,7,34865,5773.9,95.81,9,2,0,5,78,2,7,5,24,No
+38,Female,Masters,Barisal,11,149360,25573.88,83.34,8,1,1,1,42,0,3,3,28,No
+49,Male,Bachelors,Dhaka,5,32041,4631.69,86.4,23,15,3,3,87,3,3,4,2,No
+34,Male,Bachelors,Barisal,10,50181,8896.41,86.61,23,16,4,3,68,3,1,1,31,No
+47,Female,Bachelors,Sylhet,7,86879,4941.85,83.74,7,3,0,4,15,1,5,8,38,No
+37,Male,Bachelors,Rajshahi,1,107763,5587.08,78.47,13,7,2,3,10,1,1,8,14,No
+37,Male,Bachelors,Sylhet,1,117131,10093.56,77.34,5,22,0,1,79,3,10,10,35,No
+48,Female,Bachelors,Dhaka,7,38170,2283.86,96.42,18,10,1,2,13,0,2,1,42,Yes
+52,Other,Bachelors,Chittagong,14,15179,2077.45,98.57,13,5,0,4,26,3,8,3,0,No
+23,Female,Masters,Sylhet,4,130117,23209.3,75.51,23,5,1,5,19,3,3,5,31,No
+25,Female,High School,Chittagong,7,59948,6424.14,76.25,16,28,3,2,65,3,2,7,6,Yes
+59,Male,Bachelors,Rajshahi,3,115559,21489.44,90.87,13,1,2,1,10,2,5,5,2,No
+30,Male,Bachelors,Dhaka,3,131464,12980.32,81.38,15,18,3,2,35,2,6,2,15,No
+47,Other,Masters,Chittagong,14,77392,14541.24,86.64,21,23,3,2,56,3,2,9,1,Yes
+27,Male,Bachelors,Sylhet,3,88397,8025.48,87.63,19,2,3,1,66,3,7,8,45,Yes
+32,Male,Bachelors,Chittagong,1,74837,14754.67,80.73,11,18,1,3,21,2,7,8,22,No
+41,Male,Bachelors,Dhaka,5,25451,2413.41,90.32,22,22,3,5,42,3,4,1,0,No
+32,Female,PhD,Rajshahi,10,59243,5919.25,76.12,6,1,1,5,24,1,6,7,35,No
+48,Male,Bachelors,Barisal,11,112437,14946.9,84.25,19,15,1,5,13,0,9,6,41,Yes
+57,Male,High School,Rajshahi,8,127431,23412.44,95.82,12,29,3,4,89,3,2,1,7,Yes
+49,Female,High School,Sylhet,10,122376,18625.29,91.36,24,9,2,3,33,1,5,7,23,No
+22,Female,Masters,Dhaka,5,84102,12537.53,96.18,20,18,1,5,83,3,3,5,36,No
+23,Female,PhD,Barisal,10,57253,4774.09,94.19,16,12,2,2,99,3,1,10,45,Yes
+32,Female,Bachelors,Rajshahi,7,44368,4056.68,82.99,12,19,3,1,35,1,10,2,40,No
+29,Male,Bachelors,Chittagong,2,116170,12273.07,85.83,6,17,0,1,31,2,4,9,26,No
+44,Female,Masters,Rajshahi,10,144485,15327.64,98.18,14,24,0,3,93,2,3,9,45,Yes
+29,Male,Bachelors,Rajshahi,1,71210,9226.31,93.8,19,27,1,3,73,3,8,10,47,Yes
+51,Female,PhD,Chittagong,8,146818,28570.41,91.97,8,19,3,5,61,1,1,4,21,No
+24,Male,Masters,Sylhet,11,37727,2839.69,90.13,18,17,2,3,34,1,5,6,2,No
+25,Male,High School,Barisal,9,45905,5259.79,96.09,23,15,2,3,92,0,5,2,12,No
+52,Other,Bachelors,Sylhet,3,41089,7264.04,96.29,6,22,3,2,66,0,5,2,23,No
+27,Male,Masters,Khulna,3,137937,18151.18,87.49,22,8,4,4,45,2,8,2,10,No
+49,Female,High School,Dhaka,2,16401,1758.19,82.31,5,13,1,1,53,0,9,9,21,Yes
+36,Male,Bachelors,Barisal,13,102257,6631.6,76.11,24,1,3,4,75,0,3,5,5,No
+38,Male,Bachelors,Barisal,4,53850,10746.24,92.22,9,10,2,2,44,1,10,5,3,No
+57,Male,High School,Barisal,12,149922,18744.67,92.74,7,21,3,2,76,3,2,1,25,Yes
+38,Male,High School,Khulna,2,139200,26390.44,89.3,20,3,0,5,39,2,1,7,35,No
+49,Female,Masters,Sylhet,6,141990,9447.49,75.81,8,6,4,3,33,3,4,5,8,No
+53,Male,Bachelors,Rajshahi,5,17598,1017.39,95.47,23,19,0,5,23,3,4,5,38,No
+40,Female,Masters,Sylhet,3,82859,13979.9,92.76,17,22,4,5,93,2,3,2,38,No
+29,Male,Bachelors,Chittagong,6,125306,20876.61,88.02,11,21,4,5,78,0,5,9,45,Yes
+54,Male,Masters,Khulna,12,81663,9681.17,97.74,23,6,1,4,73,0,9,1,19,No
+26,Male,Masters,Dhaka,5,99492,19352.72,75.78,11,3,1,2,16,1,9,6,16,No
+22,Female,Bachelors,Khulna,2,52085,4002.0,77.95,7,16,4,3,61,0,1,5,5,No
+23,Male,High School,Barisal,12,36423,2869.64,75.53,20,27,2,4,91,2,5,1,15,No
+37,Female,Bachelors,Sylhet,12,130243,6877.99,90.85,24,6,0,3,35,3,7,8,4,No
+44,Female,Bachelors,Dhaka,5,16539,3180.75,86.28,17,6,3,3,62,0,4,10,37,No
+42,Female,Bachelors,Barisal,8,131616,9627.01,76.69,17,8,2,3,84,2,6,7,2,No
+42,Other,Bachelors,Sylhet,11,35137,6210.42,77.37,22,17,4,2,43,1,6,9,19,No
+31,Male,Bachelors,Dhaka,1,22916,3301.57,89.91,19,16,3,3,95,2,8,3,48,Yes
+28,Female,Masters,Chittagong,12,118720,12929.67,85.65,6,20,1,4,43,2,8,1,30,No
+30,Female,Bachelors,Sylhet,6,70682,12068.88,79.43,20,2,4,5,59,0,4,10,13,No
+41,Female,Bachelors,Dhaka,2,24440,3487.17,83.34,23,6,3,5,25,2,9,8,36,No
+57,Male,Bachelors,Barisal,6,90534,7896.37,89.44,16,24,1,3,48,2,6,2,32,No
+31,Female,High School,Chittagong,3,101994,11344.52,97.29,9,17,3,5,80,1,7,8,49,Yes
+39,Male,High School,Sylhet,2,140519,13762.84,91.75,16,28,0,5,97,3,1,10,41,Yes
+33,Male,Bachelors,Barisal,11,19730,3858.01,95.49,19,7,2,3,35,3,1,5,14,Yes
+57,Female,High School,Barisal,7,132518,7117.88,91.36,14,11,2,3,17,2,8,3,43,Yes
+24,Female,Bachelors,Barisal,10,139113,25896.69,96.16,8,27,3,1,61,1,9,2,12,Yes
+36,Male,Bachelors,Rajshahi,7,81621,8892.79,81.66,15,13,2,2,76,2,8,6,44,Yes
+46,Female,Masters,Sylhet,1,119739,11251.02,80.84,15,12,2,1,99,3,2,5,14,Yes
+33,Female,Bachelors,Khulna,10,133745,21397.64,92.04,9,25,1,4,82,0,5,2,15,No
+37,Male,Bachelors,Chittagong,2,66570,5619.33,75.51,9,9,0,2,28,2,10,9,34,No
+34,Female,High School,Sylhet,14,135092,12735.13,87.58,6,20,1,3,30,2,3,1,18,No
+38,Male,Bachelors,Sylhet,3,109260,13571.75,79.05,9,25,0,2,36,0,5,9,18,No
+54,Female,Masters,Rajshahi,12,119144,9282.07,79.58,24,5,2,1,22,2,9,8,22,No
+29,Female,Bachelors,Sylhet,4,31614,2656.3,88.41,22,17,3,5,51,3,6,10,24,No
+35,Other,Masters,Sylhet,9,119215,17220.77,95.75,22,22,1,1,34,3,5,10,30,No
+46,Male,Bachelors,Dhaka,3,64637,4707.37,82.06,18,1,1,4,93,3,4,7,12,No
+34,Female,Bachelors,Khulna,5,70138,8195.44,89.41,5,26,2,3,95,2,6,1,0,No
+24,Male,Masters,Chittagong,8,87199,12106.01,76.13,10,3,0,5,69,3,1,4,48,Yes
+26,Male,PhD,Dhaka,9,132891,15012.76,95.77,24,3,0,5,65,3,9,9,44,Yes
+45,Female,High School,Dhaka,6,144534,25971.55,83.64,21,13,4,1,93,1,1,9,31,Yes
+51,Female,Masters,Sylhet,12,95881,17635.07,87.83,5,16,0,3,85,0,1,3,48,Yes
+25,Female,Masters,Rajshahi,9,49911,7204.31,82.93,15,25,0,4,29,1,2,10,39,No
+28,Male,Masters,Sylhet,11,52181,6699.35,87.76,19,17,1,4,75,1,10,1,22,No
+36,Female,Bachelors,Sylhet,4,105625,10449.84,96.79,13,27,0,1,36,0,1,4,48,Yes
+48,Male,PhD,Chittagong,10,86523,13561.49,76.28,13,2,2,5,10,0,8,8,38,No
+43,Male,High School,Sylhet,8,94596,15076.69,94.01,10,11,0,4,88,2,7,6,47,Yes
+49,Female,Masters,Khulna,9,93570,6647.26,83.56,6,9,1,4,82,1,5,5,13,No
+44,Male,Bachelors,Chittagong,2,78773,5624.83,97.01,10,1,4,4,35,3,7,10,24,No
+39,Other,Bachelors,Chittagong,5,66496,5644.79,92.9,11,21,4,3,89,2,8,8,38,No
+57,Female,High School,Chittagong,11,35671,5673.23,96.37,14,19,0,5,52,1,8,8,16,No
+24,Male,Bachelors,Barisal,8,49345,9090.04,86.13,12,18,2,1,76,3,8,7,27,No
+49,Male,High School,Dhaka,1,60765,7563.66,92.37,9,7,0,3,90,2,10,9,48,Yes
+41,Male,High School,Sylhet,9,140944,9039.92,88.46,12,25,2,4,84,2,4,9,36,No
+55,Male,Bachelors,Barisal,10,44908,7105.35,78.79,21,4,4,1,48,0,1,8,49,Yes
+43,Female,Bachelors,Rajshahi,3,29183,5830.16,93.26,21,1,4,4,87,2,1,2,31,No
+42,Other,Bachelors,Rajshahi,7,102089,16755.52,87.88,10,9,4,3,91,1,3,5,40,No
+46,Female,High School,Sylhet,5,52205,4098.89,94.38,9,24,1,2,30,0,1,3,42,Yes
+57,Other,Bachelors,Khulna,1,98840,18913.3,91.68,9,13,2,2,19,2,2,2,12,Yes
+29,Male,Bachelors,Khulna,9,98544,7044.47,80.68,12,20,3,1,19,1,1,6,34,Yes
+31,Male,Bachelors,Dhaka,7,75987,9434.82,87.5,22,9,3,2,52,3,7,7,24,No
+58,Male,Bachelors,Dhaka,9,47547,4810.0,97.66,13,27,3,5,84,1,10,10,18,No
+57,Male,High School,Chittagong,10,149366,23701.68,78.41,6,2,3,1,76,3,10,4,25,No
+45,Female,Bachelors,Rajshahi,9,66920,10873.13,92.29,24,27,4,1,98,2,6,5,34,Yes
+45,Female,Bachelors,Rajshahi,9,59450,8128.85,91.09,17,15,1,2,63,0,6,2,19,No
+54,Male,Bachelors,Dhaka,12,90037,14782.81,84.66,18,17,2,3,72,2,4,7,31,No
+32,Male,Bachelors,Sylhet,4,43329,2399.39,79.83,12,4,1,1,55,0,4,8,20,No
+36,Female,Bachelors,Sylhet,7,129392,15056.33,98.19,22,1,2,4,46,0,8,6,23,No
+56,Male,Bachelors,Khulna,2,96624,8332.33,83.55,11,15,2,3,25,0,9,2,36,No
+58,Female,Masters,Khulna,14,147593,14195.32,85.0,9,17,4,5,89,0,10,1,32,No
+49,Male,Bachelors,Chittagong,5,88262,4785.56,90.86,17,29,3,3,61,2,3,10,1,No
+56,Female,Bachelors,Khulna,9,141713,12190.8,76.66,21,7,3,5,70,1,8,4,4,No
+45,Male,Bachelors,Sylhet,5,123334,7898.9,98.28,16,1,0,4,67,0,3,5,40,No
+25,Male,Bachelors,Sylhet,6,136772,9335.86,88.02,11,29,4,3,99,2,10,8,25,No
+46,Male,Bachelors,Rajshahi,14,97134,5146.84,97.1,5,23,1,5,83,0,3,1,35,No
+38,Male,Masters,Barisal,8,98219,18560.25,81.58,6,28,3,3,17,3,4,9,39,No
+47,Female,PhD,Chittagong,14,119696,8810.3,84.17,18,28,2,1,81,3,2,9,3,Yes
+58,Male,PhD,Barisal,6,89623,16541.48,87.74,15,23,0,4,59,2,8,3,18,No
+54,Female,Bachelors,Sylhet,13,124876,16169.95,93.07,8,2,2,1,70,3,8,1,13,No
+24,Female,Bachelors,Dhaka,5,120292,11626.39,94.4,21,10,0,3,22,1,8,6,39,No
+49,Male,Bachelors,Dhaka,1,52967,5546.4,83.53,23,24,4,1,42,0,5,5,36,No
+34,Male,Bachelors,Chittagong,3,121179,22459.06,77.75,10,7,1,4,96,3,5,5,46,Yes
+23,Male,Bachelors,Rajshahi,4,42360,5815.57,87.08,9,27,3,2,23,1,1,1,35,Yes
+43,Male,Masters,Chittagong,6,58681,6016.59,82.96,24,18,0,5,40,1,8,10,6,No
+32,Male,Bachelors,Barisal,10,84073,9829.35,84.11,19,14,3,1,20,2,10,5,47,Yes
+27,Male,Bachelors,Khulna,12,40854,4497.24,82.38,6,16,4,2,57,3,7,6,45,Yes
+27,Female,Bachelors,Khulna,7,133911,22852.55,77.63,18,12,0,5,53,3,6,10,39,No
+31,Male,Masters,Rajshahi,9,58928,7840.83,95.04,18,9,2,1,67,2,8,7,31,No
+34,Male,Masters,Khulna,9,32925,3192.84,97.54,18,10,3,3,99,2,9,5,43,Yes
+31,Female,High School,Rajshahi,14,140101,10738.59,84.02,13,15,3,3,40,1,4,4,39,No
+23,Female,Bachelors,Barisal,5,148081,14452.93,93.87,21,13,3,2,57,2,9,7,34,No
+36,Female,Bachelors,Khulna,10,63565,4515.69,98.07,16,5,0,1,87,1,6,9,29,No
+37,Female,Bachelors,Barisal,8,40020,3109.22,97.55,11,4,3,3,34,0,4,9,21,No
+37,Male,Masters,Sylhet,8,44185,4680.13,87.79,11,3,0,5,54,1,9,3,35,No
+48,Male,Bachelors,Khulna,13,111003,18869.87,76.14,21,5,3,1,60,0,7,1,26,No
+59,Female,Bachelors,Dhaka,1,101614,19986.51,95.04,15,26,4,3,73,1,3,1,18,No
+50,Other,Bachelors,Barisal,10,91309,4982.75,83.96,6,29,4,4,82,1,1,8,28,Yes
+40,Male,Bachelors,Barisal,10,107903,20456.87,87.57,10,7,2,4,43,2,10,9,18,No
+44,Female,High School,Chittagong,9,92743,16160.29,78.94,24,24,2,4,96,1,8,2,6,No
+49,Female,Masters,Khulna,10,17475,2929.52,91.36,16,12,0,5,56,2,1,3,22,Yes
+40,Male,Bachelors,Rajshahi,7,60432,8356.07,79.86,12,5,0,5,25,0,8,1,0,No
+48,Other,Masters,Khulna,2,71189,10405.09,76.93,12,15,0,4,94,3,2,9,30,No
+31,Other,High School,Sylhet,2,18044,3273.94,87.78,18,24,1,1,82,3,1,1,9,Yes
+34,Male,High School,Dhaka,3,73526,5623.01,77.61,12,28,3,3,30,3,8,8,0,No
+38,Male,Bachelors,Chittagong,14,125781,17715.35,76.79,24,24,3,4,19,3,8,3,34,No
+25,Male,Bachelors,Khulna,14,65111,9776.11,75.86,8,4,3,4,49,3,5,7,32,No
+45,Male,PhD,Rajshahi,8,35707,5108.72,85.94,23,25,0,5,65,1,1,5,15,No
+30,Male,Bachelors,Chittagong,5,72799,7608.26,97.11,7,21,4,2,97,1,3,5,8,No
+58,Female,High School,Chittagong,11,23365,3626.89,76.12,18,2,4,2,94,1,9,2,47,Yes
+43,Female,Bachelors,Barisal,10,75277,9196.55,94.5,13,14,3,4,44,3,4,2,48,Yes
+51,Male,High School,Barisal,7,18177,2364.14,79.35,19,3,0,1,34,2,4,2,20,Yes
+31,Female,Bachelors,Barisal,7,139047,16375.57,92.01,24,19,2,5,94,1,3,5,34,No
+39,Female,High School,Dhaka,8,88968,13921.45,83.09,24,17,3,1,11,0,4,2,4,No
+51,Male,Bachelors,Dhaka,11,46554,8583.91,75.33,23,10,0,2,45,0,5,6,29,No
+24,Female,Bachelors,Barisal,1,66627,6925.51,83.69,8,25,0,2,82,3,10,5,27,No
+34,Female,High School,Rajshahi,9,132904,16071.62,77.32,18,1,2,1,35,1,4,2,3,No
+51,Male,PhD,Chittagong,1,52105,3112.4,77.17,16,2,4,3,12,2,6,7,43,Yes
+28,Female,Bachelors,Chittagong,8,35471,3236.81,78.11,20,22,4,5,16,3,3,8,45,Yes
+27,Female,High School,Rajshahi,4,82133,8845.37,95.75,21,1,3,4,81,3,2,3,27,Yes
+33,Male,PhD,Khulna,2,64659,8648.6,79.32,24,16,0,5,16,1,9,2,29,No
+32,Other,Bachelors,Sylhet,8,145166,13219.49,92.15,24,20,4,1,11,2,4,2,5,No
+38,Male,Bachelors,Rajshahi,2,27115,3301.66,88.65,20,8,3,5,89,0,9,9,3,No
+35,Male,Bachelors,Sylhet,12,108694,12482.97,89.47,24,26,3,5,83,1,10,2,14,No
+24,Female,Bachelors,Rajshahi,12,40103,5206.73,89.92,14,3,4,5,66,2,10,6,13,No
+47,Male,Masters,Chittagong,12,129377,11738.46,81.07,18,20,3,4,67,3,4,5,21,No
+36,Male,Masters,Sylhet,6,22543,3975.99,85.14,15,29,2,1,60,3,4,5,8,Yes
+35,Male,Bachelors,Rajshahi,6,108791,17440.94,98.86,17,16,0,3,98,1,10,2,14,No
+55,Female,Bachelors,Khulna,1,114575,6609.57,93.75,20,3,3,2,37,3,3,10,5,No
+53,Male,Bachelors,Rajshahi,10,17682,1155.52,92.93,22,19,1,5,70,0,4,6,45,Yes
+31,Female,Bachelors,Dhaka,6,75473,5405.04,92.42,10,22,3,4,91,2,5,8,26,No
+56,Male,Bachelors,Barisal,13,138385,10843.82,97.53,8,26,1,3,87,0,3,4,37,No
+26,Female,Bachelors,Dhaka,4,77474,7809.19,78.02,19,18,2,1,13,1,9,4,2,No
+54,Female,Bachelors,Barisal,14,95688,18254.97,75.92,20,25,2,5,61,2,10,4,37,No
+36,Female,High School,Khulna,4,144367,12613.32,79.95,16,20,2,3,67,0,8,7,3,No
+28,Female,Bachelors,Rajshahi,12,23155,4163.3,91.55,9,2,4,5,34,1,6,4,10,No
+28,Female,Bachelors,Barisal,7,137148,24107.38,94.02,17,16,2,1,52,3,5,9,13,No
+27,Male,High School,Rajshahi,4,26404,1656.72,80.63,22,2,2,2,13,2,5,4,46,Yes
+27,Male,Bachelors,Sylhet,2,54308,9011.21,98.82,9,21,4,4,82,2,7,7,19,No
+32,Male,Bachelors,Rajshahi,9,141088,7962.33,91.44,12,17,3,4,72,1,10,3,28,No
+26,Female,Bachelors,Sylhet,13,61093,10116.39,81.69,19,1,1,2,59,2,2,9,5,Yes
+28,Male,Bachelors,Khulna,10,52307,4424.21,90.53,10,2,2,5,83,1,4,1,15,No
+23,Female,Bachelors,Chittagong,5,78472,4972.9,85.73,24,5,4,2,72,3,10,9,42,Yes
+49,Other,Bachelors,Dhaka,12,116558,18965.78,76.66,9,16,3,2,72,0,3,4,24,No
+25,Male,Bachelors,Chittagong,9,117574,18426.1,97.73,15,27,3,3,98,2,7,7,24,No
+52,Male,High School,Chittagong,5,84292,16111.28,84.45,16,26,4,3,50,1,5,3,9,No
+40,Male,Bachelors,Khulna,13,99045,10087.64,92.14,9,8,0,4,72,3,5,4,27,No
+55,Male,Bachelors,Khulna,5,144892,15417.09,88.04,9,1,0,4,39,3,6,2,18,No
+44,Male,Bachelors,Khulna,12,130796,24600.32,77.22,22,5,0,3,92,3,2,6,5,Yes
+43,Male,Bachelors,Barisal,12,99490,7578.0,97.69,8,15,2,2,55,3,1,6,10,Yes
+22,Female,Masters,Barisal,9,83662,12331.15,90.58,16,3,3,3,45,0,10,10,43,Yes
+26,Male,High School,Khulna,14,147667,27582.51,83.78,10,18,1,1,23,2,1,5,39,Yes
+50,Female,Masters,Sylhet,1,41888,6631.69,93.9,13,7,4,4,94,0,6,9,13,No
+50,Male,Bachelors,Khulna,11,133839,13158.69,92.05,22,10,1,4,73,0,1,3,28,Yes
+22,Female,Bachelors,Khulna,2,109047,5830.76,93.96,19,8,0,4,51,0,1,2,28,No
+41,Male,Bachelors,Barisal,1,80171,7252.98,83.74,7,29,2,2,25,2,1,3,0,Yes
+28,Female,High School,Dhaka,3,80709,7363.26,91.98,23,17,3,4,12,3,1,4,25,No
+48,Female,Bachelors,Rajshahi,3,92101,13835.56,75.18,20,18,3,5,55,0,8,6,32,No
+51,Male,Bachelors,Chittagong,14,19076,3774.29,86.59,14,9,2,1,56,0,1,5,5,Yes
+42,Male,Bachelors,Khulna,8,133035,25310.82,75.5,24,1,3,3,18,2,8,7,22,No
+59,Male,Bachelors,Dhaka,3,104720,5602.62,84.88,10,6,1,5,23,1,9,10,36,No
+48,Male,Bachelors,Rajshahi,11,20965,3810.44,94.83,21,15,0,4,97,2,9,5,34,No
+56,Male,Bachelors,Sylhet,10,47304,6593.85,77.5,9,7,0,5,43,3,8,4,8,No
+37,Female,Masters,Dhaka,10,128740,17922.26,83.51,14,3,3,2,79,1,6,9,9,No
+50,Male,Bachelors,Rajshahi,2,41797,2237.57,82.2,14,13,2,3,94,3,6,10,32,No
+49,Female,Masters,Sylhet,13,31514,4482.13,93.3,14,1,1,1,17,0,8,7,48,Yes
+55,Male,PhD,Sylhet,9,33609,6134.79,88.11,23,14,4,2,19,0,1,9,38,Yes
+57,Male,Bachelors,Barisal,8,72920,3662.69,92.66,23,26,4,2,40,0,2,7,41,Yes
+25,Female,Bachelors,Barisal,14,131776,24946.92,76.2,5,4,0,2,16,0,6,6,8,No
+50,Female,Masters,Chittagong,5,95165,8027.05,80.5,23,8,4,3,52,3,3,7,49,Yes
+59,Male,Masters,Rajshahi,13,23295,3735.73,93.9,6,8,3,3,86,0,6,7,23,No
+44,Male,PhD,Sylhet,2,146118,8479.1,80.94,9,7,0,1,68,3,5,5,19,No
+30,Female,High School,Rajshahi,8,53192,4869.29,79.3,22,12,2,2,29,1,5,4,12,No
+24,Female,Masters,Barisal,6,56476,9465.1,81.94,24,26,0,2,28,0,4,10,20,Yes
+39,Male,Bachelors,Sylhet,12,39803,2151.99,93.93,9,14,2,4,51,1,2,10,33,No
+54,Male,Masters,Khulna,14,19355,3218.93,84.64,12,19,0,3,69,2,7,9,49,Yes
+56,Male,High School,Barisal,12,117018,5901.58,91.35,17,10,3,3,10,0,5,1,34,No
+47,Male,High School,Dhaka,12,19031,3096.84,98.39,8,23,4,5,46,0,5,6,20,No
+45,Male,Bachelors,Khulna,5,41446,2433.79,81.01,16,11,4,4,96,3,1,6,43,Yes
+38,Female,Masters,Chittagong,5,138253,9802.75,99.25,21,27,0,4,76,2,1,4,41,Yes
+34,Male,Bachelors,Sylhet,2,37294,3313.5,75.84,22,7,4,3,72,0,5,6,13,No
+26,Male,PhD,Barisal,2,117697,9138.72,80.74,13,4,2,1,62,2,10,8,37,No
+56,Female,Masters,Khulna,2,42739,6178.69,94.68,9,8,1,3,39,0,7,1,43,Yes
+36,Male,Masters,Rajshahi,11,27527,1674.27,92.25,21,1,1,1,71,3,7,4,3,No
+53,Female,Bachelors,Sylhet,1,106034,10066.5,88.21,11,23,0,2,95,0,3,10,40,No
+36,Female,High School,Rajshahi,14,15424,2236.48,83.88,10,15,1,5,52,0,3,8,48,Yes
+43,Other,Bachelors,Rajshahi,3,26814,2931.05,82.05,23,8,0,1,46,0,7,1,28,No
+27,Female,Masters,Khulna,5,81934,5646.3,94.98,7,13,1,1,76,2,5,8,37,No
+31,Female,High School,Dhaka,9,100220,14450.61,79.66,20,12,0,1,32,2,1,1,25,Yes
+57,Male,High School,Barisal,8,50651,2997.6,94.72,20,20,3,3,53,0,10,8,35,No
+56,Female,Bachelors,Sylhet,7,117687,19449.44,75.03,11,8,2,4,59,3,6,9,35,No
+28,Female,Bachelors,Barisal,2,96352,7703.32,87.89,14,5,1,1,62,2,5,1,23,No
+48,Female,Masters,Chittagong,9,87276,11078.52,97.07,20,3,2,2,96,3,4,6,49,Yes
+44,Female,Bachelors,Barisal,8,25689,4093.96,89.19,15,25,3,1,28,3,1,4,31,Yes
+26,Female,High School,Khulna,1,31257,5696.29,86.55,24,14,0,5,23,0,4,8,25,No
+51,Male,Bachelors,Rajshahi,13,138181,21966.85,82.94,12,20,2,4,24,1,5,7,22,No
+52,Male,Bachelors,Sylhet,14,99987,8747.48,87.74,11,9,4,4,19,3,3,9,25,No
+59,Male,Masters,Sylhet,9,89017,5342.89,86.92,13,20,0,4,65,1,3,3,13,No
+24,Male,Masters,Barisal,6,140039,13137.29,85.57,5,14,4,5,48,2,7,3,27,No
+37,Male,Masters,Chittagong,13,53690,5048.2,99.15,9,4,0,2,91,0,6,10,23,No
+50,Female,PhD,Rajshahi,6,71802,5339.94,89.14,8,21,2,5,58,0,5,4,22,No
+53,Female,High School,Rajshahi,2,16756,3125.71,87.57,20,27,0,1,44,1,7,8,22,Yes
+24,Male,Masters,Rajshahi,6,33599,3252.55,91.32,18,21,3,1,70,0,6,7,31,No
+54,Male,Bachelors,Rajshahi,8,146288,23034.3,99.27,19,7,3,1,51,2,3,9,12,No
+24,Male,Bachelors,Khulna,2,39893,3528.47,97.89,18,1,3,3,89,1,6,1,7,No
+47,Female,High School,Chittagong,9,125044,15441.24,83.28,23,23,1,5,36,3,9,4,26,No
+28,Female,Bachelors,Dhaka,5,117386,8677.86,77.84,6,25,3,2,17,1,1,4,6,Yes
+43,Male,Bachelors,Rajshahi,5,112262,11733.09,77.61,13,4,0,4,63,2,9,6,48,Yes
+25,Female,Masters,Sylhet,13,129857,18297.67,75.71,22,1,0,4,92,1,5,3,38,No
+30,Female,Bachelors,Khulna,13,31834,3638.03,84.24,6,19,2,1,25,2,9,10,47,Yes
+39,Male,Bachelors,Barisal,4,83940,7188.46,79.36,23,25,0,1,31,0,3,4,0,No
+52,Female,Bachelors,Barisal,1,73052,8499.03,88.02,24,13,0,4,53,1,6,7,48,Yes
+59,Male,High School,Chittagong,4,75595,11825.9,97.4,23,7,1,2,79,2,8,1,23,No
+31,Male,PhD,Chittagong,13,43315,7397.88,77.74,18,8,3,1,14,1,1,2,13,Yes
+44,Male,Masters,Khulna,7,105881,19240.08,79.43,8,2,4,5,40,3,9,9,44,Yes
+51,Male,Masters,Sylhet,9,60281,9340.97,95.48,23,20,3,4,34,2,9,1,20,No
+56,Male,Bachelors,Chittagong,9,108413,10823.14,94.16,6,28,1,1,74,0,2,2,22,Yes
+47,Male,High School,Khulna,1,24506,1329.38,88.49,24,3,3,5,20,0,9,7,17,No
+24,Male,Bachelors,Dhaka,1,33731,4217.46,89.92,23,28,1,5,59,0,6,8,9,No
+55,Female,Masters,Chittagong,6,32312,5799.18,75.27,17,25,3,4,77,0,7,6,2,No
+27,Other,High School,Sylhet,9,24134,2756.9,99.82,18,21,0,1,46,3,1,4,11,Yes
+44,Female,Bachelors,Khulna,14,33314,6103.03,76.8,12,24,1,1,33,1,6,10,32,No
+28,Male,Bachelors,Khulna,1,102700,17307.29,92.6,10,26,4,3,57,3,2,7,44,Yes
+34,Other,Bachelors,Dhaka,6,102651,8878.37,98.8,7,6,1,3,36,1,9,9,6,No
+36,Male,Bachelors,Khulna,7,143610,7256.64,85.01,6,6,2,1,91,0,8,7,28,No
+27,Female,Bachelors,Rajshahi,11,96047,11849.76,90.2,18,5,2,5,25,0,7,10,29,No
+26,Male,Masters,Rajshahi,11,148378,27893.95,81.08,16,20,3,5,85,2,9,3,30,No
+24,Male,Masters,Chittagong,8,64251,3560.01,85.03,22,29,0,5,15,0,7,7,46,Yes
+22,Female,Bachelors,Rajshahi,12,19524,3130.52,91.25,24,8,2,3,78,3,9,1,49,Yes
+29,Female,Masters,Chittagong,3,72759,8674.2,98.3,15,27,1,3,72,2,5,10,26,No
+38,Male,High School,Chittagong,11,97262,14853.55,82.87,15,3,2,2,17,2,1,7,11,Yes
+30,Female,Bachelors,Rajshahi,8,43968,8423.12,99.1,12,2,1,4,18,1,10,8,3,No
+45,Female,Masters,Sylhet,5,121338,19402.91,84.42,9,12,1,1,11,1,1,5,15,Yes
+41,Male,Masters,Sylhet,13,109494,14067.98,96.7,18,16,2,4,68,1,9,7,41,Yes
+48,Male,Bachelors,Khulna,12,89486,6813.8,83.22,22,13,0,4,43,0,6,6,43,Yes
+40,Female,Masters,Sylhet,14,47246,8838.41,84.63,13,21,0,1,50,3,2,8,22,Yes
+49,Other,High School,Rajshahi,4,67014,3716.81,81.38,10,28,1,1,67,3,9,7,16,Yes
+52,Male,High School,Dhaka,7,55402,6901.32,79.28,7,27,0,3,59,2,3,6,41,Yes
+39,Female,Bachelors,Sylhet,7,55431,4956.73,78.23,18,5,1,2,71,0,3,7,43,Yes
+44,Male,Bachelors,Rajshahi,5,58097,6785.8,79.81,21,9,0,3,47,0,5,4,31,No
+47,Male,High School,Barisal,3,136878,18467.81,76.65,21,22,2,3,23,3,2,8,39,No
+27,Female,Bachelors,Khulna,5,129782,6792.48,87.31,9,29,0,1,91,2,1,5,46,Yes
+34,Male,Masters,Khulna,9,35548,6069.21,75.2,6,16,3,1,76,2,9,9,27,No
+56,Female,PhD,Rajshahi,1,123837,23674.59,94.86,13,25,1,3,14,3,2,5,45,Yes
+43,Male,High School,Barisal,6,80507,13061.78,80.61,21,25,0,5,44,2,7,7,19,No
+35,Male,High School,Dhaka,2,76772,9952.6,81.53,13,15,0,4,19,0,9,1,27,No
+32,Female,Masters,Barisal,13,131706,25581.44,82.27,20,19,0,4,22,2,1,2,19,No
+27,Female,PhD,Dhaka,8,108403,17294.29,87.16,10,27,4,1,11,3,4,10,46,Yes
+49,Female,Bachelors,Rajshahi,11,116686,15118.94,91.91,17,15,0,3,55,3,1,1,25,No
+58,Male,Bachelors,Barisal,3,98762,11139.65,97.67,8,7,3,5,37,1,10,1,19,No
+52,Male,Bachelors,Khulna,9,64418,10857.58,99.47,16,8,2,1,26,2,8,10,35,No
+50,Male,Bachelors,Barisal,5,39476,4195.01,85.15,21,29,3,3,72,2,10,8,25,No
+54,Female,Bachelors,Barisal,1,92529,9829.34,90.75,15,23,4,4,37,3,6,9,44,Yes
+39,Male,Bachelors,Dhaka,10,64238,4436.78,77.99,14,16,4,4,69,3,4,1,17,No
+26,Female,Bachelors,Rajshahi,12,63050,6378.5,94.87,23,24,4,4,98,3,2,1,9,No
+28,Male,Bachelors,Chittagong,9,130501,18144.64,86.19,21,16,2,3,86,0,4,4,39,No
+34,Other,Masters,Sylhet,2,95167,14275.51,96.0,24,5,3,1,67,3,4,6,27,No
+22,Male,Bachelors,Rajshahi,9,70796,4905.63,99.97,16,20,1,5,94,2,3,5,0,No
+24,Female,Bachelors,Chittagong,4,97769,15584.99,92.37,23,1,1,2,74,1,3,5,4,No
+33,Other,Bachelors,Chittagong,7,56657,10743.75,94.27,12,16,2,5,85,3,3,4,13,No
+53,Male,Bachelors,Rajshahi,4,112167,15509.78,83.46,7,25,0,4,22,2,8,8,13,No
+57,Male,Masters,Chittagong,5,102143,13042.38,76.99,20,12,2,1,28,3,8,5,47,Yes
+57,Male,Bachelors,Khulna,14,70074,10874.87,86.69,15,23,1,2,55,0,7,2,37,No
+52,Male,Masters,Khulna,13,66069,8242.41,94.36,6,11,4,5,92,1,4,10,10,No
+50,Male,Masters,Dhaka,3,108149,8349.32,97.49,10,17,4,2,93,1,2,6,38,Yes
+44,Female,PhD,Sylhet,10,65367,11745.86,87.61,13,5,0,5,48,2,10,10,43,Yes
+59,Male,Masters,Khulna,14,120704,19950.57,98.31,14,17,1,2,58,1,8,1,13,No
+58,Other,Masters,Sylhet,9,121935,22795.04,88.8,6,6,2,2,18,1,9,6,26,No
+59,Other,Masters,Sylhet,12,95275,6342.2,88.71,6,1,4,4,32,1,6,3,3,No
+23,Male,Masters,Rajshahi,7,66167,7895.06,96.92,8,13,2,1,82,2,3,4,26,No
+43,Male,Bachelors,Sylhet,13,108811,19747.09,94.85,21,29,0,4,18,2,3,5,4,No
+27,Other,High School,Khulna,8,135907,14214.36,95.66,6,13,4,5,66,0,7,5,18,No
+37,Male,PhD,Sylhet,11,134372,14992.34,80.38,9,28,0,5,54,3,5,9,7,No
+31,Male,Bachelors,Rajshahi,11,60862,12095.37,95.51,17,29,4,2,88,2,9,7,46,Yes
+43,Male,High School,Rajshahi,14,46828,7947.46,81.55,6,12,0,5,53,0,7,6,2,No
+36,Male,High School,Rajshahi,10,96745,5750.99,90.15,11,15,3,1,70,2,1,3,36,Yes
+29,Female,High School,Chittagong,9,79527,7500.08,94.72,19,20,3,5,15,1,9,10,3,No
+43,Female,Bachelors,Chittagong,6,57833,6553.91,97.45,14,10,0,4,14,3,8,9,10,No
+59,Female,Masters,Chittagong,3,49816,2659.48,90.65,23,29,4,5,26,2,6,7,21,No
+40,Male,Bachelors,Chittagong,12,51549,8846.55,86.74,19,2,0,5,26,3,7,3,44,Yes
+25,Female,Bachelors,Rajshahi,7,147972,28549.5,93.19,17,16,0,5,48,0,8,10,25,No
+22,Male,Bachelors,Barisal,2,72811,6900.79,91.7,18,8,2,5,12,2,9,6,24,No
+37,Male,Bachelors,Khulna,9,147208,14729.6,98.39,22,7,0,4,55,3,6,5,16,No
+54,Male,Bachelors,Sylhet,12,137192,13472.57,89.52,12,28,0,4,24,0,4,8,14,No
+31,Female,Masters,Rajshahi,12,117101,11256.28,94.83,11,5,4,3,37,0,1,8,28,No
+47,Female,Bachelors,Khulna,9,42977,2350.28,80.13,7,21,0,4,54,2,1,10,27,No
+45,Male,High School,Sylhet,6,48583,7738.95,82.52,10,24,4,4,49,2,2,3,4,No
+30,Female,PhD,Barisal,12,119356,11604.63,76.61,5,25,0,1,17,1,2,7,48,Yes
+53,Male,Bachelors,Chittagong,5,16447,2071.85,76.0,9,19,4,4,17,1,3,4,49,Yes
+45,Female,Masters,Dhaka,6,81512,15207.87,99.7,23,6,2,5,11,1,1,1,49,Yes
+29,Male,Masters,Dhaka,11,135051,12345.2,87.29,15,28,3,5,37,2,10,5,8,No
+49,Female,Bachelors,Chittagong,10,47149,6985.42,96.46,7,27,0,1,46,2,9,7,22,Yes
+31,Female,High School,Sylhet,4,44991,7060.39,82.39,16,4,3,5,36,1,4,10,41,Yes
+27,Male,Bachelors,Sylhet,3,58514,6920.7,97.63,15,11,2,3,41,1,6,9,14,No
+26,Female,High School,Sylhet,10,40062,6617.07,79.32,17,25,4,5,49,2,1,8,17,No
+43,Male,Bachelors,Chittagong,14,85508,8453.57,77.75,24,7,4,2,23,3,10,2,41,Yes
+53,Male,Masters,Chittagong,6,148600,26459.87,79.47,24,17,3,3,49,3,2,3,45,Yes
+31,Other,Bachelors,Dhaka,5,118749,15480.44,81.67,6,19,4,4,69,3,8,5,37,No
+30,Other,Masters,Dhaka,2,132062,13110.24,80.02,14,14,4,5,43,1,10,4,16,No
+49,Male,Bachelors,Barisal,9,17530,1393.01,92.37,22,5,1,1,13,3,4,3,23,Yes
+54,Female,Masters,Barisal,11,102070,19717.75,76.15,5,6,1,5,28,1,2,4,24,No
+45,Male,Masters,Rajshahi,1,135887,19906.92,98.19,9,26,2,3,40,2,6,4,37,No
+45,Male,Masters,Chittagong,13,83414,16287.48,90.64,24,24,0,4,47,2,6,6,1,No
+31,Female,Bachelors,Chittagong,13,92848,15409.11,94.25,10,10,4,4,51,3,1,5,32,No
+42,Female,Bachelors,Dhaka,7,26894,3803.97,82.49,23,25,3,2,45,2,9,9,39,No
+28,Male,Bachelors,Sylhet,12,121658,6941.44,83.95,9,7,4,4,73,3,9,10,15,No
+53,Female,Masters,Rajshahi,8,68289,7355.17,94.43,16,28,0,1,20,2,8,2,20,Yes
+54,Female,Bachelors,Sylhet,13,56153,6732.02,98.66,11,7,1,3,84,2,2,2,44,Yes
+44,Female,High School,Rajshahi,6,148606,16235.59,80.04,13,11,0,5,57,1,2,5,6,No
+40,Female,Bachelors,Dhaka,1,68714,11267.2,77.42,23,29,1,2,28,2,6,9,2,Yes
+42,Other,High School,Barisal,3,127707,20293.53,86.79,6,16,2,1,58,2,4,1,35,No
+47,Male,Bachelors,Rajshahi,2,110670,20081.6,86.94,19,12,1,3,30,1,8,10,44,Yes
+36,Female,Masters,Khulna,14,45636,6400.17,95.31,21,5,2,5,37,1,3,1,19,No
+53,Female,Bachelors,Chittagong,14,144567,25733.91,78.92,5,13,3,5,26,1,10,3,11,No
+26,Male,Bachelors,Chittagong,10,84210,7262.93,91.52,22,8,1,5,90,3,10,2,24,No
+47,Female,High School,Chittagong,9,85152,10006.22,87.38,24,29,3,5,17,0,9,4,15,No
+50,Male,Bachelors,Khulna,13,37916,4540.01,87.33,8,17,3,4,48,0,3,5,3,No
+59,Male,Bachelors,Sylhet,9,88179,8874.71,98.49,14,27,3,1,43,2,3,5,18,Yes
+54,Female,High School,Sylhet,7,148706,9239.38,90.18,13,5,1,3,17,1,8,3,40,No
+32,Female,Masters,Sylhet,8,95768,9108.45,95.03,7,22,2,5,97,3,8,1,25,No
+52,Female,Masters,Barisal,9,122191,8334.23,92.93,15,5,4,5,53,0,8,8,38,No
+32,Female,Masters,Chittagong,6,46754,9022.24,97.71,16,18,3,4,33,1,2,1,43,Yes
+23,Male,High School,Chittagong,6,56344,5498.78,91.78,20,11,2,3,43,3,8,3,46,Yes
+46,Male,Bachelors,Sylhet,8,33449,5911.18,92.88,6,12,3,3,74,0,9,1,3,No
+57,Male,Masters,Dhaka,8,141855,9414.06,95.35,15,14,3,5,69,3,6,4,47,Yes
+44,Male,Bachelors,Barisal,11,45323,5294.24,79.74,13,12,0,1,37,2,8,1,28,No
+56,Male,Bachelors,Rajshahi,5,73132,5606.69,93.73,22,21,4,3,94,0,5,3,15,No
+36,Male,Bachelors,Chittagong,14,96004,8045.53,99.54,7,16,0,1,28,2,5,5,48,Yes
+35,Male,High School,Dhaka,13,69717,10901.83,87.03,16,12,4,2,51,2,5,3,25,No
+48,Male,Bachelors,Sylhet,3,49164,4760.47,77.0,18,20,3,2,24,2,3,5,33,No
+51,Female,Bachelors,Chittagong,8,56784,3837.6,76.76,15,1,2,4,90,1,7,2,0,No
+36,Male,High School,Dhaka,13,126263,8713.8,91.73,18,12,4,3,78,2,9,8,18,No
+46,Female,PhD,Dhaka,9,143195,15778.72,88.99,8,21,2,4,13,3,10,7,22,No
+51,Male,Bachelors,Dhaka,7,80745,4237.55,90.85,9,7,0,5,87,1,7,2,46,Yes
+36,Male,Masters,Sylhet,3,69666,9900.73,95.05,14,27,3,1,63,0,4,2,0,Yes
+29,Male,Bachelors,Sylhet,1,57955,6950.26,78.49,24,12,0,3,28,2,6,4,4,No
+33,Male,Bachelors,Chittagong,7,134906,25590.4,97.17,19,15,0,2,47,1,6,9,47,Yes
+44,Male,Bachelors,Rajshahi,12,48447,3704.14,75.17,22,18,3,4,57,1,8,7,17,No
+40,Female,High School,Rajshahi,8,97217,14546.82,91.86,19,8,2,3,43,2,9,10,6,No
+55,Female,High School,Sylhet,4,82106,12956.02,80.1,10,16,1,3,98,0,3,7,2,No
+55,Male,Bachelors,Chittagong,10,140323,27427.53,82.74,18,28,2,3,95,1,4,2,24,No
+22,Male,Bachelors,Chittagong,4,47814,3712.37,99.23,16,7,0,2,74,1,10,5,1,No
+29,Male,Bachelors,Chittagong,9,148376,9603.81,93.37,18,14,2,4,62,3,6,3,46,Yes
+52,Female,Masters,Chittagong,5,135332,24387.3,82.41,24,5,1,2,99,3,3,10,15,No
+22,Female,Bachelors,Rajshahi,9,142754,21343.56,97.73,16,4,1,4,43,0,4,6,34,No
+49,Male,High School,Khulna,12,62303,4266.93,76.57,24,25,2,2,24,1,1,3,2,Yes
+54,Male,Masters,Dhaka,10,146550,9756.41,76.05,14,22,4,3,47,3,10,2,24,No
+36,Female,Masters,Chittagong,7,45031,2936.11,93.27,7,24,1,3,52,3,7,1,48,Yes
+22,Male,Bachelors,Sylhet,12,112860,13177.21,80.91,24,9,4,2,50,3,7,6,29,No
+43,Male,Masters,Dhaka,14,17547,3182.33,87.38,24,9,4,1,27,1,4,10,44,Yes
+46,Male,Bachelors,Khulna,11,121669,10824.01,88.11,9,29,0,4,96,3,2,1,35,Yes
+49,Male,High School,Rajshahi,13,54871,4813.36,95.8,22,11,0,5,67,3,9,3,8,No
+30,Female,Masters,Khulna,9,21164,2407.16,76.15,5,9,0,5,53,2,8,7,21,No
+23,Female,Bachelors,Barisal,2,129444,10365.01,79.56,15,25,4,5,71,2,3,8,28,No
+29,Male,Bachelors,Rajshahi,12,95087,10927.7,75.45,18,16,2,3,99,1,9,5,20,No
+24,Male,High School,Chittagong,4,120854,8547.58,97.56,6,6,1,5,28,3,5,9,15,No
+26,Male,Bachelors,Rajshahi,2,68644,11353.37,81.83,21,7,3,5,63,0,4,4,4,No
+38,Male,Bachelors,Khulna,8,16219,860.31,82.53,17,8,2,5,94,2,5,7,16,No
+50,Female,Masters,Chittagong,9,76502,4533.24,97.61,11,15,3,3,53,3,1,3,0,No
+51,Female,Bachelors,Sylhet,8,66100,7424.56,94.01,8,11,3,3,96,0,10,4,10,No
+38,Female,Bachelors,Khulna,6,67594,5026.12,84.6,9,29,2,3,12,3,9,9,30,No
+37,Male,Bachelors,Sylhet,12,100627,12540.39,80.06,15,7,1,4,14,0,2,5,30,No
+32,Male,Bachelors,Barisal,1,26034,3788.46,76.73,22,21,0,5,14,3,2,10,18,No
+59,Male,High School,Barisal,11,54006,7307.05,92.78,13,15,2,4,11,2,10,2,5,No
+57,Male,Masters,Barisal,7,65315,7409.36,98.08,9,29,3,2,80,0,8,9,33,Yes
+38,Male,Masters,Barisal,10,121479,19346.78,76.77,8,21,3,2,33,3,7,3,3,No
+37,Female,Bachelors,Barisal,5,122193,14038.58,80.55,20,4,4,4,53,3,7,3,24,No
+38,Male,Bachelors,Khulna,7,145699,18936.83,85.22,16,15,2,1,93,0,3,6,28,No
+41,Male,Bachelors,Rajshahi,3,110181,20056.68,95.57,14,24,3,5,51,0,6,8,8,No
+32,Female,Bachelors,Sylhet,1,28952,3058.32,99.17,9,12,1,3,46,2,3,10,32,No
+56,Male,PhD,Barisal,11,53850,3861.58,82.9,16,4,3,5,11,1,4,10,34,No
+59,Male,Bachelors,Sylhet,7,147445,27349.57,95.23,24,28,2,1,80,0,9,3,31,Yes
+58,Male,Bachelors,Barisal,13,113640,7825.18,80.1,12,17,0,4,20,0,10,2,41,Yes
+45,Male,Bachelors,Dhaka,2,121129,11633.19,80.1,8,3,0,3,55,0,1,7,9,No
+34,Male,Bachelors,Sylhet,12,93526,11541.39,79.72,20,15,0,5,83,1,2,5,24,No
+28,Male,Bachelors,Rajshahi,13,29814,3919.59,86.6,14,8,0,2,89,0,7,5,13,No
+39,Male,Bachelors,Barisal,9,62789,6605.93,81.81,11,24,2,5,24,0,10,10,8,No
+40,Female,Bachelors,Rajshahi,6,62562,8430.71,84.12,19,9,1,1,93,3,7,8,12,No
+42,Male,High School,Khulna,13,70349,5711.86,99.72,6,28,0,3,66,0,3,10,5,No
+53,Male,Bachelors,Barisal,4,73773,3901.43,99.12,10,18,3,4,43,2,5,4,26,No
+42,Male,High School,Barisal,10,15734,2075.0,75.14,17,29,4,2,11,2,10,5,17,Yes
+36,Other,Bachelors,Chittagong,12,49218,7993.62,93.59,7,18,2,4,67,1,5,7,48,Yes
+55,Male,Bachelors,Sylhet,9,115208,8741.19,99.96,20,3,3,3,51,2,7,8,8,No
+37,Male,Bachelors,Khulna,6,56495,5565.35,82.98,21,11,1,1,71,2,6,10,25,No
+53,Male,High School,Dhaka,12,95998,4803.39,75.53,14,5,3,5,45,0,2,10,41,Yes
+58,Female,High School,Dhaka,13,84314,7396.24,85.61,10,28,2,2,76,2,5,1,24,Yes
+59,Male,Masters,Dhaka,12,56659,7144.54,85.32,5,12,3,5,90,3,7,5,46,Yes
+50,Male,Masters,Sylhet,5,28509,4959.8,88.79,11,23,4,1,31,2,2,8,29,Yes
+23,Male,Bachelors,Barisal,11,61319,6432.27,99.68,8,3,4,4,25,0,5,8,41,Yes
+50,Female,Masters,Dhaka,14,24874,4871.52,85.51,19,26,4,2,26,2,9,5,2,Yes
+48,Female,Bachelors,Dhaka,11,57284,9311.37,92.54,17,28,4,2,67,2,2,2,26,Yes
+58,Female,Bachelors,Khulna,4,21534,3205.35,86.14,13,13,4,5,73,2,10,1,18,No
+57,Male,Bachelors,Barisal,10,62453,11407.32,90.87,8,13,1,4,61,2,9,5,11,No
+32,Male,Bachelors,Dhaka,5,60795,11227.97,78.86,12,5,4,2,69,1,10,1,26,No
+47,Female,Masters,Rajshahi,11,117109,21650.65,96.12,10,29,4,5,64,0,2,1,4,Yes
+57,Female,High School,Khulna,1,85501,16589.38,90.74,16,25,1,1,16,0,3,10,22,No
+38,Male,High School,Khulna,4,117267,18514.54,99.6,6,18,0,3,66,2,6,4,20,No
+36,Male,Bachelors,Dhaka,7,103952,10997.43,89.69,14,29,4,5,74,0,8,8,36,No
+40,Male,Bachelors,Khulna,10,95969,11857.31,83.63,8,20,1,1,33,1,10,9,12,No
+22,Male,Bachelors,Rajshahi,8,74688,6136.89,75.88,16,25,1,1,58,0,1,3,4,Yes
+32,Male,Bachelors,Khulna,7,34034,1956.78,95.12,12,22,3,5,37,3,2,4,13,No
+58,Male,High School,Sylhet,3,47861,4791.23,97.87,22,3,3,1,42,0,3,7,38,No
+45,Other,High School,Rajshahi,1,89565,7654.01,94.52,19,12,0,3,94,0,7,7,49,Yes
+47,Male,Bachelors,Barisal,3,48515,8840.69,96.67,13,6,3,1,44,2,6,2,29,No
+58,Other,Bachelors,Barisal,2,126826,8516.32,90.39,9,6,0,5,61,1,8,2,18,No
+50,Male,High School,Dhaka,8,18632,1987.65,87.89,19,8,0,3,85,1,4,8,44,Yes
+44,Female,Bachelors,Sylhet,6,20152,3547.46,94.51,13,11,1,4,67,0,1,5,17,Yes
+37,Male,High School,Chittagong,5,71246,4152.75,97.16,7,8,0,4,80,0,1,7,1,No
+47,Male,Bachelors,Barisal,14,110446,19106.19,86.74,15,27,1,2,23,0,8,3,40,Yes
+55,Male,Masters,Khulna,2,120319,19338.82,86.98,22,6,2,4,60,3,4,1,12,No
+51,Male,Masters,Khulna,6,83419,10406.87,94.96,24,22,2,5,58,1,4,8,44,Yes
+34,Female,Bachelors,Barisal,7,138880,26835.13,97.82,8,17,1,3,29,0,7,5,26,No
+47,Male,Bachelors,Sylhet,1,148484,28853.46,88.31,6,17,0,4,93,2,6,1,3,No
+24,Male,Bachelors,Chittagong,5,88581,17704.29,85.32,21,25,2,5,58,1,3,8,30,No
+38,Male,Bachelors,Barisal,9,71354,12169.47,97.72,9,26,1,4,36,3,1,2,43,Yes
+44,Female,Masters,Rajshahi,10,117905,10218.25,79.58,12,13,2,3,28,2,10,9,11,No
+33,Male,Masters,Chittagong,11,59183,8249.21,93.82,6,24,0,5,80,3,4,10,39,No
+23,Male,Bachelors,Khulna,12,35399,3909.1,87.61,24,6,1,3,34,2,6,9,32,No
+22,Male,Bachelors,Barisal,5,78518,7418.27,87.25,13,8,0,1,29,2,3,1,6,No
+57,Male,Bachelors,Sylhet,14,135007,25836.79,89.68,17,11,4,1,40,3,2,1,3,Yes
+49,Male,PhD,Khulna,3,43313,7204.67,86.07,13,15,1,3,53,3,4,4,20,No
+36,Male,Masters,Barisal,5,73115,9751.26,82.61,10,4,0,1,61,2,7,1,46,Yes
+49,Female,Masters,Barisal,12,19447,1434.03,85.29,8,28,0,4,32,3,6,4,15,Yes
+57,Female,Bachelors,Khulna,7,99579,19228.84,77.1,12,21,2,4,26,1,8,9,23,No
+23,Female,Masters,Sylhet,10,108625,17351.94,82.4,9,15,1,2,42,2,4,2,14,No
+23,Other,Bachelors,Dhaka,5,79052,10329.25,87.96,8,10,4,2,69,2,9,4,12,No
+48,Male,Bachelors,Barisal,1,107047,15058.55,99.72,22,12,1,3,21,3,7,10,42,Yes
+54,Male,High School,Sylhet,10,68213,3993.85,79.19,22,13,4,2,24,0,4,7,35,No
+39,Male,Masters,Khulna,14,55631,5456.32,76.47,7,1,1,3,12,0,2,4,30,No
+23,Female,Masters,Rajshahi,2,34891,4094.65,94.33,20,29,4,3,44,0,6,7,40,No
+26,Male,Bachelors,Barisal,7,86595,14647.89,92.74,12,7,2,1,96,0,10,6,23,No
+37,Male,Masters,Rajshahi,13,141873,23191.93,96.5,8,21,0,4,35,2,9,10,20,No
+27,Female,Bachelors,Rajshahi,8,79459,13494.84,80.83,20,15,4,3,74,2,10,8,39,No
+52,Male,Bachelors,Khulna,13,133527,24203.02,76.01,7,13,4,1,31,2,10,1,34,No
+50,Female,Bachelors,Dhaka,2,29148,5588.38,91.36,6,22,4,2,94,0,7,5,42,Yes
+57,Other,Bachelors,Barisal,6,22051,3479.37,96.24,12,18,0,3,84,2,10,8,43,Yes
+48,Male,Masters,Khulna,10,100877,6353.86,81.1,15,3,4,4,97,3,2,9,46,Yes
+34,Male,Bachelors,Sylhet,2,67278,11081.33,89.22,9,23,0,1,65,3,7,3,37,No
+33,Male,Bachelors,Sylhet,8,149671,25129.62,88.98,12,3,4,1,55,1,10,10,7,No
+56,Male,Bachelors,Barisal,3,110870,14647.52,80.75,5,13,3,3,82,3,10,7,45,Yes
+46,Male,High School,Rajshahi,8,135914,26373.45,83.17,23,22,3,3,18,2,6,1,7,No
+45,Male,High School,Dhaka,5,51606,7447.17,90.13,17,11,2,3,74,3,9,10,17,No
+31,Male,High School,Sylhet,3,138563,24203.56,87.39,10,24,3,1,62,3,6,3,8,No
+42,Other,Bachelors,Khulna,6,45272,6565.26,98.03,9,17,2,2,64,3,5,9,29,No
+33,Male,Masters,Khulna,8,59207,10300.93,86.01,21,16,1,4,72,2,9,3,47,Yes
+35,Female,Bachelors,Khulna,4,120962,16073.67,79.31,12,27,0,5,98,2,3,8,46,Yes
+36,Male,Masters,Chittagong,3,95898,13505.13,81.43,24,15,4,3,63,2,6,7,14,No
+30,Male,Bachelors,Chittagong,1,52468,8220.58,80.14,15,13,2,5,18,3,3,8,41,Yes
+59,Male,Bachelors,Chittagong,7,51449,7163.62,76.83,16,11,2,3,64,3,2,10,38,No
+47,Male,Masters,Barisal,3,78717,12984.78,78.89,21,24,2,3,77,2,4,5,21,No
+25,Male,Masters,Barisal,7,76211,4464.16,75.19,24,5,0,2,62,2,4,5,9,No
+23,Male,Bachelors,Dhaka,14,140894,22611.05,76.82,18,2,1,5,78,0,9,10,46,Yes
+44,Male,High School,Barisal,9,54224,5211.72,91.07,19,15,0,4,94,3,2,2,2,No
+22,Female,Bachelors,Khulna,11,74333,13268.7,85.56,22,17,1,2,39,1,5,8,7,No
+22,Male,Masters,Khulna,14,90856,13629.91,95.59,5,15,2,5,72,0,2,5,35,Yes
+29,Male,Bachelors,Sylhet,1,132186,10859.1,96.46,14,23,4,4,50,3,7,2,29,No
+47,Male,Masters,Chittagong,10,58832,8784.23,91.41,16,3,2,5,18,3,8,3,49,Yes
+39,Male,High School,Khulna,6,40986,2143.41,98.75,8,25,4,4,61,3,8,4,28,No
+59,Male,High School,Khulna,11,23880,2017.03,85.05,9,28,4,1,24,3,4,2,39,Yes
+23,Male,High School,Barisal,1,130238,14280.59,97.57,9,14,0,2,99,2,8,2,15,No
+55,Female,Bachelors,Barisal,11,40091,2607.88,92.54,11,17,3,2,59,1,2,6,0,Yes
+39,Female,Bachelors,Chittagong,9,111514,17368.11,97.35,5,7,3,5,82,1,8,8,38,No
+41,Female,Bachelors,Chittagong,9,41343,7798.3,89.21,5,23,2,2,61,0,10,10,9,No
+34,Male,Bachelors,Sylhet,6,18931,1624.02,91.96,12,13,4,4,59,3,3,3,22,No
+50,Male,High School,Sylhet,3,52932,5157.1,83.2,7,5,2,4,97,1,7,3,33,No
+45,Male,Bachelors,Dhaka,6,111209,14899.35,94.36,9,29,0,4,18,3,6,8,17,No
+22,Female,Bachelors,Dhaka,9,67952,5294.11,99.34,22,14,2,2,91,1,5,5,27,No
+59,Male,PhD,Rajshahi,12,64528,3993.57,93.36,17,17,3,1,32,0,2,2,12,Yes
+48,Female,Bachelors,Barisal,3,29904,4551.52,97.37,6,11,2,2,52,2,2,7,19,Yes
+44,Female,Bachelors,Sylhet,12,143545,7392.86,95.98,13,13,0,3,46,2,4,9,43,Yes
+46,Male,Bachelors,Chittagong,4,38777,3639.98,83.6,22,18,3,3,64,2,1,5,21,No
+51,Male,Masters,Barisal,6,88215,6852.16,93.06,18,3,4,3,85,1,4,1,36,No
+46,Female,High School,Chittagong,12,133426,20980.37,93.55,16,17,2,3,56,0,4,4,22,No
+24,Male,Bachelors,Dhaka,11,87304,11485.49,90.54,22,21,3,2,86,0,3,2,15,No
+58,Male,Bachelors,Sylhet,5,63945,4886.19,80.21,14,20,0,1,92,3,3,4,44,Yes
+27,Female,Bachelors,Barisal,14,42020,3381.03,87.84,11,11,4,3,25,1,5,8,44,Yes
+34,Female,High School,Chittagong,5,92356,18315.6,91.39,13,6,3,1,19,2,10,4,1,No
+42,Male,Bachelors,Rajshahi,6,142070,11795.19,90.45,9,29,0,3,49,1,4,8,5,No
+30,Female,PhD,Sylhet,10,145196,10805.18,91.34,11,24,3,3,23,0,5,9,9,No
+31,Male,Bachelors,Chittagong,1,104781,17005.41,91.09,12,26,0,4,98,0,6,2,18,No
+28,Female,Masters,Sylhet,14,87131,12393.57,86.65,23,29,1,3,30,3,8,10,43,Yes
+45,Female,Bachelors,Barisal,12,93598,16370.71,92.86,16,17,2,2,10,3,8,7,49,Yes
+31,Female,Bachelors,Khulna,4,60568,3443.66,90.44,6,15,2,4,96,1,9,2,13,No
+51,Female,Bachelors,Khulna,1,125461,14509.36,99.37,19,5,2,5,16,2,5,1,35,No
+27,Male,Bachelors,Khulna,6,96414,18792.26,99.98,5,13,3,1,68,1,6,5,10,No
+48,Female,Bachelors,Dhaka,13,17938,1400.02,97.28,13,26,4,4,71,2,8,4,41,Yes
+54,Other,Bachelors,Rajshahi,10,53568,4973.05,86.23,22,3,1,3,98,2,6,2,0,No
+27,Male,Bachelors,Khulna,9,46713,2367.64,99.59,8,22,1,1,67,0,2,8,20,Yes
+26,Female,Masters,Barisal,11,48892,4098.27,87.09,24,6,3,1,97,3,4,6,23,No
+51,Male,Bachelors,Chittagong,3,21524,2505.99,76.01,9,21,1,4,23,3,9,9,34,No
+53,Male,Bachelors,Sylhet,5,55098,3201.21,76.45,14,5,3,1,96,3,6,2,39,No
+37,Male,Bachelors,Rajshahi,4,81657,13284.93,75.27,15,28,1,1,59,1,5,6,44,Yes
+59,Male,Masters,Barisal,13,98532,8309.93,83.19,6,4,1,3,22,0,7,4,31,No
+23,Female,Bachelors,Khulna,9,19406,2989.14,82.26,16,16,3,2,24,0,6,9,46,Yes
+25,Male,High School,Sylhet,8,94459,15323.31,98.59,23,28,3,1,73,1,9,10,0,Yes
+55,Female,High School,Khulna,9,64846,3926.25,94.59,6,13,3,2,93,1,2,10,41,Yes
+48,Male,High School,Chittagong,10,86301,12585.83,91.07,13,9,0,1,66,3,5,6,9,No
+25,Male,Masters,Chittagong,7,20856,1507.44,89.18,19,27,4,5,87,0,3,7,22,Yes
+33,Female,Bachelors,Khulna,4,77213,6400.72,86.77,23,9,2,2,13,1,3,5,49,Yes
+25,Female,Masters,Khulna,5,139779,12103.02,84.57,13,22,1,1,75,0,6,8,13,No
+23,Male,High School,Chittagong,1,111517,5950.23,88.99,16,13,0,5,14,0,5,3,1,No
+29,Male,Bachelors,Khulna,6,30898,1697.89,94.75,14,10,2,4,50,2,1,3,9,No
+48,Male,Bachelors,Khulna,10,90186,11105.24,83.14,14,24,1,5,22,3,2,7,21,No
+46,Male,Masters,Dhaka,9,30716,5491.29,96.18,12,2,0,1,10,1,10,6,4,No
+28,Female,Masters,Chittagong,4,125461,12793.76,88.53,13,9,2,4,59,1,1,2,3,No
+46,Female,Bachelors,Rajshahi,13,69833,4116.83,92.07,17,19,1,2,45,0,1,3,31,Yes
+37,Male,PhD,Dhaka,10,51550,9295.4,84.19,13,28,0,4,63,3,2,3,27,Yes
+59,Male,High School,Sylhet,10,23251,1848.93,82.41,19,20,1,2,31,1,6,8,45,Yes
+50,Female,Bachelors,Khulna,2,109304,14346.49,92.07,7,6,0,3,89,0,5,8,5,No
+31,Female,Bachelors,Chittagong,2,89312,13609.87,92.97,14,3,0,4,81,2,9,9,40,No
+29,Male,Bachelors,Barisal,12,115630,14330.92,91.32,7,26,4,1,69,0,9,3,12,Yes
+48,Male,Masters,Barisal,8,107720,12651.5,79.78,5,4,0,3,93,1,9,10,46,Yes
+27,Male,Bachelors,Dhaka,14,34376,6705.77,83.13,23,19,1,4,21,1,6,5,0,No
+53,Male,High School,Barisal,14,32886,3809.1,82.71,19,20,1,1,81,2,10,2,23,No
+33,Male,Masters,Barisal,4,131773,8422.6,94.81,9,22,0,1,24,2,1,1,24,Yes
+45,Male,High School,Chittagong,10,113792,19723.01,88.0,9,26,3,2,30,0,2,3,10,Yes
+45,Male,Bachelors,Dhaka,5,91830,14684.65,89.35,11,29,1,4,42,3,6,9,31,No
+24,Male,Bachelors,Sylhet,9,94254,12098.67,97.05,12,1,4,3,95,3,1,3,38,Yes
+38,Female,PhD,Khulna,7,147231,19455.32,78.69,10,4,2,5,32,3,4,1,35,No
+57,Male,Bachelors,Barisal,13,18539,1096.81,85.59,5,25,1,2,18,0,2,7,12,Yes
+49,Female,Masters,Dhaka,8,108545,7205.89,91.58,20,3,2,3,88,3,4,1,13,No
+41,Male,High School,Chittagong,9,59820,7215.69,94.02,21,20,4,2,76,0,6,5,10,No
+47,Male,PhD,Dhaka,7,27785,2245.73,94.4,21,11,4,3,45,2,8,1,24,No
+44,Male,Masters,Barisal,7,62597,9799.89,82.71,24,11,4,2,87,1,7,1,21,No
+49,Male,Bachelors,Dhaka,12,124633,20719.76,83.85,13,29,3,4,54,2,9,5,21,No
+29,Female,Masters,Chittagong,13,137826,27402.57,87.17,15,22,2,5,50,2,8,6,6,No
+44,Female,Bachelors,Sylhet,1,83541,8373.87,81.6,14,6,2,5,20,3,4,2,14,No
+57,Male,Masters,Dhaka,8,96186,8077.14,85.14,18,19,3,3,63,2,1,7,35,No
+40,Male,Masters,Chittagong,14,127473,12102.18,76.42,22,11,4,3,82,2,9,6,13,No
+42,Male,Bachelors,Sylhet,4,94324,9297.81,91.24,11,25,2,1,26,1,10,4,26,No
+36,Female,Bachelors,Chittagong,3,35725,3908.44,85.34,24,26,3,1,88,3,10,5,33,Yes
+36,Female,Bachelors,Dhaka,2,46077,4810.78,85.81,6,21,1,3,55,0,10,2,8,No
+47,Male,Bachelors,Dhaka,13,88498,9488.1,93.28,5,20,3,4,75,3,9,3,48,Yes
+22,Male,Bachelors,Khulna,14,130286,13852.47,91.11,12,9,1,5,40,1,4,2,22,No
+59,Male,Masters,Khulna,7,88973,8170.8,83.74,7,2,1,1,23,0,2,1,30,Yes
+26,Male,Bachelors,Rajshahi,11,24302,2128.55,85.23,11,28,2,5,17,3,2,1,13,Yes
+27,Other,Bachelors,Khulna,8,38769,2915.98,84.65,8,12,3,1,49,1,7,6,12,No
+45,Female,High School,Barisal,1,137439,18295.92,94.89,21,17,1,4,89,2,1,2,3,Yes
+52,Female,Masters,Barisal,2,118734,10843.48,96.43,23,10,4,4,53,3,3,4,23,No
+47,Male,Bachelors,Dhaka,4,75571,13141.87,88.35,12,12,2,3,28,1,3,7,37,No
+22,Female,Bachelors,Dhaka,11,39579,2202.4,77.53,11,15,4,4,20,2,8,7,23,No
+55,Male,High School,Sylhet,9,149083,16967.7,93.59,22,2,0,1,21,1,1,5,4,Yes
+38,Female,Masters,Dhaka,5,52450,9846.88,92.58,8,26,1,4,69,3,4,8,46,Yes
+45,Female,Bachelors,Barisal,3,64099,8405.74,76.85,21,2,2,1,59,0,8,7,47,Yes
+56,Female,Masters,Chittagong,9,18709,3394.79,95.11,18,19,3,5,14,2,5,5,21,No
+39,Female,Bachelors,Khulna,1,30914,1610.1,94.79,8,14,0,2,99,0,6,7,23,No
+42,Female,Bachelors,Rajshahi,14,106285,8901.48,95.95,13,28,3,5,45,1,7,6,10,No
+53,Male,Masters,Barisal,7,43536,7819.5,76.75,13,22,1,4,55,3,4,6,26,No
+47,Male,Masters,Sylhet,14,118614,14943.81,98.45,7,14,0,2,99,0,10,9,23,No
+22,Male,Bachelors,Barisal,13,149087,10664.49,97.59,15,28,4,2,44,1,10,6,37,Yes
+30,Male,High School,Chittagong,2,70551,6106.66,89.7,21,14,1,3,17,1,3,1,2,No
+42,Male,Bachelors,Barisal,6,23665,1585.75,92.74,22,8,2,5,48,1,8,1,31,No
+49,Female,PhD,Rajshahi,7,64207,3671.79,92.21,16,29,4,3,55,1,9,9,16,No
+57,Male,Bachelors,Sylhet,1,106905,19218.91,91.18,9,23,1,1,13,3,10,3,31,No
+54,Female,Masters,Khulna,3,112745,12830.11,88.75,19,14,3,1,89,1,5,5,13,No
+36,Male,High School,Barisal,7,125506,22148.08,91.48,21,15,0,5,29,2,9,10,35,No

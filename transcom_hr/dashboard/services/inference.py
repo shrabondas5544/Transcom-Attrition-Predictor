@@ -14,8 +14,8 @@ def run_system_wide_inference():
     start_time = time.time()
     
     # 1. Load ML artifacts
-    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    saved_models_dir = os.path.join(base_dir, 'dashboard', 'ml', 'saved_models')
+    from django.conf import settings
+    saved_models_dir = os.path.join(settings.BASE_DIR, 'dashboard', 'ml', 'saved_models')
     
     model_path = os.path.join(saved_models_dir, 'attrition_model.pkl')
     preprocessor_path = os.path.join(saved_models_dir, 'preprocessor.pkl')
