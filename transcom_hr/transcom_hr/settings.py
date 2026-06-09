@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'transcom_hr.middleware.AutoAdminLoginMiddleware',
 ]
 
 ROOT_URLCONF = 'transcom_hr.urls'

@@ -1,7 +1,9 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from unittest.mock import patch
+import json
 from dashboard.models import Employee
+
 
 
 class AdvancedAnalyticsTestCase(TestCase):
@@ -258,6 +260,62 @@ class ProductionFeaturesTestCase(TestCase):
         self.assertIn('quota limit reached', data['prescription'].lower() or 'resource_exhausted' in data['prescription'].lower())
         self.assertIn('Shift Rota Cap', data['prescription'])
         self.assertIn('Overtime: 45', data['prescription'])
+
+    def test_predict_scenario_endpoint(self):
+        """Verify the What-If predict-scenario view behaves correctly."""
+        emp = Employee.objects.create(
+            age=30, gender='Male', educational_qualification='Bachelors', location='Dhaka',
+            tenure=3, monthly_salary=30000, incentive_earnings=3000, attendance_pct=95.0,
+            leave_utilization=10, distance_from_workplace=15, num_transfers=0, performance_rating=4,
+            training_hours=20, promotion_history=1, manager_effectiveness_score=8,
+            employee_engagement_score=7, overtime_hours=24, previous_attrition_label='No'
+        )
+        url = reverse('predict_scenario')
+        
+        # Test valid POST request with salary adjustment & overtime reduction
+        payload = {
+            'employee_id': emp.id,
+            'monthly_salary': 45000,
+            'overtime_hours': 10
+        }
+        response = self.client.post(url, data=json.dumps(payload), content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertTrue(data['success'])
+        self.assertIn('probability', data)
+        self.assertIn('risk_category', data)
+        
+        # Test invalid requests: missing employee_id
+        bad_payload = {
+            'monthly_salary': 45000,
+            'overtime_hours': 10
+        }
+        response = self.client.post(url, data=json.dumps(bad_payload), content_type='application/json')
+        self.assertEqual(response.status_code, 400)
+        self.assertFalse(response.json()['success'])
+
+    @patch('chatbot.services.ChatGoogleGenerativeAI')
+    @patch('chatbot.services.get_vector_store')
+    def test_chatbot_fallback(self, mock_get_db, mock_llm_class):
+        """Verify fallback response is generated for the chatbot when Gemini API fails."""
+        # Set up mocks to trigger the except block in generate_retention_response
+        mock_llm_instance = mock_llm_class.return_value
+        mock_llm_instance.invoke.side_effect = Exception("RESOURCE_EXHAUSTED Quota exceeded")
+        
+        url = reverse('chatbot_api')
+        payload = {
+            'message': 'Provide an intervention strategy for an employee whose primary attrition driver is Overtime Hours and has 45 hours of overtime.'
+        }
+        response = self.client.post(url, data=json.dumps(payload), content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertTrue(data['success'])
+        self.assertIn('response', data)
+        # Verify it includes the quota notice and the overtime policy details
+        self.assertIn('quota limit reached', data['response'].lower())
+        self.assertIn('Overtime Fatigue Countermeasures', data['response'])
+        self.assertIn('Weekly limit', data['response'])
+
 
 
 

@@ -34,16 +34,100 @@ def get_vector_store():
     _vector_store = FAISS.from_texts(docs, embeddings)
     return _vector_store
 
+def _get_fallback_chatbot_response(user_query, error_message=None):
+    """
+    Generate a policy-compliant chatbot answer locally when the Gemini API is offline/quota exhausted.
+    """
+    import logging
+    logger = logging.getLogger(__name__)
+    if error_message:
+        logger.warning(f"Chatbot Gemini API failure: {error_message}. Using local rule-based fallback response engine.")
+        
+    query_lower = user_query.lower()
+    
+    # Check for overtime
+    has_overtime = "overtime" in query_lower or "fatigue" in query_lower or "hours" in query_lower
+    # Check for commute/distance
+    has_commute = "distance" in query_lower or "commute" in query_lower or "km" in query_lower or "location" in query_lower
+    # Check for manager friction/engagement
+    has_engagement = "engagement" in query_lower or "effectiveness" in query_lower or "friction" in query_lower or "manager" in query_lower
+    # Check for salary
+    has_salary = "salary" in query_lower or "compensation" in query_lower or "earnings" in query_lower
+    
+    response_parts = []
+    
+    if has_overtime:
+        response_parts.append(
+            "### Overtime Fatigue Countermeasures (Section 1)\n"
+            "- **Weekly limit:** Enforce a maximum of 48 total working hours per week.\n"
+            "- **Rest periods:** Maintain a minimum of 11 consecutive hours of daily rest between shifts, and no more than 6 consecutive working days without a mandatory 24-hour break.\n"
+            "- **Overtime cap:** Strictly cap monthly overtime hours at 50 hours (recommended under 40 hours). Give 1 paid day of compensatory leave (Comp-Time) for every 8 hours of overtime worked above the 40-hour threshold, to be used within 30 days."
+        )
+    if has_commute:
+        response_parts.append(
+            "### Commute & Distance Mitigation (Section 2)\n"
+            "- **Travel Stipend:** RESIDENCE exceeding 20 km from their designated outlet are eligible for a monthly travel stipend of 3,500 BDT.\n"
+            "- **Regional Reassignments:** Field officers residing far from their assigned retail outlet can request a lateral transfer to the nearest hub, which regional HR must process within 14 business days.\n"
+            "- **Hybrid Roster:** Non-outlet support teams are permitted a partial hybrid schedule of up to 2 remote work days per week, subject to approval."
+        )
+    if has_engagement:
+        response_parts.append(
+            "### Engagement & Manager Friction (Section 3)\n"
+            "- **Stay Interviews:** Conduct quarterly Stay Interviews focusing on career path mapping rather than active tasks.\n"
+            "- **Feedback loops:** Set up bi-weekly 30-minute 1-on-1 alignment sessions.\n"
+            "- **Conflict Resolution:** Follow the 3-step path (Informal direct alignment -> HR-mediated communication review -> Lateral outlet transfer).\n"
+            "- **Leadership Coaching:** Mandate managers with team effectiveness scores under 5/10 to attend the 'Empathetic Leadership at Transcom' coaching framework."
+        )
+    if has_salary:
+        response_parts.append(
+            "### Compensation Audit Guidelines\n"
+            "- **Salary Review:** Perform a market pay alignment check to address potential salary discrepancies.\n"
+            "- **Incentive Audit:** Review incentive and incentive earnings payout structures to make sure performance targets align clearly with bonus metrics."
+        )
+        
+    if not response_parts:
+        response_parts.append(
+            "### Transcom Electronics Limited - Strategic Retention Guidelines\n"
+            "- **Overtime Cap:** Ensure overtime hours do not exceed 40 hours/month and daily rest is at least 11 hours.\n"
+            "- **Travel Support:** Residing >20km from the outlet qualifies for a 3,500 BDT commute stipend or lateral reassignment.\n"
+            "- **Interpersonal Alignment:** Conduct quarterly Stay Interviews and bi-weekly feedback loops for at-risk staff."
+        )
+        
+    plan_text = "\n\n".join(response_parts)
+    
+    title = "✨ **Transcom Chatbot Advisor (Policy-Based Fallback Response)**"
+    disclaimer = ""
+    if error_message:
+        if "quota" in error_message.lower() or "429" in error_message or "exhausted" in error_message.lower():
+            disclaimer = (
+                "*Notice: Gemini API quota limit reached. Showing local, highly tailored policy-based fallback response.*"
+            )
+        elif "not configured" in error_message.lower() or "placeholder" in error_message.lower():
+            disclaimer = (
+                "System Notice: The GEMINI_API_KEY is currently not configured or using the default placeholder. Showing local, highly tailored policy-based fallback response."
+            )
+
+        else:
+            disclaimer = (
+                f"*Notice: Gemini API error ({error_message[:40]}...). Showing local, highly tailored policy-based fallback response.*"
+            )
+    else:
+        disclaimer = (
+            "*Notice: Local, highly tailored policy-based response.*"
+        )
+        
+    return f"{title}\n{disclaimer}\n\n{plan_text}"
+
 def generate_retention_response(user_query):
     """
     RAG pipeline: similarity search on FAISS + ChatGoogleGenerativeAI response generation.
+    If the LLM call fails due to quota limit, missing API key, or networking issues,
+    gracefully fall back to local rule-based policy engine.
     """
     # Defensive check for missing API Key
     if not settings.GEMINI_API_KEY or settings.GEMINI_API_KEY == 'your_gemini_api_key_here' or settings.GEMINI_API_KEY == '':
-        return (
-            "System Notice: The GEMINI_API_KEY is currently not configured or using the default placeholder. "
-            "Please add a valid Google Gemini API key to your `.env` file in the root directory and restart the server to activate the AI Chatbot."
-        )
+        error_msg = "GEMINI_API_KEY is not configured or using default placeholder."
+        return _get_fallback_chatbot_response(user_query, error_message=error_msg)
         
     try:
         # Get or build vector store
@@ -69,7 +153,8 @@ def generate_retention_response(user_query):
         response = llm.invoke(prompt)
         return response.content
     except Exception as e:
-        return f"Advisor Error: Failed to generate retention response. Detail: {str(e)}"
+        return _get_fallback_chatbot_response(user_query, error_message=str(e))
+
 
 def _get_fallback_prescription(employee_data, top_drivers, error_message=None):
     """

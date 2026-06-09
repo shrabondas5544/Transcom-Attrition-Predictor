@@ -35,7 +35,6 @@ def dashboard_home(request):
         'Medium': medium_risk_count,
         'High': high_risk_count
     }
-    
     # Attrition by location
     locations = ['Dhaka', 'Chittagong', 'Sylhet', 'Rajshahi', 'Khulna', 'Barisal']
     location_labels = []
@@ -49,7 +48,6 @@ def dashboard_home(request):
         'total_employees': total_employees,
         'high_risk_count': high_risk_count,
         'medium_risk_count': medium_risk_count,
-        'target_attrition_rate': 32.00,
         'current_attrition_rate': current_attrition_rate,
         'risk_distribution': risk_distribution,
         'location_labels': location_labels,
@@ -846,3 +844,69 @@ def EmployeePrescriptionAPIView(request, employee_id):
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
+@csrf_exempt
+def PredictScenarioView(request):
+    """
+    Lightweight inference endpoint to simulate attrition risk on adjusted Monthly Salary and Overtime Hours.
+    Accepts JSON containing employee_id, monthly_salary, and overtime_hours.
+    """
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        
+    try:
+        data = json.loads(request.body)
+        employee_id = data.get('employee_id')
+        monthly_salary = data.get('monthly_salary')
+        overtime_hours = data.get('overtime_hours')
+        
+        if not employee_id:
+            return JsonResponse({'success': False, 'error': 'Missing employee_id'}, status=400)
+            
+        from django.shortcuts import get_object_or_404
+        emp = get_object_or_404(Employee, id=employee_id)
+        
+        # Load ML artifacts
+        from django.conf import settings
+        saved_models_dir = os.path.join(settings.BASE_DIR, 'dashboard', 'ml', 'saved_models')
+        
+        model = joblib.load(os.path.join(saved_models_dir, 'attrition_model.pkl'))
+        preprocessor = joblib.load(os.path.join(saved_models_dir, 'preprocessor.pkl'))
+        feature_names = joblib.load(os.path.join(saved_models_dir, 'feature_names.pkl'))
+        
+        # Base input data
+        base_raw = {
+            'Age': int(emp.age), 'Gender': emp.gender, 'Educational Qualification': emp.educational_qualification,
+            'Location': emp.location, 'Tenure': int(emp.tenure), 'Monthly Salary': int(emp.monthly_salary),
+            'Incentive Earnings': float(emp.incentive_earnings), 'Attendance %': float(emp.attendance_pct),
+            'Leave Utilization': int(emp.leave_utilization), 'Distance from Workplace': int(emp.distance_from_workplace),
+            'Number of Transfers': int(emp.num_transfers), 'Performance Rating': int(emp.performance_rating),
+            'Training Hours': int(emp.training_hours), 'Promotion History': int(emp.promotion_history),
+            'Manager Effectiveness Score': int(emp.manager_effectiveness_score),
+            'Employee Engagement Score': int(emp.employee_engagement_score), 'Overtime Hours': int(emp.overtime_hours)
+        }
+        
+        # Calculate base probability
+        prob = float(model.predict_proba(preprocessor.transform(pd.DataFrame([base_raw])))[0, 1])
+        
+        # Apply HR-logical directional adjustments:
+        # Salary:   higher salary  -> LOWER  risk  (negative delta)
+        # Overtime: higher overtime -> HIGHER risk (positive delta)
+        # Sensitivity: 0.50 means a 100% salary change moves probability by 0.50
+        if monthly_salary is not None:
+            delta_sal = (int(monthly_salary) - int(emp.monthly_salary)) / (int(emp.monthly_salary) + 1)
+            prob -= (delta_sal * 0.50)   # 20% salary raise ≈ -0.10 risk drop
+        if overtime_hours is not None:
+            delta_ot = (int(overtime_hours) - int(emp.overtime_hours)) / max(int(emp.overtime_hours), 1)
+            prob += (delta_ot * 0.35)   # 20% overtime increase ≈ +0.07 risk increase
+            
+        prob = max(0.0, min(1.0, prob))
+        
+        risk_category = 'High' if prob >= 0.5 else ('Medium' if prob >= 0.2 else 'Low')
+            
+        return JsonResponse({
+            'success': True,
+            'probability': round(prob, 4),
+            'risk_category': risk_category
+        })
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)}, status=500)

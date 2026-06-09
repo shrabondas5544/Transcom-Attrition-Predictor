@@ -3,7 +3,7 @@ from .views import (
     TriggerInferenceView, EmployeeListAPIView, dashboard_home, 
     UploadCSVView, PredictSingleView, ChatbotAPIView, 
     AdvancedAnalyticsAPIView, DashboardStatsAPIView, ExportReportPDFView,
-    EmployeeDetailAPIView, EmployeePrescriptionAPIView
+    EmployeeDetailAPIView, EmployeePrescriptionAPIView, PredictScenarioView
 )
 
 urlpatterns = [
@@ -18,6 +18,8 @@ urlpatterns = [
     path('export-report/', ExportReportPDFView, name='export_report_pdf'),
     path('employees/<int:employee_id>/insights/', EmployeeDetailAPIView, name='employee_insights_api'),
     path('employees/<int:employee_id>/prescription/', EmployeePrescriptionAPIView, name='employee_prescription_api'),
+    path('predict-scenario/', PredictScenarioView, name='predict_scenario'),
 ]
+
 
 
