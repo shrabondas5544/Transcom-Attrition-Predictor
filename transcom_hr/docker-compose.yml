@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: transcom_hr_app
+    ports:
+      - "8000:8000"
+    volumes:
+      # Keep database and uploaded media persistent on the host
+      - ./db.sqlite3:/app/db.sqlite3
+      - ./media:/app/media
+    environment:
+      # Inject your Google Gemini API key here or define it in a local .env file
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    restart: always

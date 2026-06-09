@@ -133,6 +133,12 @@
                             <svg class="h-4 w-4 animate-spin hidden" id="recalcSpinner" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                             <span>Run Predictions</span>
                         </button>
+
+                        <!-- Export PDF Button -->
+                        <button id="exportPdfBtn" onclick="exportPdfReport()" class="inline-flex items-center gap-2 rounded-lg bg-slate-900 border border-slate-800 px-4 py-2 text-sm font-semibold text-slate-200 shadow-md hover:bg-slate-800 hover:text-white transition cursor-pointer active:scale-95">
+                            <svg class="h-4 w-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+                            <span>Export PDF Summary</span>
+                        </button>
                     </div>
                 </div>
 
@@ -284,6 +290,52 @@
                     </div>
                 </div>
 
+                <!-- Model Diagnostics & Data Drift Monitoring -->
+                <div class="glass-card rounded-2xl p-6 relative overflow-hidden transition-all duration-300 hover:border-slate-700">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-900 pb-4 mb-4">
+                        <div>
+                            <h3 class="font-outfit text-lg font-bold text-white">Model Diagnostics & Data Drift Monitoring</h3>
+                            <p class="text-xs text-slate-400 mt-1">Checks if features of the active roster drift significantly (&gt;20%) from the training dataset baseline.</p>
+                        </div>
+                        <div id="driftStatusBadge" class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset bg-emerald-500/10 text-emerald-400 ring-emerald-500/20">
+                            <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+                            <span>Healthy (No Drift)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Overtime Hours Drift Card -->
+                        <div class="bg-slate-950/20 p-4 rounded-xl border border-slate-900 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-semibold text-slate-300">Overtime Hours</span>
+                                <span id="overtimeDriftLabel" class="text-xs font-medium text-slate-500">Drift: 0%</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-slate-500">
+                                <span>Training Baseline: <b class="text-slate-300">24.42 hrs</b></span>
+                                <span>Roster Average: <b id="overtimeCurrentVal" class="text-slate-300">0.0 hrs</b></span>
+                            </div>
+                            <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+                                <div id="overtimeDriftBar" class="bg-indigo-600 h-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Distance from Workplace Drift Card -->
+                        <div class="bg-slate-950/20 p-4 rounded-xl border border-slate-900 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-semibold text-slate-300">Distance from Workplace</span>
+                                <span id="distanceDriftLabel" class="text-xs font-medium text-slate-500">Drift: 0%</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-slate-500">
+                                <span>Training Baseline: <b class="text-slate-300">15.23 km</b></span>
+                                <span>Roster Average: <b id="distanceCurrentVal" class="text-slate-300">0.0 km</b></span>
+                            </div>
+                            <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+                                <div id="distanceDriftBar" class="bg-indigo-600 h-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Employee Directory Table -->
                 <div class="glass-card rounded-2xl overflow-hidden">
                     <div class="p-6 border-b border-slate-900 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -420,19 +472,28 @@
                     </div>
 
                     <div class="space-y-4">
+                        <!-- SHAP Contributors Chart Card -->
                         <div class="bg-slate-950/30 p-4 rounded-xl border border-slate-950">
-                            <h4 class="font-outfit text-sm font-bold text-slate-300">SHAP Attrib Driver Explanation</h4>
-                            <div class="mt-2 flex items-center gap-2">
-                                <span class="inline-flex h-2 w-2 rounded-full bg-red-500"></span>
-                                <span class="text-sm font-medium text-slate-200" id="mDriverText">None (Stable)</span>
+                            <h4 class="font-outfit text-sm font-bold text-slate-300 mb-1">Top Attrition Risk Contributors (SHAP Explainer)</h4>
+                            <p class="text-[10px] text-slate-500">Features pushing the employee toward attrition (positive SHAP impact)</p>
+                            <div class="h-32 mt-2 relative">
+                                <div id="modalShapChartContainer" class="w-full h-full">
+                                    <canvas id="modalShapChart"></canvas>
+                                </div>
+                                <div id="modalShapSkeleton" class="absolute inset-0 flex items-center justify-center bg-slate-900/40 rounded animate-pulse">
+                                    <span class="text-xs text-slate-400">Calculating individual drivers...</span>
+                                </div>
                             </div>
-                            <p class="text-xs text-slate-500 mt-1">This feature contributed most to increasing the employee's calculated flight risk.</p>
                         </div>
 
-                        <div class="p-4 rounded-xl border border-indigo-500/20 bg-indigo-500/5" id="mInterventionsCard">
-                            <h4 class="font-outfit text-sm font-bold text-indigo-400">Recommended Retention Interventions</h4>
-                            <div class="mt-2 text-sm text-slate-300" id="mInterventionsText">
-                                Loading recommendation...
+                        <!-- ✨ AI Retention Prescription Card -->
+                        <div class="p-4 rounded-xl border border-indigo-500/20 bg-indigo-500/5" id="mPrescriptionCard">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-outfit text-sm font-bold text-indigo-400">✨ AI Retention Prescription Card</h4>
+                                <span id="prescriptionStatus" class="text-[10px] text-indigo-300"></span>
+                            </div>
+                            <div class="mt-2 text-sm text-slate-300 leading-relaxed font-sans" id="mPrescriptionText">
+                                AI Advisor is analyzing policy frameworks...
                             </div>
                         </div>
                     </div>
@@ -634,6 +695,7 @@
         let bubbleChartInst = null;
         let lineChartInst = null;
         let activeRiskFilter = '';
+        let modalShapChartInst = null;
         
         function showTableSkeleton() {
             const tbody = document.getElementById('employeeTableBody');
@@ -714,6 +776,51 @@
                         barChartInst.data.datasets[0].data = data.location_counts;
                         barChartInst.update();
                     }
+
+                    // Update Drift Monitor UI
+                    if (data.drift_metrics) {
+                        const drift = data.drift_metrics;
+                        const badge = document.getElementById('driftStatusBadge');
+                        if (badge) {
+                            if (drift.drift_detected) {
+                                badge.className = 'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold bg-amber-500/10 text-amber-400 ring-1 ring-inset ring-amber-500/20';
+                                badge.innerHTML = `<span class="h-2.5 w-2.5 rounded-full bg-amber-500 animate-pulse"></span><span>Drift Detected (&gt;20%)</span>`;
+                            } else {
+                                badge.className = 'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold bg-emerald-500/10 text-emerald-400 ring-1 ring-inset ring-emerald-500/20';
+                                badge.innerHTML = `<span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span><span>Healthy (No Drift)</span>`;
+                            }
+                        }
+                        
+                        // Overtime drift
+                        const otLabel = document.getElementById('overtimeDriftLabel');
+                        const otVal = document.getElementById('overtimeCurrentVal');
+                        const otBar = document.getElementById('overtimeDriftBar');
+                        if (otLabel) otLabel.innerText = `Drift: ${drift.overtime.drift_pct}%`;
+                        if (otVal) otVal.innerText = `${drift.overtime.current} hrs`;
+                        if (otBar) {
+                            otBar.style.width = `${Math.min(drift.overtime.drift_pct, 100)}%`;
+                            if (drift.overtime.flagged) {
+                                otBar.className = 'bg-amber-500 h-full transition-all duration-500';
+                            } else {
+                                otBar.className = 'bg-indigo-600 h-full transition-all duration-500';
+                            }
+                        }
+
+                        // Distance drift
+                        const distLabel = document.getElementById('distanceDriftLabel');
+                        const distVal = document.getElementById('distanceCurrentVal');
+                        const distBar = document.getElementById('distanceDriftBar');
+                        if (distLabel) distLabel.innerText = `Drift: ${drift.distance.drift_pct}%`;
+                        if (distVal) distVal.innerText = `${drift.distance.current} km`;
+                        if (distBar) {
+                            distBar.style.width = `${Math.min(drift.distance.drift_pct, 100)}%`;
+                            if (drift.distance.flagged) {
+                                distBar.className = 'bg-amber-500 h-full transition-all duration-500';
+                            } else {
+                                distBar.className = 'bg-indigo-600 h-full transition-all duration-500';
+                            }
+                        }
+                    }
                 } else {
                     console.error("Failed to load dashboard stats:", data.error);
                 }
@@ -730,6 +837,7 @@
             initBubbleChart();
             initLineChart();
             fetchEmployees();
+            updateDashboardStats();
             
             // Set up row click listener
             document.getElementById('employeeTableBody').addEventListener('click', (e) => {
@@ -1271,92 +1379,183 @@
         }
         
         // Modal functions
-        function openModal(empId) {
-            const emp = allEmployees.find(e => String(e.id) === String(empId));
-            if (!emp) return;
-            
-            document.getElementById('mEmpId').innerText = `#${emp.id}`;
-            document.getElementById('mDemographics').innerText = `${emp.age}yo, ${emp.gender} | ${emp.educational_qualification}`;
-            document.getElementById('mLocation').innerText = `Location: ${emp.location}`;
-            
-            const probSpan = document.getElementById('mProbability');
-            probSpan.className = 'text-3xl font-extrabold font-outfit mt-1';
-            
-            const badge = document.getElementById('mRiskBadge');
-            badge.className = 'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset';
-            
-            if (emp.attrition_probability !== null && emp.attrition_probability !== undefined) {
-                document.getElementById('mProbability').innerText = `${(emp.attrition_probability * 100).toFixed(1)}%`;
-            } else {
-                document.getElementById('mProbability').innerText = 'N/A';
-            }
-            
-            if (emp.risk_category === 'High') {
-                probSpan.classList.add('text-red-500');
-                badge.innerText = 'High Risk';
-                badge.classList.add('bg-red-500/10', 'text-red-400', 'ring-red-500/20');
-            } else if (emp.risk_category === 'Medium') {
-                probSpan.classList.add('text-amber-500');
-                badge.innerText = 'Medium Risk';
-                badge.classList.add('bg-amber-500/10', 'text-amber-400', 'ring-amber-500/20');
-            } else if (emp.risk_category === 'Low') {
-                probSpan.classList.add('text-emerald-500');
-                badge.innerText = 'Low Risk';
-                badge.classList.add('bg-emerald-500/10', 'text-emerald-400', 'ring-emerald-500/20');
-            } else {
-                probSpan.classList.add('text-slate-400');
-                badge.innerText = 'Pending Risk';
-                badge.classList.add('bg-slate-500/10', 'text-slate-400', 'ring-slate-500/20');
-            }
-            
-            document.getElementById('mTenure').innerText = `${emp.tenure} years`;
-            document.getElementById('mSalary').innerText = `${emp.monthly_salary.toLocaleString()} BDT`;
-            document.getElementById('mAttendance').innerText = `${emp.attendance_pct}%`;
-            document.getElementById('mOvertime').innerText = `${emp.overtime_hours} hrs / month`;
-            document.getElementById('mDistance').innerText = `${emp.distance_from_workplace} km`;
-            document.getElementById('mPerfRating').innerText = `${emp.performance_rating}/5`;
-            document.getElementById('mEngagement').innerText = `${emp.employee_engagement_score}/10`;
-            document.getElementById('mManagerScore').innerText = `${emp.manager_effectiveness_score}/10`;
-            document.getElementById('mLeave').innerText = `${emp.leave_utilization} days`;
-            
-            document.getElementById('mDriverText').innerText = emp.primary_driver || 'N/A';
-            
-            const card = document.getElementById('mInterventionsCard');
-            const text = document.getElementById('mInterventionsText');
-            card.className = 'p-4 rounded-xl border';
-            
-            if (!emp.risk_category) {
-                card.classList.add('border-slate-500/20', 'bg-slate-500/5');
-                text.innerHTML = '<span class="text-slate-400 font-semibold">Action: Predictions Pending.</span> Run predictions on the dashboard to calculate flight risk and generate dynamic interventions.';
-            } else if (emp.risk_category === 'Low') {
-                card.classList.add('border-emerald-500/20', 'bg-emerald-500/5');
-                text.innerHTML = '<span class="text-emerald-400 font-semibold">Action: Standard retention tracking.</span> No urgent interventions required. Continue tracking standard KPIs and ensure engagement remains positive.';
-            } else {
-                card.classList.add('border-indigo-500/20', 'bg-indigo-500/5');
-                const driver = emp.primary_driver || '';
-                
-                if (driver.includes('Overtime Hours')) {
-                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Reduce Overtime & Workload</span> Review the team workload distribution. Introduce comp-time policies or offer flexible working hours. Monitor fatigue and explore hiring supporting staff to mitigate high overtime.`;
-                } else if (driver.includes('Distance from Workplace')) {
-                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Offer Commute support / Remote work</span> Consider offering a travel stipend, hybrid/partial remote work, or shift flexibility to ease their long commute.`;
-                } else if (driver.includes('Manager Effectiveness')) {
-                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Leadership Alignment / Mentorship</span> Arrange a neutral 1-on-1 feedback session. Consider team alignment, assignment of a senior mentor, or provide manager coaching to improve leadership effectiveness.`;
-                } else if (driver.includes('Monthly Salary')) {
-                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Compensation Review</span> Conduct a market benchmark review for their role. Assess eligibility for bonuses or adjust base pay during the next cycle to align with expectations.`;
-                } else if (driver.includes('Performance Rating')) {
-                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Career Coaching & Support</span> Set up a targeted Performance Improvement Plan with constructive feedback. Provide structured training hours and resources to help them succeed.`;
-                } else if (driver.includes('Employee Engagement')) {
-                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Hold Stay Interview & Re-engagement</span> Schedule a stay interview to identify underlying concerns. Involve the employee in key strategic projects to improve sense of ownership.`;
-                } else {
-                    text.innerHTML = `<span class="text-indigo-400 font-bold block mb-1">Action: Conduct Check-in / Career Mapping</span> Schedule a comprehensive career path planning meeting. Verify job satisfaction levels and discuss long-term role development options.`;
+        function typeWriterEffect(element, text, speed = 15) {
+            element.innerHTML = '';
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    const char = text.charAt(i);
+                    if (char === '\n') {
+                        element.innerHTML += '<br/>';
+                    } else {
+                        element.innerHTML += char;
+                    }
+                    i++;
+                    setTimeout(type, speed);
                 }
             }
+            type();
+        }
+
+        async function openModal(empId) {
+            // Reset Chart
+            if (modalShapChartInst) {
+                modalShapChartInst.destroy();
+                modalShapChartInst = null;
+            }
             
+            // Show modal and loading placeholders
             document.getElementById('detailModal').classList.remove('hidden');
+            document.getElementById('modalShapSkeleton').classList.remove('hidden');
+            
+            const prescriptionText = document.getElementById('mPrescriptionText');
+            prescriptionText.innerHTML = `<span class="animate-pulse flex items-center gap-2 text-indigo-300">
+                <svg class="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                AI Advisor is analyzing policy frameworks...
+            </span>`;
+            document.getElementById('prescriptionStatus').innerText = 'Loading...';
+            
+            try {
+                // Fetch Employee insights
+                const response = await fetch(`/api/employees/${empId}/insights/`);
+                const data = await response.json();
+                if (!data.success) {
+                    alert('Error loading insights: ' + data.error);
+                    return;
+                }
+                
+                const emp = data.employee;
+                const topDrivers = data.top_drivers;
+                
+                // Populate profile details
+                document.getElementById('mEmpId').innerText = `#${emp.id}`;
+                document.getElementById('mDemographics').innerText = `${emp.age}yo, ${emp.gender} | ${emp.educational_qualification}`;
+                document.getElementById('mLocation').innerText = `Location: ${emp.location}`;
+                
+                const probSpan = document.getElementById('mProbability');
+                probSpan.className = 'text-3xl font-extrabold font-outfit mt-1';
+                
+                const badge = document.getElementById('mRiskBadge');
+                badge.className = 'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset';
+                
+                if (emp.attrition_probability !== null && emp.attrition_probability !== undefined) {
+                    probSpan.innerText = `${(emp.attrition_probability * 100).toFixed(1)}%`;
+                } else {
+                    probSpan.innerText = 'N/A';
+                }
+                
+                if (emp.risk_category === 'High') {
+                    probSpan.classList.add('text-red-500');
+                    badge.innerText = 'High Risk';
+                    badge.classList.add('bg-red-500/10', 'text-red-400', 'ring-red-500/20');
+                } else if (emp.risk_category === 'Medium') {
+                    probSpan.classList.add('text-amber-500');
+                    badge.innerText = 'Medium Risk';
+                    badge.classList.add('bg-amber-500/10', 'text-amber-400', 'ring-amber-500/20');
+                } else if (emp.risk_category === 'Low') {
+                    probSpan.classList.add('text-emerald-500');
+                    badge.innerText = 'Low Risk';
+                    badge.classList.add('bg-emerald-500/10', 'text-emerald-400', 'ring-emerald-500/20');
+                } else {
+                    probSpan.classList.add('text-slate-400');
+                    badge.innerText = 'Pending Risk';
+                    badge.classList.add('bg-slate-500/10', 'text-slate-400', 'ring-slate-500/20');
+                }
+                
+                document.getElementById('mTenure').innerText = `${emp.tenure} years`;
+                document.getElementById('mSalary').innerText = `${emp.monthly_salary.toLocaleString()} BDT`;
+                document.getElementById('mAttendance').innerText = `${emp.attendance_pct}%`;
+                document.getElementById('mOvertime').innerText = `${emp.overtime_hours} hrs / month`;
+                document.getElementById('mDistance').innerText = `${emp.distance_from_workplace} km`;
+                document.getElementById('mPerfRating').innerText = `${emp.performance_rating}/5`;
+                document.getElementById('mEngagement').innerText = `${emp.employee_engagement_score}/10`;
+                document.getElementById('mManagerScore').innerText = `${emp.manager_effectiveness_score}/10`;
+                document.getElementById('mLeave').innerText = `${emp.leave_utilization} days`;
+                
+                // Render Top 3 SHAP horizontal bar chart
+                document.getElementById('modalShapSkeleton').classList.add('hidden');
+                
+                const labels = topDrivers.map(d => d.feature);
+                const values = topDrivers.map(d => d.shap_value);
+                
+                const ctx = document.getElementById('modalShapChart').getContext('2d');
+                
+                // Create red-to-orange gradient
+                const gradient = ctx.createLinearGradient(0, 0, 300, 0);
+                gradient.addColorStop(0, 'rgba(245, 158, 11, 0.85)'); // Amber
+                gradient.addColorStop(1, 'rgba(239, 68, 68, 0.85)');  // Red
+                
+                modalShapChartInst = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: values,
+                            backgroundColor: gradient,
+                            borderColor: 'rgba(239, 68, 68, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                                ticks: { color: '#94a3b8', font: { size: 9 } }
+                            },
+                            y: {
+                                grid: { display: false },
+                                ticks: { color: '#f8fafc', font: { size: 9, weight: 'bold' } }
+                            }
+                        }
+                    }
+                });
+                
+                // Trigger secondary async fetch for AI prescription
+                fetchPrescription(emp.id);
+                
+            } catch (err) {
+                console.error("Error fetching employee detail insights:", err);
+                alert("Failed to load employee details.");
+            }
         }
         
+        async function fetchPrescription(empId) {
+            try {
+                const response = await fetch(`/api/employees/${empId}/prescription/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                const data = await response.json();
+                const pText = document.getElementById('mPrescriptionText');
+                const status = document.getElementById('prescriptionStatus');
+                
+                if (data.success) {
+                    status.innerText = 'Ready';
+                    typeWriterEffect(pText, data.prescription, 12);
+                } else {
+                    status.innerText = 'Error';
+                    pText.innerHTML = `<span class="text-red-400">Error loading prescription: ${data.error}</span>`;
+                }
+            } catch (err) {
+                console.error("Error fetching AI prescription:", err);
+                document.getElementById('prescriptionStatus').innerText = 'Error';
+                document.getElementById('mPrescriptionText').innerHTML = `<span class="text-red-400">Failed to generate AI prescription.</span>`;
+            }
+        }
+
         function closeModal() {
             document.getElementById('detailModal').classList.add('hidden');
+            if (modalShapChartInst) {
+                modalShapChartInst.destroy();
+                modalShapChartInst = null;
+            }
         }
 
         // Batch upload handler
@@ -1495,6 +1694,11 @@
                 btn.querySelector('span').innerText = 'Calculate Risk';
             }
         }
+        
+        function exportPdfReport() {
+            window.location.href = '/api/export-report/';
+        }
+
     </script>
 </body>
 </html>

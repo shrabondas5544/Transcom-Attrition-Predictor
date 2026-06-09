@@ -148,8 +148,64 @@ def run_system_wide_inference():
     print(f"Risk Category Distribution: {cat_counts}")
     print(f"System-wide inference completed in {execution_time:.2f}s for {len(updated_employees)} records.")
     
+    # Run a drift check and print log warning if detected
+    check_data_drift()
+    
     return {
         'success': True,
         'processed_count': len(updated_employees),
         'execution_time': execution_time
     }
+
+def check_data_drift():
+    """
+    Checks the mean of Overtime Hours and Distance from Workplace of the current
+    database records against baseline constants. If either drifts by more than 20%,
+    logs a warning notice and returns detailed drift metrics.
+    """
+    # Training baselines
+    BASELINE_OVERTIME = 24.4177
+    BASELINE_DISTANCE = 15.2327
+    
+    total = Employee.objects.count()
+    if total == 0:
+        return {
+            'drift_detected': False,
+            'message': 'No data available for drift analysis.'
+        }
+        
+    from django.db.models import Avg
+    stats = Employee.objects.aggregate(
+        avg_overtime=Avg('overtime_hours'),
+        avg_distance=Avg('distance_from_workplace')
+    )
+    
+    current_overtime = stats['avg_overtime'] or 0.0
+    current_distance = stats['avg_distance'] or 0.0
+    
+    overtime_drift = abs(current_overtime - BASELINE_OVERTIME) / BASELINE_OVERTIME if BASELINE_OVERTIME > 0 else 0.0
+    distance_drift = abs(current_distance - BASELINE_DISTANCE) / BASELINE_DISTANCE if BASELINE_DISTANCE > 0 else 0.0
+    
+    drift_detected = overtime_drift > 0.20 or distance_drift > 0.20
+    
+    if drift_detected:
+        print(f"[WARNING] Data drift detected! Overtime Hours drift: {overtime_drift*100:.1f}%, Distance drift: {distance_drift*100:.1f}%")
+    else:
+        print("[INFO] Data drift check completed: Normal (No significant drift detected).")
+        
+    return {
+        'drift_detected': drift_detected,
+        'overtime': {
+            'baseline': round(BASELINE_OVERTIME, 2),
+            'current': round(current_overtime, 2),
+            'drift_pct': round(overtime_drift * 100, 1),
+            'flagged': overtime_drift > 0.20
+        },
+        'distance': {
+            'baseline': round(BASELINE_DISTANCE, 2),
+            'current': round(current_distance, 2),
+            'drift_pct': round(distance_drift * 100, 1),
+            'flagged': distance_drift > 0.20
+        }
+    }
+

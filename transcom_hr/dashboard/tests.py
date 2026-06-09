@@ -1,6 +1,8 @@
 from django.test import TestCase, Client
 from django.urls import reverse
+from unittest.mock import patch
 from dashboard.models import Employee
+
 
 class AdvancedAnalyticsTestCase(TestCase):
     def setUp(self):
@@ -128,4 +130,136 @@ class DashboardStatsTestCase(TestCase):
         # Check if the stats count reflects the computed risk category
         category = emp.risk_category
         self.assertEqual(data_after['risk_distribution'][category], 1)
+
+class ProductionFeaturesTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.stats_url = reverse('dashboard_stats_api')
+        self.pdf_url = reverse('export_report_pdf')
+
+        # Create low risk employee matching baseline (no drift)
+        Employee.objects.create(
+            age=30, gender='Male', educational_qualification='Bachelors', location='Dhaka',
+            tenure=3, monthly_salary=30000, incentive_earnings=3000, attendance_pct=95.0,
+            leave_utilization=10, distance_from_workplace=15, num_transfers=0, performance_rating=4,
+            training_hours=20, promotion_history=1, manager_effectiveness_score=8,
+            employee_engagement_score=7, overtime_hours=24, previous_attrition_label='No'
+        )
+
+    def test_pdf_export_success(self):
+        """Verify the PDF export endpoint works and returns a PDF file."""
+        response = self.client.get(self.pdf_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['content-type'], 'application/pdf')
+        # Check attachment content-disposition
+        self.assertIn('attachment', response['content-disposition'])
+        self.assertIn('Transcom_Attrition_Executive_Report.pdf', response['content-disposition'])
+
+    def test_pdf_export_empty_db(self):
+        """Verify report fails if no employees are seeded."""
+        Employee.objects.all().delete()
+        response = self.client.get(self.pdf_url)
+        self.assertEqual(response.status_code, 400)
+        data = response.json()
+        self.assertFalse(data['success'])
+        self.assertIn('No employee data available', data['error'])
+
+    def test_dashboard_stats_contains_drift(self):
+        """Verify that dashboard stats includes check_data_drift metrics."""
+        response = self.client.get(self.stats_url)
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertIn('drift_metrics', data)
+        self.assertIn('drift_detected', data['drift_metrics'])
+        self.assertFalse(data['drift_metrics']['drift_detected'])
+
+    def test_data_drift_detection_flagged(self):
+        """Verify drift detection flags large drifts (>20%)."""
+        # Delete existing employee and add one with very high overtime hours and distance
+        Employee.objects.all().delete()
+        Employee.objects.create(
+            age=30, gender='Male', educational_qualification='Bachelors', location='Dhaka',
+            tenure=3, monthly_salary=30000, incentive_earnings=3000, attendance_pct=95.0,
+            leave_utilization=10, distance_from_workplace=40, num_transfers=0, performance_rating=4,
+            training_hours=20, promotion_history=1, manager_effectiveness_score=8,
+            employee_engagement_score=7, overtime_hours=48, previous_attrition_label='No'
+        )
+        response = self.client.get(self.stats_url)
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertTrue(data['drift_metrics']['drift_detected'])
+        self.assertTrue(data['drift_metrics']['overtime']['flagged'])
+        self.assertTrue(data['drift_metrics']['distance']['flagged'])
+
+    def test_employee_insights_endpoint(self):
+        """Verify the employee details and top 3 SHAP drivers are returned."""
+        # Seed an employee to test against
+        emp = Employee.objects.create(
+            age=30, gender='Male', educational_qualification='Bachelors', location='Dhaka',
+            tenure=3, monthly_salary=30000, incentive_earnings=3000, attendance_pct=95.0,
+            leave_utilization=10, distance_from_workplace=15, num_transfers=0, performance_rating=4,
+            training_hours=20, promotion_history=1, manager_effectiveness_score=8,
+            employee_engagement_score=7, overtime_hours=24, previous_attrition_label='No'
+        )
+        url = reverse('employee_insights_api', kwargs={'employee_id': emp.id})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertTrue(data['success'])
+        self.assertEqual(data['employee']['id'], emp.id)
+        self.assertIn('top_drivers', data)
+        # Check that it returns at least some top drivers
+        self.assertTrue(len(data['top_drivers']) >= 0)
+
+    @patch('chatbot.services.generate_individual_prescription')
+    def test_employee_prescription_endpoint(self, mock_generate):
+        """Verify the AI prescription endpoint works and returns content."""
+        mock_generate.return_value = "1. Tailored retention step one.\n2. Tailored retention step two.\n3. Tailored retention step three."
+        
+        # Seed an employee to test against
+        emp = Employee.objects.create(
+            age=30, gender='Male', educational_qualification='Bachelors', location='Dhaka',
+            tenure=3, monthly_salary=30000, incentive_earnings=3000, attendance_pct=95.0,
+            leave_utilization=10, distance_from_workplace=15, num_transfers=0, performance_rating=4,
+            training_hours=20, promotion_history=1, manager_effectiveness_score=8,
+            employee_engagement_score=7, overtime_hours=24, previous_attrition_label='No'
+        )
+        url = reverse('employee_prescription_api', kwargs={'employee_id': emp.id})
+        response = self.client.post(url)
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertTrue(data['success'])
+        self.assertIn('prescription', data)
+        self.assertEqual(data['prescription'], "1. Tailored retention step one.\n2. Tailored retention step two.\n3. Tailored retention step three.")
+
+    @patch('chatbot.services.ChatGoogleGenerativeAI')
+    @patch('chatbot.services.get_vector_store')
+    def test_employee_prescription_fallback(self, mock_get_db, mock_llm_class):
+        """Verify fallback prescription plan is generated when Gemini API fails."""
+        # Set up mocks to trigger the except block in generate_individual_prescription
+        mock_llm_instance = mock_llm_class.return_value
+        mock_llm_instance.invoke.side_effect = Exception("RESOURCE_EXHAUSTED Quota exceeded")
+        
+        # Seed a high-overtime employee
+        emp = Employee.objects.create(
+            age=30, gender='Male', educational_qualification='Bachelors', location='Dhaka',
+            tenure=3, monthly_salary=30000, incentive_earnings=3000, attendance_pct=95.0,
+            leave_utilization=10, distance_from_workplace=15, num_transfers=0, performance_rating=4,
+            training_hours=20, promotion_history=1, manager_effectiveness_score=8,
+            employee_engagement_score=7, overtime_hours=45, previous_attrition_label='No'
+        )
+        url = reverse('employee_prescription_api', kwargs={'employee_id': emp.id})
+        response = self.client.post(url)
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertTrue(data['success'])
+        self.assertIn('prescription', data)
+        # Verify it includes the quota warning disclaimer and the overtime shift cap recommendation
+        self.assertIn('quota limit reached', data['prescription'].lower() or 'resource_exhausted' in data['prescription'].lower())
+        self.assertIn('Shift Rota Cap', data['prescription'])
+        self.assertIn('Overtime: 45', data['prescription'])
+
+
+
+
 

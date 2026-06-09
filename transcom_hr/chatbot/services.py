@@ -70,3 +70,179 @@ def generate_retention_response(user_query):
         return response.content
     except Exception as e:
         return f"Advisor Error: Failed to generate retention response. Detail: {str(e)}"
+
+def _get_fallback_prescription(employee_data, top_drivers, error_message=None):
+    """
+    Generate a beautiful, policy-compliant 3-step retention action plan locally
+    when the Gemini API is rate-limited, quota-exhausted, or unconfigured.
+    """
+    import logging
+    logger = logging.getLogger(__name__)
+    if error_message:
+        logger.warning(f"Gemini API failure: {error_message}. Using local rule-based fallback policy engine.")
+    
+    # Identify primary risk dimensions based on drivers and raw values
+    drivers_lower = [d.get('feature', '').lower() for d in top_drivers] if top_drivers else []
+    
+    overtime = employee_data.get('overtime_hours', 0) or 0
+    distance = employee_data.get('distance_from_workplace', 0) or 0
+    salary = employee_data.get('monthly_salary', 0) or 0
+    mgr_effectiveness = employee_data.get('manager_effectiveness_score', 10) or 10
+    engagement = employee_data.get('employee_engagement_score', 10) or 10
+    location = employee_data.get('location', 'Unknown')
+    
+    has_overtime_issue = 'overtime hours' in drivers_lower or overtime > 40
+    has_commute_issue = 'distance from workplace' in drivers_lower or distance > 20
+    has_salary_issue = 'monthly salary' in drivers_lower or salary < 22000
+    has_mgr_issue = 'manager effectiveness score' in drivers_lower or mgr_effectiveness < 4
+    has_engagement_issue = 'employee engagement score' in drivers_lower or engagement < 4
+    
+    steps = []
+    
+    # Action 1: Overtime fatigue mitigation
+    if has_overtime_issue:
+        steps.append(
+            f"**1. Shift Rota Cap & Rest Enforcement (Overtime: {overtime} hrs/mo):** "
+            "Strictly enforce Transcom's maximum shift cap (no more than 48 working hours/week) "
+            "and guarantee at least 11 consecutive hours of daily rest. Limit monthly overtime to under 40 hours. "
+            "Grant 1 paid day of compensatory leave (Comp-Time) for every 8 hours of overtime worked above the 40-hour threshold."
+        )
+    
+    # Action 2: Distance/Commute mitigation
+    if has_commute_issue:
+        steps.append(
+            f"**2. Commute Stipend & Regional Hub Reassignment (Distance: {distance} km):** "
+            f"Residing {distance} km from work exceeds the target threshold. Approve a monthly travel stipend of 3,500 BDT "
+            f"or register them for shared shuttle routing. Direct regional HR to process a lateral transfer request "
+            f"to the nearest outlet or service hub in {location} within 14 business days."
+        )
+        
+    # Action 3: Salary / Incentive alignment
+    if has_salary_issue:
+        steps.append(
+            f"**3. Compensation Realignment & Incentive Evaluation (Salary: {salary:,} BDT):** "
+            "Conduct a structured salary review comparing the employee's current pay against market baselines. "
+            "Audit performance metrics against incentive payouts to clarify bonus opportunities, "
+            "and establish clear performance-linked objectives to elevate their monthly earnings potential."
+        )
+        
+    # Action 4: Manager Effectiveness / Stay Interview
+    if has_mgr_issue or has_engagement_issue:
+        steps.append(
+            f"**4. Empathetic Alignment & Stay Interview (Mgr Score: {mgr_effectiveness}/10, Engagement: {engagement}/10):** "
+            "Conduct a structured stay interview within 7 days focusing on long-term career mapping rather than active tasks. "
+            "If manager friction persists, initiate a mediated HR review or facilitate a lateral reassignment to a different outlet. "
+            "Mandate the supervisor's participation in Transcom's Empathetic Leadership training."
+        )
+        
+    # Standard baseline fallback plans to ensure we have exactly 3 highly specific steps
+    if len(steps) < 1:
+        steps.append(
+            "**1. Quarterly Stay Interview & Career Mapping:** Conduct a structured stay interview focusing on "
+            "long-term professional goals, career development paths within Transcom, and general job satisfaction."
+        )
+    if len(steps) < 2:
+        steps.append(
+            "**2. Workload & Roster Review:** Perform a proactive roster review to ensure workload is balanced, "
+            "ensuring the employee has adequate rest intervals and is not experiencing unflagged role fatigue."
+        )
+    if len(steps) < 3:
+        steps.append(
+            "**3. Recognition & Professional Development:** Audit the employee's training log and performance "
+            "recognition. Map targeted training milestones to promote retail advancement opportunities."
+        )
+        
+    selected_steps = steps[:3]
+    plan_text = "\n\n".join(selected_steps)
+    
+    title = "✨ **Transcom HR Advisor (Policy-Based Retention Plan)**"
+    disclaimer = ""
+    if error_message:
+        if "quota" in error_message.lower() or "429" in error_message or "exhausted" in error_message.lower():
+            disclaimer = (
+                "*Notice: Gemini API quota limit reached. Showing local, highly tailored policy-based fallback plan.*"
+            )
+        elif "not configured" in error_message.lower() or "placeholder" in error_message.lower():
+            disclaimer = (
+                "*Notice: GEMINI_API_KEY not configured. Showing local, highly tailored policy-based fallback plan.*"
+            )
+        else:
+            disclaimer = (
+                f"*Notice: Gemini API error ({error_message[:40]}...). Showing local, highly tailored policy-based fallback plan.*"
+            )
+    else:
+        disclaimer = (
+            "*Notice: Local, highly tailored policy-based retention plan.*"
+        )
+        
+    return f"{title}\n{disclaimer}\n\n{plan_text}"
+
+def generate_individual_prescription(employee_data, top_drivers):
+    """
+    RAG pipeline: similarity search on FAISS using top drivers + ChatGoogleGenerativeAI to
+    produce a highly tailored 3-step action plan to retain a specific individual.
+    If the LLM call fails due to quota limit, missing API key, or networking issues,
+    gracefully fall back to local rule-based policy engine.
+    """
+    # Defensive check for missing API Key
+    if not settings.GEMINI_API_KEY or settings.GEMINI_API_KEY == 'your_gemini_api_key_here' or settings.GEMINI_API_KEY == '':
+        error_msg = "GEMINI_API_KEY is not configured or using default placeholder."
+        return _get_fallback_prescription(employee_data, top_drivers, error_message=error_msg)
+        
+    try:
+        # Build query based on top drivers to fetch relevant policy blocks
+        query = ", ".join([d['feature'] for d in top_drivers]) if top_drivers else "retention"
+        
+        # Get or build vector store
+        db = get_vector_store()
+        
+        # Retrieve top 3 blocks
+        docs = db.similarity_search(query, k=3)
+        context = "\n\n".join([doc.page_content for doc in docs])
+        
+        # Initialize LLM
+        llm = ChatGoogleGenerativeAI(
+            model="gemini-2.5-flash",
+            google_api_key=settings.GEMINI_API_KEY,
+            temperature=0.3
+        )
+        
+        # Format drivers display string
+        drivers_str = ", ".join([f"{d['feature']} (SHAP: {d['shap_value']:.4f})" for d in top_drivers]) if top_drivers else "None (Stable)"
+        prob_str = f"{round(employee_data['attrition_probability'] * 100, 1)}%" if employee_data['attrition_probability'] is not None else "N/A"
+        
+        # Prompt construction matching user prompt exactly
+        template = (
+            "You are an elite corporate HR strategist for Transcom Electronics Limited. "
+            "Analyze this specific Field Officer profile: "
+            "Age: {age}, Gender: {gender}, Location: {location}, Monthly Salary: {salary} BDT, "
+            "Overtime: {overtime} hours, Distance: {distance} km. Their calculated flight risk is {prob} "
+            "and their primary breakdown drivers are {drivers}. "
+            "Based strictly on the provided company retention policies context, generate a bulleted, "
+            "highly tailored 3-step action plan to retain this specific individual. Do not use generic advice. "
+            "Context: {context}"
+        )
+        
+        prompt_template = PromptTemplate(
+            template=template, 
+            input_variables=["age", "gender", "location", "salary", "overtime", "distance", "prob", "drivers", "context"]
+        )
+        prompt = prompt_template.format(
+            age=employee_data['age'],
+            gender=employee_data['gender'],
+            location=employee_data['location'],
+            salary=employee_data['monthly_salary'],
+            overtime=employee_data['overtime_hours'],
+            distance=employee_data['distance_from_workplace'],
+            prob=prob_str,
+            drivers=drivers_str,
+            context=context
+        )
+        
+        # Invoke LLM
+        response = llm.invoke(prompt)
+        return response.content
+    except Exception as e:
+        return _get_fallback_prescription(employee_data, top_drivers, error_message=str(e))
+
+

@@ -1,5 +1,10 @@
 from django.urls import path
-from .views import TriggerInferenceView, EmployeeListAPIView, dashboard_home, UploadCSVView, PredictSingleView, ChatbotAPIView, AdvancedAnalyticsAPIView, DashboardStatsAPIView
+from .views import (
+    TriggerInferenceView, EmployeeListAPIView, dashboard_home, 
+    UploadCSVView, PredictSingleView, ChatbotAPIView, 
+    AdvancedAnalyticsAPIView, DashboardStatsAPIView, ExportReportPDFView,
+    EmployeeDetailAPIView, EmployeePrescriptionAPIView
+)
 
 urlpatterns = [
     path('', dashboard_home, name='dashboard_home'),
@@ -10,4 +15,9 @@ urlpatterns = [
     path('chatbot/', ChatbotAPIView, name='chatbot_api'),
     path('advanced-analytics/', AdvancedAnalyticsAPIView, name='advanced_analytics_api'),
     path('dashboard-stats/', DashboardStatsAPIView, name='dashboard_stats_api'),
+    path('export-report/', ExportReportPDFView, name='export_report_pdf'),
+    path('employees/<int:employee_id>/insights/', EmployeeDetailAPIView, name='employee_insights_api'),
+    path('employees/<int:employee_id>/prescription/', EmployeePrescriptionAPIView, name='employee_prescription_api'),
 ]
+
+
