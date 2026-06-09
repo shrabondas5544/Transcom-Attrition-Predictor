@@ -1,4 +1,6 @@
+# pyrefly: ignore [missing-import]
 from django.test import TestCase, Client
+# pyrefly: ignore [missing-import]
 from django.urls import reverse
 from unittest.mock import patch
 import json

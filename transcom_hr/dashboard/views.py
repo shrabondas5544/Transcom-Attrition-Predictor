@@ -192,6 +192,7 @@ def UploadCSVView(request):
             )
             employees_to_create.append(emp)
             
+        # pyrefly: ignore [missing-import]
         from django.db import transaction
         with transaction.atomic():
             Employee.objects.all().delete()
