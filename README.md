@@ -789,4 +789,4 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 
 ---
 
-*Built with ❤️ by the Transcom HR Intelligence Team · Powered by Google Gemini 2.5 + scikit-learn + Django*
+*Built with ❤️ by Shrabon Das · scikit-learn + Django*
